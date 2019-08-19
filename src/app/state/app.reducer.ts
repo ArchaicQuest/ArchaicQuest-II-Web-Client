@@ -1,23 +1,29 @@
 import { AppState } from './app.state';
 import { AppActionTypes, AppActions } from './app.actions';
-import * as signalR from '@aspnet/signalr';
 
 const intitalState: AppState = {
-    connection: {},
+    connected: false,
+    data: 'test'
 };
 
-export function addItemReducer(state: AppState = intitalState, action: AppActions) {
+export function appReducer(state: AppState = intitalState, action: AppActions) {
     switch (action.type) {
         case AppActionTypes.ConnectToServer: {
             return {
-              ...state,
-                connection: new signalR.HubConnection('http://localhost:57814/Hubs/game'),
+                ...state,
             };
         }
         case AppActionTypes.ConnectToServerSuccess: {
             return {
                 ...state,
-                connection: action.payload,
+                connected: action.payload,
+            };
+        }
+        case AppActionTypes.UpdateWindow: {
+
+            return {
+                ...state,
+                data: action.payload,
             };
         }
         default:

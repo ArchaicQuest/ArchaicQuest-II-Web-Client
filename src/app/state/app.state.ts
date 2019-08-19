@@ -1,3 +1,4 @@
 export interface AppState {
-    connection: any;
+    connected: boolean;
+    data: string;
 }

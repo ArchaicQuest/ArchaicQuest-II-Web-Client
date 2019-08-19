@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { AppService } from './app.service';
+import { appReducer } from './state/app.reducer';
 
 @NgModule({
     declarations: [
@@ -22,14 +24,14 @@ import { environment } from 'src/environments/environment';
         BrowserModule,
         AppRoutingModule,
         EffectsModule.forRoot([]),
-        StoreModule.forRoot({}),
+        StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({
             name: 'Archaic Quest II - client',
             maxAge: 25, // Retains last 25 states
             logOnly: environment.production, // Restrict extension to log-only mode
         }),
     ],
-    providers: [],
+    providers: [AppService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
