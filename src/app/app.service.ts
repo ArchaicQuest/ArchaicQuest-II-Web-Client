@@ -33,16 +33,16 @@ export class AppService {
             this.store.dispatch(new UpdateWindow(sender + ' : ' + message));
         });
 
-        // this.connection.on("SendAction", (sender, action) => {
-        //     // this.appendMessage += sender + " " + action;
-        // });
+        this.connection.on("SendAction", (sender, action) => {
+            this.store.dispatch(new UpdateWindow(sender));
+        });
     }
 
     public sendToServer(message: string) {
-      this.connection.send('Send', message).catch(err => {
+        this.connection.send('send', message).catch(err => {
 
-      });
-  }
+        });
+    }
 
 
 

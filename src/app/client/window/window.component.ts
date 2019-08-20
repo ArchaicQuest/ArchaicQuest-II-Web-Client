@@ -26,7 +26,7 @@ export class WindowComponent implements OnInit, AfterViewInit {
         });
 
         for (let index = 0; index < 100; index++) {
-          this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>' + '<p>Welcome to archaicQuest II</p>' +  '<p>' + index + '</p>' ));
+            this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II ' + index + '</p>'));
 
         }
 

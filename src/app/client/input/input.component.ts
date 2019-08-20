@@ -9,21 +9,15 @@ import { SendToServer } from 'src/app/state/app.actions';
     styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-  @ViewChild('input', { static: true }) input: ElementRef;
-  @ViewChild('btn', { static: true }) btn: ElementRef;
-  constructor(private store: Store<AppState>) { }
+    @ViewChild('input', { static: true }) input: ElementRef;
+    @ViewChild('btn', { static: true }) btn: ElementRef;
+    constructor(private store: Store<AppState>) { }
 
     ngOnInit() {
     }
 
     sendToServer() {
-
-    }
-
-
-    send() {
-
-      this.store.dispatch(new SendToServer(this.input.nativeElement.value));
+        this.store.dispatch(new SendToServer(this.input.nativeElement.value));
 
     }
 
