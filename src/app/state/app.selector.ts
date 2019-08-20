@@ -6,10 +6,10 @@ export const selectFeature = (state: AppState) => state;
 
 export const selectConnection = createSelector(
     selectFeature,
-    (state: AppState) => state.connected
+    (state: AppState) => state.appReducer.connected
 );
 
 export const selectData = createSelector(
     selectFeature,
-    (state: AppState) => state.data
+    (state: AppState) => state.appReducer.data
 );

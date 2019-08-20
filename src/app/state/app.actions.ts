@@ -1,31 +1,47 @@
-import { Action } from '@ngrx/store';
+import { Action } from "@ngrx/store";
 
 export enum AppActionTypes {
-    ConnectToServer = '[Server] Connect to server.',
-    ConnectToServerSuccess = '[Server] Successfully Connected to server.',
-    UpdateWindow = '[Client] Update Window',
-    UpdateWindowSuccess = '[Server] Update Window Success',
+  ConnectToServer = "[Server] Connect to server.",
+  ConnectToServerSuccess = "[Server] Successfully Connected to server.",
+  UpdateWindow = "[Client] Update Window",
+  UpdateWindowSuccess = "[Server] Update Window Success",
+  sendToServer = "[Client] Send to server",
+  sendToServerSuccess = "[Server] Send to server Success"
 }
 
 export class ConnectToServer implements Action {
-    readonly type = AppActionTypes.ConnectToServer;
+  readonly type = AppActionTypes.ConnectToServer;
 }
 
 export class ConnectToServerSuccess implements Action {
-    readonly type = AppActionTypes.ConnectToServerSuccess;
+  readonly type = AppActionTypes.ConnectToServerSuccess;
 
-    constructor(public payload: boolean) { }
+  constructor(public payload: boolean) {}
 }
 
 export class UpdateWindow implements Action {
-    readonly type = AppActionTypes.UpdateWindow;
+  readonly type = AppActionTypes.UpdateWindow;
 
-    constructor(public payload: string) { }
+  constructor(public payload: string) {}
 }
 
 export class UpdateWindowSuccess implements Action {
-    readonly type = AppActionTypes.UpdateWindowSuccess;
+  readonly type = AppActionTypes.UpdateWindowSuccess;
+}
+
+export class SendToServer implements Action {
+  readonly type = AppActionTypes.sendToServer;
+
+  constructor(public payload: string) {}
+}
+
+export class SendToServerSuccess implements Action {
+  readonly type = AppActionTypes.sendToServer;
 }
 
 export type AppActions =
-    ConnectToServer | ConnectToServerSuccess | UpdateWindow;
+  | ConnectToServer
+  | ConnectToServerSuccess
+  | UpdateWindow
+  | SendToServer
+  | SendToServerSuccess;

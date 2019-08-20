@@ -26,8 +26,7 @@ export class AppComponent implements OnInit {
 
     componentActive = true;
 
-    @ViewChild("input", { static: true }) input: ElementRef;
-    @ViewChild("btn", { static: true }) btn: ElementRef;
+
 
     constructor(private store: Store<AppState>, private appService: AppService) { }
 
@@ -35,7 +34,6 @@ export class AppComponent implements OnInit {
 
 
     }
-    send() {
-        this.connection.send("Send", this.input.nativeElement.value);
-    }
+
+
 }

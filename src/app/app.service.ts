@@ -38,6 +38,14 @@ export class AppService {
         // });
     }
 
+    public sendToServer(message: string) {
+      this.connection.send('Send', message).catch(err => {
+
+      });
+  }
+
+
+
     public returnConnection() {
         return this.connection;
     }

@@ -2,8 +2,10 @@ import { AppState } from './app.state';
 import { AppActionTypes, AppActions } from './app.actions';
 
 const intitalState: AppState = {
+  appReducer: {
     connected: false,
-    data: 'test'
+    data: '<p>test</p>'
+  }
 };
 
 export function appReducer(state: AppState = intitalState, action: AppActions) {
@@ -23,7 +25,7 @@ export function appReducer(state: AppState = intitalState, action: AppActions) {
 
             return {
                 ...state,
-                data: action.payload,
+                data: state.appReducer.data += action.payload,
             };
         }
         default:

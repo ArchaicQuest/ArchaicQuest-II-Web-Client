@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { takeWhile } from 'rxjs/operators';
@@ -13,28 +13,29 @@ import { selectData } from 'src/app/state/app.selector';
 export class WindowComponent implements OnInit, AfterViewInit {
     public data: string;
     public componentActive = true;
-    constructor(private elementRef: ElementRef, private store: Store<AppState>) { }
+    @ViewChild('window', { static: true }) window: ElementRef;
+
+    constructor(private store: Store<AppState>) { }
 
     ngOnInit() {
-        this.store.dispatch(new UpdateWindow('Welcome to archaicuest'));
+        this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>'));
 
         this.store.pipe(select(selectData)).subscribe((data: string) => {
             console.log(data)
-            this.elementRef.nativeElement.insertAdjacentHTML('beforeend', data);
+            this.window.nativeElement.insertAdjacentHTML('beforeend', data);
         });
 
-        this.store.pipe(select('data')).subscribe(data => (this.elementRef.nativeElement.insertAdjacentHTML('beforeend', data)));
+        for (let index = 0; index < 100; index++) {
+          this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>' + '<p>Welcome to archaicQuest II</p>' +  '<p>' + index + '</p>' ));
+
+        }
 
 
     }
 
     ngAfterViewInit(): void {
-        this.store.dispatch(new UpdateWindow('Welcome to archaicuest II'));
-        this.store.dispatch(new UpdateWindow('Welcome to archaicuest II'));
-        this.store.dispatch(new UpdateWindow('Welcome to archaicuest II'));
-        this.store.dispatch(new UpdateWindow('Welcome to archaicuest II'));
 
-        console.log(this.store.pipe(select(selectData)))
+        //console.log(this.store.pipe(select(selectData)))
     }
 
 
