@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { SendToServer } from 'src/app/state/app.actions';
+import { AppService } from 'src/app/app.service';
 
 @Component({
     selector: 'app-input',
@@ -9,16 +10,15 @@ import { SendToServer } from 'src/app/state/app.actions';
     styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-    @ViewChild('input', { static: true }) input: ElementRef;
-    @ViewChild('btn', { static: true }) btn: ElementRef;
-    constructor(private store: Store<AppState>) { }
+    @ViewChild('input', { static: false }) input: ElementRef;
+    @ViewChild('btn', { static: false }) btn: ElementRef;
+    constructor(private addItemService: AppService) { }
 
     ngOnInit() {
     }
 
     sendToServer() {
-        this.store.dispatch(new SendToServer(this.input.nativeElement.value));
-
+        this.addItemService.sendToServer(this.input.nativeElement.value);
     }
 
 }

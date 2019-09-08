@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { takeWhile } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { selectData } from 'src/app/state/app.selector';
     templateUrl: './window.component.html',
     styleUrls: ['./window.component.scss']
 })
-export class WindowComponent implements OnInit, AfterViewInit {
+export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
     public data: string;
     public componentActive = true;
     @ViewChild('window', { static: true }) window: ElementRef;
@@ -20,10 +20,6 @@ export class WindowComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>'));
 
-        this.store.pipe(select(selectData)).subscribe((data: string) => {
-            console.log(data)
-            this.window.nativeElement.insertAdjacentHTML('beforeend', data);
-        });
 
         for (let index = 0; index < 100; index++) {
             this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II ' + index + '</p>'));
@@ -33,7 +29,16 @@ export class WindowComponent implements OnInit, AfterViewInit {
 
     }
 
+    ngOnDestroy() {
+        console.log("ngOnDestroy InDashBoard");
+    }
+
     ngAfterViewInit(): void {
+        this.store.pipe(select(selectData)).subscribe((data: string) => {
+            console.log(data)
+            this.data = data;
+            // this.window.nativeElement.insertAdjacentHTML('beforeend', data);
+        });
 
         //console.log(this.store.pipe(select(selectData)))
     }
