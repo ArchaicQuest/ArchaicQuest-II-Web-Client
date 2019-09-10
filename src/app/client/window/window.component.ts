@@ -19,14 +19,6 @@ export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
         this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>'));
-
-
-        for (let index = 0; index < 100; index++) {
-            this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II ' + index + '</p>'));
-
-        }
-
-
     }
 
     ngOnDestroy() {
@@ -35,12 +27,8 @@ export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.store.pipe(select(selectData)).subscribe((data: string) => {
-            console.log(data)
             this.data = data;
-            // this.window.nativeElement.insertAdjacentHTML('beforeend', data);
         });
-
-        //console.log(this.store.pipe(select(selectData)))
     }
 
 
