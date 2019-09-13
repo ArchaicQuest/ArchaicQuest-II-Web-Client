@@ -12,16 +12,24 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { AppService } from './app.service';
 import { appReducer } from './state/app.reducer';
+import { CreatePlayerComponent } from './player/create/create.component';
+import { CreateService } from './player/create/create.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
         ClientComponent,
         WindowComponent,
-        InputComponent
+        InputComponent,
+        CreatePlayerComponent
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
@@ -31,7 +39,7 @@ import { appReducer } from './state/app.reducer';
             logOnly: environment.production, // Restrict extension to log-only mode
         }),
     ],
-    providers: [AppService],
+    providers: [AppService, CreateService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
