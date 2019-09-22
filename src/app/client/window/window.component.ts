@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { takeWhile } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { selectData } from 'src/app/state/app.selector';
     templateUrl: './window.component.html',
     styleUrls: ['./window.component.scss']
 })
-export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
+export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     public data: string;
     public componentActive = true;
     @ViewChild('window', { static: true }) window: ElementRef;
@@ -25,7 +25,7 @@ export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log("ngOnDestroy InDashBoard");
     }
 
-    ngAfterViewInit(): void {
+    ngAfterContentInit(): void {
         this.store.pipe(select(selectData)).subscribe((data: string) => {
             this.data = data;
         });
