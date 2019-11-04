@@ -16,14 +16,20 @@ import { CreatePlayerComponent } from './player/create/create.component';
 import { CreateService } from './player/create/create.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WelcomeComponent } from './welcome/welcome.component';
 @NgModule({
     declarations: [
         AppComponent,
         ClientComponent,
         WindowComponent,
         InputComponent,
-        CreatePlayerComponent
+        CreatePlayerComponent,
+        WelcomeComponent
     ],
     imports: [
         BrowserModule,
@@ -31,6 +37,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         FormsModule,
         ReactiveFormsModule,
         AppRoutingModule,
+        MatStepperModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatStepperModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({
@@ -38,6 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
             maxAge: 25, // Retains last 25 states
             logOnly: environment.production, // Restrict extension to log-only mode
         }),
+        BrowserAnimationsModule,
     ],
     providers: [AppService, CreateService],
     bootstrap: [AppComponent]
