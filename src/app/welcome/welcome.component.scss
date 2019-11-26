@@ -4,6 +4,78 @@
   background-size: cover;
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+
+  .forgot-password {
+    margin: 30px 0 0 0;
+  }
+
+  .bar {
+    flex: auto;
+    border: none;
+    height: 1px;
+    background-color: #aaa;
+  }
+
+  .or {
+    margin: 28px 0;
+    width: 60%;
+    display: flex;
+    align-items: center;
+  }
+  .or span {
+    color: #ccc;
+    padding: 0 12px;
+  }
+
+  .welcome-log-in {
+    background-color: #222;
+    padding: 40px;
+    align-items: center;
+    display: grid;
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    &__form {
+      display: inline-grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: center;
+      width: 433px;
+      margin: 0 auto;
+
+      .mat-form-field,
+      button {
+        width: 100%;
+      }
+
+      button {
+        height: 51px;
+      }
+
+      .mat-stroked-button:not([disabled]) {
+        border-color: rgba(255, 255, 255, 1);
+        border-width: 2px;
+      }
+
+      .mat-stroked-button.mat-primary {
+        color: #fff;
+        height: 51px;
+        width: 60%;
+      }
+    }
+  }
+
+  .welcome-tag-line {
+    font-size: 35px;
+    font-family: serif;
+    text-shadow: 1px 1px 3px #000;
+  }
 
   h1 {
     text-align: center;
@@ -14,6 +86,22 @@
     span {
       display: block;
       font-size: 20px;
+    }
+  }
+
+  .welcome-intro {
+    align-self: center;
+    text-align: center;
+
+    .mat-stroked-button:not([disabled]) {
+      border-color: rgba(255, 255, 255, 1);
+      border-width: 2px;
+    }
+
+    .mat-stroked-button.mat-primary {
+      color: #fff;
+      height: 51px;
+      min-width: 244px;
     }
   }
 }
