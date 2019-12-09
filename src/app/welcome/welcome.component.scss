@@ -48,26 +48,6 @@
       align-items: center;
       width: 433px;
       margin: 0 auto;
-
-      .mat-form-field,
-      button {
-        width: 100%;
-      }
-
-      button {
-        height: 51px;
-      }
-
-      .mat-stroked-button:not([disabled]) {
-        border-color: rgba(255, 255, 255, 1);
-        border-width: 2px;
-      }
-
-      .mat-stroked-button.mat-primary {
-        color: #fff;
-        height: 51px;
-        width: 60%;
-      }
     }
   }
 
@@ -75,6 +55,10 @@
     font-size: 35px;
     font-family: serif;
     text-shadow: 1px 1px 3px #000;
+    max-width: 750px;
+    text-align: center;
+    margin: 0 auto 50px auto;
+    line-height: 1.2;
   }
 
   h1 {
@@ -93,15 +77,8 @@
     align-self: center;
     text-align: center;
 
-    .mat-stroked-button:not([disabled]) {
-      border-color: rgba(255, 255, 255, 1);
-      border-width: 2px;
-    }
-
     .mat-stroked-button.mat-primary {
-      color: #fff;
-      height: 51px;
-      min-width: 244px;
+      max-width: 255px;
     }
   }
 }
