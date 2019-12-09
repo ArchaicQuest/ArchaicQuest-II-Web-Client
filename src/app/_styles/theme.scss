@@ -3,9 +3,11 @@
 
 // Colours
 
-$primary-color-100: lighten(#f6d437, 40%);
+$primary-color-100: lighten(#f6d437, 10%);
 $primary-color-500: #f6d437;
+$primary-color-600: darken(#f6d437, 10%);
 $primary-color-700: darken(#f6d437, 20%);
+$primary-color-800: darken(#f6d437, 30%);
 
 $accent-color-100: lighten(#222, 40%);
 $accent-color-500: #222;
@@ -89,9 +91,15 @@ $app-theme: mat-dark-theme($primary, $accent, $warn);
 @include angular-material-typography($typography-config);
 
 //override
+
+/* Button overrides */
 .mat-button:hover .mat-button-focus-overlay,
 .mat-stroked-button:hover .mat-button-focus-overlay {
   opacity: 1 !important;
+}
+
+.mat-raised-button.mat-primary:hover {
+  background-color: $primary-color-600;
 }
 
 .mat-stroked-button.mat-primary {
