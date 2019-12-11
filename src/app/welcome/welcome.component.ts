@@ -9,4 +9,14 @@ import { Component } from '@angular/core';
 export class WelcomeComponent {
     constructor() { }
 
+    signIn() {
+        //Auth logic
+
+
+    }
+
+    createAccount() {
+
+    }
+
 }

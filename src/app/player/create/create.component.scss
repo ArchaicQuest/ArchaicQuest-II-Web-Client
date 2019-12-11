@@ -1,0 +1,118 @@
+@import "../../_styles/theme.scss";
+header {
+  background-color: #222;
+  padding-bottom: 30px;
+  border-bottom: 2px solid $primary-color-500;
+  box-shadow: 0 5px 13px #111;
+  position: relative;
+}
+
+.create-character-wizard__nav {
+  background: #111;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 30px;
+
+  button {
+    width: 150px;
+  }
+}
+
+.create-character-wizard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin: 0 30px;
+  padding-top: 10px;
+
+  .create-character-wizard__step {
+    text-align: center;
+    position: relative;
+
+    .create-character-wizard__step--selected {
+      position: absolute;
+      top: 44px;
+      left: 25%;
+      width: 90px;
+      height: 90px;
+      background-color: #222;
+      border: 2px solid $primary-color-500;
+      border-top: none;
+      box-shadow: 5px 5px 13px #111;
+
+      svg {
+        height: 60%;
+        margin: 0 auto;
+        display: block;
+        margin: 10px auto 4px auto;
+      }
+    }
+  }
+}
+
+.create-character-wrapper {
+  background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
+    url(/assets/images/background-creation.jpg) no-repeat top center;
+  background-size: cover;
+  height: 100%;
+  padding-top: 90px;
+  .create-character-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+
+    .create-character__selection,
+    .create-character__info {
+      padding: 40px;
+    }
+  }
+  .create-character__race {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    height: 100px;
+    grid-gap: 30px;
+    position: relative;
+
+    margin-bottom: 15px;
+
+    &.create-character__race--card {
+      border: 1px solid #111;
+      background-color: #111;
+      text-align: center;
+      p {
+        align-self: center;
+      }
+    }
+  }
+
+  .create-character__info {
+    background: rgba(000, 000, 000, 0.4);
+    border: 2px solid #111;
+    line-height: 1.5;
+    margin-top: 95px;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+.gender {
+  width: 250px;
+
+  filter: invert(100%) sepia(0%) saturate(7482%) hue-rotate(77deg) brightness(106%) contrast(99%);
+}
+
+.logo {
+  margin: 0 auto;
+  padding-top: 20px;
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
