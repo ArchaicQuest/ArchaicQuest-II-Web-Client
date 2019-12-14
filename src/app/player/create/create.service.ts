@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Race } from '../Interface/race.interface';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Race } from '../Interface/race.interface';
 })
 export class CreateService {
 
-    public createPlayerForm = this.formBuilder.group({
+    public createPlayerForm = this._formBuilder.group({
         id: [''],
         name: ['', Validators.required],
     });
@@ -18,10 +18,17 @@ export class CreateService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+    constructor(private _http: HttpClient, private _formBuilder: FormBuilder) { }
 
     getRace(): Observable<Race[]> {
-        return this.http.get<Race[]>('http://localhost:57814/api/Character/Race');
+        return this._http.get<Race[]>('http://localhost:57814/api/Character/Race');
+    }
+
+    raceFormGroup(): FormGroup {
+
+        return this._formBuilder.group({
+            race: ['', Validators.required]
+        });
     }
 
 
