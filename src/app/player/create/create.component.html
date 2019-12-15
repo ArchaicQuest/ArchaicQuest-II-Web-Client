@@ -26,8 +26,6 @@
 
                     </div>
                     <div class="create-character__info">
-
-
                         <h2>{{raceHeader}}</h2>
                         <p>{{raceDescription}}</p>
                     </div>
@@ -37,18 +35,36 @@
                 </div>
             </form>
         </mat-step>
-        <!-- <mat-step [stepControl]="secondFormGroup">
-                      <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Fill out your address</ng-template>
-                        <mat-form-field>
-                          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                        </mat-form-field>
-                        <div>
-                          <button mat-button matStepperPrevious>Back</button>
-                          <button mat-button matStepperNext>Next</button>
+        <mat-step>
+            <form [formGroup]="raceForm">
+                <div class="create-character-container">
+                    <ng-template matStepLabel>Select your class</ng-template>
+                    <div class="create-character__selection">
+
+                        <div class="create-character__race">
+                            <div *ngFor="let class of classes" class="create-character__race__picker">
+
+                                <div class="create-character__race--card">
+                                    <p>{{class.name}}</p>
+                                </div>
+
+                            </div>
                         </div>
-                      </form>
-                    </mat-step> -->
+
+                    </div>
+                    <div class="create-character__info">
+                        <!-- <h2>{{raceHeader}}</h2>
+                        <p>{{raceDescription}}</p> -->
+                    </div>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             You are now done.

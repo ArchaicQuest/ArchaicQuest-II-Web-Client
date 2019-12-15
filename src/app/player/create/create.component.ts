@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateService } from './create.service';
 import { Race } from '../Interface/race.interface';
 import { FormGroup } from '@angular/forms';
+import { Data } from 'src/app/_shared/interface/data.interface';
 
 @Component({
     selector: 'app-create-player',
@@ -13,6 +14,8 @@ export class CreatePlayerComponent implements OnInit {
     raceForm: FormGroup;
     raceHeader: string;
     raceDescription: string;
+
+    classes: Data[];
     constructor(private service: CreateService) { }
 
     ngOnInit() {
@@ -22,13 +25,21 @@ export class CreatePlayerComponent implements OnInit {
             this.raceDescription = data[0].description;
         });
 
+        this.service.getClass().subscribe(data => {
+            this.classes = data;
+
+        });
+
         this.raceForm = this.service.raceFormGroup();
+
 
         this.raceForm.get('race').valueChanges.subscribe(value => {
             console.log(value);
             this.raceHeader = value.name;
             this.raceDescription = value.description;
         });
+
+
     }
 
     selectRace(race: { id: number, name: string }) {
