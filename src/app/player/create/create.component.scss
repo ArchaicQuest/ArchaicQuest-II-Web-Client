@@ -89,3 +89,18 @@ h1 {
   text-align: center;
   margin-top: 5px;
 }
+
+.wizard-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+
+  button {
+    width: 250px;
+    margin-left: 25px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

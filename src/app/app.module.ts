@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatRadioModule } from '@angular/material/radio'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
         MatFormFieldModule,
         MatInputModule,
         MatStepperModule,
+        MatRadioModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({

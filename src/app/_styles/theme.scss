@@ -9,9 +9,9 @@ $primary-color-600: darken(#f6d437, 10%);
 $primary-color-700: darken(#f6d437, 20%);
 $primary-color-800: darken(#f6d437, 30%);
 
-$accent-color-100: lighten(#222, 40%);
+$accent-color-100: lighten(#222, 10%);
 $accent-color-500: #222;
-$accent-color-700: lighten(#222, 40%);
+$accent-color-700: darken(#222, 20%);
 
 // Typograpghy
 
@@ -98,8 +98,16 @@ $app-theme: mat-dark-theme($primary, $accent, $warn);
   opacity: 1 !important;
 }
 
+.mat-raised-button {
+  border: 1px solid $dark-text;
+}
+
 .mat-raised-button.mat-primary:hover {
   background-color: $primary-color-600;
+}
+
+.mat-raised-button.mat-accent:hover {
+  background-color: $accent-color-100;
 }
 
 .mat-stroked-button.mat-primary {

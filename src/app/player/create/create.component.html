@@ -30,7 +30,7 @@
                         <p>{{raceDescription}}</p>
                     </div>
                 </div>
-                <div>
+                <div class="wizard-controls">
                     <button mat-raised-button color="primary" matStepperNext>Next</button>
                 </div>
             </form>
@@ -57,14 +57,39 @@
                         <p>{{raceDescription}}</p> -->
                     </div>
                 </div>
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
+                <div class="wizard-controls">
+                    <button mat-raised-button color="accent" matStepperPrevious>Back</button>
 
                     <button mat-raised-button color="primary" matStepperNext>Next</button>
                 </div>
             </form>
         </mat-step>
+        <mat-step>
+            <form [formGroup]="raceForm">
+                <div class="create-character-container">
+                    <ng-template matStepLabel>Description</ng-template>
+                    <div class="create-character__selection">
 
+                        <label id="gender">Gender</label>
+                        <mat-radio-group aria-labelledby="gender">
+                            <mat-radio-button value="m">Male</mat-radio-button>
+                            <mat-radio-button value="f">Female</mat-radio-button>
+                        </mat-radio-group>
+
+
+                    </div>
+                    <div class="create-character__info">
+                        <!-- <h2>{{raceHeader}}</h2>
+                        <p>{{raceDescription}}</p> -->
+                    </div>
+                </div>
+                <div class="wizard-controls">
+                    <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             You are now done.
