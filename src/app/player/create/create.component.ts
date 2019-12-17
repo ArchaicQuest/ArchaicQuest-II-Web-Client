@@ -14,6 +14,7 @@ export class CreatePlayerComponent implements OnInit {
     raceForm: FormGroup;
     raceHeader: string;
     raceDescription: string;
+    weight: number;
 
     classes: Data[];
     constructor(private service: CreateService) { }
