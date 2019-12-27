@@ -23,6 +23,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PlayerAppearanceComponent } from './player/create/Appearance/appearance.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
     declarations: [
         AppComponent,
@@ -30,7 +34,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
         WindowComponent,
         InputComponent,
         CreatePlayerComponent,
-        WelcomeComponent
+        WelcomeComponent,
+        PlayerAppearanceComponent
     ],
     imports: [
         BrowserModule,
@@ -45,6 +50,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
         MatStepperModule,
         MatRadioModule,
         MatSliderModule,
+        MatExpansionModule,
+        MatOptionModule,
+        MatSelectModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({

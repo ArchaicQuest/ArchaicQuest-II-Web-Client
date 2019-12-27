@@ -17,7 +17,8 @@
                         <div class="create-character__race">
                             <div *ngFor="let race of races" class="create-character__race__picker">
 
-                                <div class="create-character__race--card" (click)="selectRace(race)">
+                                <div class="create-character__race--card"
+                                    ngClass="create-character__race--card--{{race.name}}" (click)="selectRace(race)">
                                     <p>{{race.name}}</p>
                                 </div>
 
@@ -53,8 +54,7 @@
 
                     </div>
                     <div class="create-character__info">
-                        <!-- <h2>{{raceHeader}}</h2>
-                        <p>{{raceDescription}}</p> -->
+
                     </div>
                 </div>
                 <div class="wizard-controls">
@@ -70,41 +70,11 @@
                     <ng-template matStepLabel>Description</ng-template>
                     <div class="create-character__selection">
 
-                        <mat-form-field appearance="outline">
-                            <mat-label>Name</mat-label>
-                            <input matInput placeholder="Name">
-                            <!-- <button mat-raised-button color="primary" matSuffix>Random</button> -->
-                        </mat-form-field>
 
-
-                        <label id="gender">Gender:</label>
-                        <mat-radio-group color="primary" aria-labelledby="gender">
-                            <mat-radio-button value="m" checked>Male</mat-radio-button>
-                            <mat-radio-button value="f">Female</mat-radio-button>
-                        </mat-radio-group>
-
-                        <div>
-                            <label id="height">Height 184 CM</label><br />
-                            <mat-slider aria-labelledby="height" [max]="190" [min]="90" [step]="1" [thumbLabel]="true">
-                            </mat-slider>
-                        </div>
-                        <div>
-                            <label id="weight">Weight 140 KG</label><br />
-                            <mat-slider aria-labelledby="weight" [max]="190" [min]="90" [step]="1" [thumbLabel]="true">
-                            </mat-slider>
-                        </div>
-
-                        Add Accordion for skin color / eye color / hair styles / hair color / facial hair
-
-                        example generated description:
-                        Your appearance is:
-
-                        You are a male Human Mage.
-                        You are 4'10", and weigh 121 pounds. You wear your grey hair in a mohawk, with
-                        a full beard and long sideburns. Your white skin creates a sharp contrast
-                        with your hazel eyes.
+                        <app-player-appearance></app-player-appearance>
 
                     </div>
+
                     <div class="create-character__info">
                         <!-- <h2>{{raceHeader}}</h2>
                         <p>{{raceDescription}}</p> -->

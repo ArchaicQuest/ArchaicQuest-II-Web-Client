@@ -1,0 +1,148 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Name
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name">
+            <!-- <button mat-raised-button color="primary" matSuffix>Random</button> -->
+        </mat-form-field>
+
+        <mat-action-row>
+            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Body Type
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+
+        <mat-form-field>
+            <mat-label>Body</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of bodyTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Skin Colour</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of skinColorTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-radio-group color="primary">
+            <mat-radio-button value="m" checked>Male</mat-radio-button>
+            <mat-radio-button value="f">Female</mat-radio-button>
+        </mat-radio-group>
+
+
+
+
+        <mat-action-row>
+            <button mat-raised-button color="accent" (click)="prevStep()">Previous</button>
+            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Facial Features
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <mat-label>Facial Features</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of facialTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Eye Colour</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of eyeColorTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-action-row>
+            <button mat-raised-button color="accent" (click)="prevStep()">Previous</button>
+            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Hair
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <mat-label>Hair Colour</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of hairColorTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Hair Length</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of hairLengthTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Hair Texture</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of hairTextureTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Facial Hair</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let data of facialHairTypes$" [value]="data.name">
+                    {{data.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-action-row>
+            <button mat-raised-button color="accent" (click)="prevStep()">Back</button>
+            <button mat-raised-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+</mat-accordion>
