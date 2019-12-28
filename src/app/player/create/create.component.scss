@@ -121,8 +121,17 @@ header {
     background: rgba(000, 000, 000, 0.4);
     border: 2px solid #111;
     line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 151px;
+    grid-gap: 30px;
     h2 {
       margin-top: 0;
+    }
+
+    img {
+      background-color: #c7c7c7;
+      padding: 10px;
+      border: 2px solid #000;
     }
   }
 }
