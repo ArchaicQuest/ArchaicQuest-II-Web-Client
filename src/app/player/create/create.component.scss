@@ -41,7 +41,6 @@ header {
   .create-character-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
 
     .create-character__selection,
     .create-character__info {
@@ -61,15 +60,49 @@ header {
       margin-bottom: 15px;
       height: 100px;
       text-align: center;
-      background-size: 90%;
+      background-size: 60% !important;
       position: relative;
-
+      transition: background-color 250ms linear;
       &--Elf {
         background: url(/assets/images/character/elf.png) #c7c7c7 no-repeat top center;
       }
 
+      &--Wood-elf {
+        background: url(/assets/images/character/woodElf.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Dark {
+        background: url(/assets/images/character/drow.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Half {
+        background: url(/assets/images/character/halfDrow.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Dwarves {
+        background: url(/assets/images/character/dwarf.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Mau {
+        background: url(/assets/images/character/mau.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Tlaloc {
+        background: url(/assets/images/character/Tlaloc.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Gnome {
+        background: url(/assets/images/character/gnome.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Minotaur {
+        background: url(/assets/images/character/orc.png) #c7c7c7 no-repeat top center;
+      }
+
       &:hover {
         cursor: pointer;
+        background-color: $primary-color-500;
+        transition: background-color 250ms linear;
       }
       p {
         align-self: center;
