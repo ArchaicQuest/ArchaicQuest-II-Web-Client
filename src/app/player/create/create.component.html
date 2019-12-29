@@ -15,9 +15,10 @@
                     <div class="create-character__selection">
 
                         <div class="create-character__race">
-                            <div *ngFor="let race of races" class="create-character__race__picker">
+                            <div *ngFor="let race of races; let i = index" class="create-character__race__picker"
+                                (click)="setSelectedRaceIndex(i)">
 
-                                <div class="create-character__race--card"
+                                <div class="create-character__race--card" [class.active]="selectedIndex === i"
                                     ngClass="create-character__race--card--{{race.name}}" (click)="selectRace(race)">
                                     <p>{{race.name}}</p>
                                 </div>
@@ -32,7 +33,9 @@
                             <p>{{raceDescription}}</p>
                         </div>
                         <div>
-                            <img src="/assets/images/character/human-alt.png" alt="race" />
+                            <div class="create-character__raceImage">
+                                <img [src]="raceImage" [alt]="raceHeader" />
+                            </div>
                         </div>
                     </div>
                 </div>

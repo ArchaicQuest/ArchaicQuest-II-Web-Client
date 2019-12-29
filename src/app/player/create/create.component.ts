@@ -14,6 +14,8 @@ export class CreatePlayerComponent implements OnInit {
     raceForm: FormGroup;
     raceHeader: string;
     raceDescription: string;
+    raceImage: string;
+    selectedIndex: number;
     weight: number;
 
     classes: Data[];
@@ -38,6 +40,7 @@ export class CreatePlayerComponent implements OnInit {
             console.log(value);
             this.raceHeader = value.name;
             this.raceDescription = value.description;
+            this.raceImage = `/assets/images/character/${value.name.replace('-', '').replace(' ', '').toLowerCase()}.png`;
         });
 
 
@@ -45,6 +48,10 @@ export class CreatePlayerComponent implements OnInit {
 
     selectRace(race: { id: number, name: string }) {
         this.raceForm.get('race').setValue(race);
+    }
+    setSelectedRaceIndex(index: number) {
+        console.log("selected ", index);
+        this.selectedIndex = index;
     }
 
 }

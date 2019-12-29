@@ -56,7 +56,7 @@ header {
     .create-character__race--card {
       border: 1px solid #111;
       background-color: #111;
-      background: url(/assets/images/character/human-alt.png) #c7c7c7 no-repeat top center;
+      background: url(/assets/images/character/human.png) #c7c7c7 no-repeat top center;
       margin-bottom: 15px;
       height: 100px;
       text-align: center;
@@ -68,19 +68,23 @@ header {
       }
 
       &--Wood-elf {
-        background: url(/assets/images/character/woodElf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/woodelf.png) #c7c7c7 no-repeat top center;
       }
 
       &--Dark {
-        background: url(/assets/images/character/drow.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/darkelf.png) #c7c7c7 no-repeat top center;
       }
 
-      &--Half {
+      &--Half.Drow {
         background: url(/assets/images/character/halfDrow.png) #c7c7c7 no-repeat top center;
       }
 
+      &--Half.Elf {
+        background: url(/assets/images/character/halfelf.png) #c7c7c7 no-repeat top center;
+      }
+
       &--Dwarves {
-        background: url(/assets/images/character/dwarf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/dwarves.png) #c7c7c7 no-repeat top center;
       }
 
       &--Mau {
@@ -88,7 +92,7 @@ header {
       }
 
       &--Tlaloc {
-        background: url(/assets/images/character/Tlaloc.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/tlaloc.png) #c7c7c7 no-repeat top center;
       }
 
       &--Gnome {
@@ -98,7 +102,9 @@ header {
       &--Minotaur {
         background: url(/assets/images/character/orc.png) #c7c7c7 no-repeat top center;
       }
-
+      &--active {
+        background-color: $primary-color-500;
+      }
       &:hover {
         cursor: pointer;
         background-color: $primary-color-500;
@@ -128,10 +134,14 @@ header {
       margin-top: 0;
     }
 
-    img {
+    .create-character__raceImage {
       background-color: #c7c7c7;
-      padding: 10px;
       border: 2px solid #000;
+      text-align: center;
+      padding: 10px;
+    }
+    img {
+      max-width: 100%;
     }
   }
 }
