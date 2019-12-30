@@ -45,15 +45,18 @@
             </form>
         </mat-step>
         <mat-step>
-            <form [formGroup]="raceForm">
+            <form [formGroup]="classForm">
                 <div class="create-character-container">
                     <ng-template matStepLabel>Select your class</ng-template>
                     <div class="create-character__selection">
 
-                        <div class="create-character__race">
-                            <div *ngFor="let class of classes" class="create-character__race__picker">
+                        <div class="create-character__choice">
+                            <div *ngFor="let class of classes; let i = index" class="create-character__race__picker"
+                                (click)="setSelectedClassIndex(i)">
 
-                                <div class="create-character__race--card">
+                                <div class="create-character__choice--card" [class.active]="selectedClassIndex === i"
+                                    ngClass="create-character__choice--card--{{class.name}}"
+                                    (click)="selectClass(class)">
                                     <p>{{class.name}}</p>
                                 </div>
 
@@ -62,7 +65,15 @@
 
                     </div>
                     <div class="create-character__info">
-
+                        <div>
+                            <h2>{{classHeader}}</h2>
+                            <p>{{classDescription}}</p>
+                        </div>
+                        <div>
+                            <div class="create-character__image">
+                                <img [src]="classImage" [alt]="classHeader" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="wizard-controls">
@@ -79,13 +90,42 @@
                     <div class="create-character__selection">
 
 
-                        <app-player-appearance></app-player-appearance>
+                        <app-player-appearance [form]="appearanceForm"></app-player-appearance>
 
                     </div>
 
-                    <div class="create-character__info">
-                        <!-- <h2>{{raceHeader}}</h2>
-                        <p>{{raceDescription}}</p> -->
+                    <div class="create-character__info create-character__info--description">
+
+                        <div class="create-character__description">
+                            <div>
+                                Eyes: &nbsp;{{eyeColor}}
+                            </div>
+                            <div>
+                                Hair: &nbsp;{{hairColor}}
+                            </div>
+                            <div>
+                                Skin: &nbsp;{{skinColor}}
+                            </div>
+                            <div>
+                                Hair Length: &nbsp;{{hairLength}}
+                            </div>
+                            <div>
+                                Build: &nbsp;{{build}}
+                            </div>
+                            <div>
+                                Hair Texture: &nbsp;{{hairTexture}}
+                            </div>
+                            <div>
+                                Face: &nbsp;{{face}}
+                            </div>
+                            <div>
+                                Facial Hair: &nbsp;{{facialHair}}
+                            </div>
+
+                        </div>
+                        <p>You can add a character description in game, one is required to complete the aAcademy.</p>
+
+
                     </div>
                 </div>
                 <div class="wizard-controls">
@@ -97,11 +137,32 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
-            You are now done.
-            <div>
-                <button mat-stroked-button color="secondary" matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
+            <div class="final-step">
+                <p>Your character {{name}}, is ready to enter ArchaicQuest.</p>
+
+                <p>If you need help, ask on the <a href="https://discord.gg/nuf7FVq">discord channel</a> or in
+                    game using the newbie channel e.g 'newbie how do I drink a potion?'</p>
+
+                <p>A couple of simple rules: </p>
+                <ul>
+                    <li>This is role play enforced MUD</li>
+                    <li>Out of character abuse/harrasment is not allowed</li>
+                    <li>Show players respect when they're seeking help</li>
+                    <li>Be nice, unless you're an evil aligned character.</li>
+                    <li>Don't abuse bugs, report them.</li>
+                    <li>Have fun.</li>
+                </ul>
+
+                <p>We hope you have fun. Take your time, read everything and enjoy your time in ArchaicQuest, your
+                    adventure
+                    awaits.</p>
+
+
+                <button mat-raised-button (click)="playGame()" color="primary">Enter game</button>
             </div>
+
+
+
         </mat-step>
     </mat-horizontal-stepper>
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Data } from '@angular/router';
 import { AppearanceService } from './appearance.service';
 import { Option } from 'src/app/_shared/interface/option.interface';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-player-appearance',
@@ -10,6 +11,9 @@ import { Option } from 'src/app/_shared/interface/option.interface';
     styleUrls: ['./appearance.component.scss']
 })
 export class PlayerAppearanceComponent implements OnInit {
+
+    @Input()
+    form: FormGroup;
 
     step = 0;
     bodyTypes$: Option[];

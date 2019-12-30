@@ -3,6 +3,9 @@ import { CreateService } from './create.service';
 import { Race } from '../Interface/race.interface';
 import { FormGroup } from '@angular/forms';
 import { Data } from 'src/app/_shared/interface/data.interface';
+import { Player } from '../Interface/player.interface';
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'app-create-player',
@@ -16,9 +19,27 @@ export class CreatePlayerComponent implements OnInit {
     raceDescription: string;
     raceImage: string;
     selectedIndex: number;
-    weight: number;
+
 
     classes: Data[];
+    classForm: FormGroup;
+    classHeader: string;
+    classDescription: string;
+    classImage: string;
+    selectedClassIndex: number;
+
+    appearanceForm: FormGroup;
+
+    eyeColor: string;
+    skinColor: string;
+    build: string;
+    face: string;
+    hairColor: string;
+    hairLength: string;
+    hairTexture: string;
+    facialHair: string;
+    gender: string;
+    name: string;
     constructor(private service: CreateService) { }
 
     ngOnInit() {
@@ -30,19 +51,60 @@ export class CreatePlayerComponent implements OnInit {
 
         this.service.getClass().subscribe(data => {
             this.classes = data;
-
+            this.classHeader = data[0].name;
+            this.classDescription = data[0].description;
         });
 
         this.raceForm = this.service.raceFormGroup();
+        this.classForm = this.service.classFormGroup();
+        this.appearanceForm = this.service.appearanceFormGroup();
 
+        this.gender = this.appearanceForm.get('bodyType.gender').value;
 
         this.raceForm.get('race').valueChanges.subscribe(value => {
             console.log(value);
             this.raceHeader = value.name;
             this.raceDescription = value.description;
-            this.raceImage = `/assets/images/character/${value.name.replace('-', '').replace(' ', '').toLowerCase()}.png`;
+            this.raceImage = `/assets/images/character/race/${value.name.replace('-', '').replace(' ', '').toLowerCase()}.png`;
         });
 
+        this.classForm.get('class').valueChanges.subscribe(value => {
+            console.log(value);
+            this.classHeader = value.name;
+            this.classDescription = value.description;
+            this.classImage = `/assets/images/character/class/${value.name.replace('-', '').replace(' ', '').toLowerCase()}.png`;
+        });
+
+        this.appearanceForm.get('char.name').valueChanges.subscribe(value => {
+            this.name = value;
+        });
+        this.appearanceForm.get('bodyType.body').valueChanges.subscribe(value => {
+            this.build = value;
+        });
+        this.appearanceForm.get('bodyType.gender').valueChanges.subscribe(value => {
+            this.gender = value;
+        });
+        this.appearanceForm.get('bodyType.skinColor').valueChanges.subscribe(value => {
+            this.skinColor = value;
+        });
+        this.appearanceForm.get('facialFeatures.face').valueChanges.subscribe(value => {
+            this.face = value;
+        });
+        this.appearanceForm.get('facialFeatures.eyeColor').valueChanges.subscribe(value => {
+            this.eyeColor = value;
+        });
+        this.appearanceForm.get('hair.hairColor').valueChanges.subscribe(value => {
+            this.hairColor = value;
+        });
+        this.appearanceForm.get('hair.hairTexture').valueChanges.subscribe(value => {
+            this.hairTexture = value;
+        });
+        this.appearanceForm.get('hair.hairLength').valueChanges.subscribe(value => {
+            this.hairLength = value;
+        });
+        this.appearanceForm.get('hair.facialHair').valueChanges.subscribe(value => {
+            this.facialHair = value;
+        });
 
     }
 
@@ -50,8 +112,66 @@ export class CreatePlayerComponent implements OnInit {
         this.raceForm.get('race').setValue(race);
     }
     setSelectedRaceIndex(index: number) {
-        console.log("selected ", index);
+        console.log('selected ', index);
         this.selectedIndex = index;
+    }
+
+    selectClass(data: { id: number, name: string }) {
+        this.classForm.get('class').setValue(data);
+    }
+    setSelectedClassIndex(index: number) {
+        console.log('selected ', index);
+        this.selectedClassIndex = index;
+    }
+
+    playGame() {
+        const playerInfo: Player = {
+            id: -1,
+            name: this.name,
+            alignmentScore: 0,
+            armorRating: {
+                armour: 1,
+                magic: 1
+            },
+            attributes: {
+                charisma: 10,
+                constitution: 10,
+                dexterity: 10,
+                intelligence: 10,
+                strength: 10,
+                wisdom: 10
+            },
+            className: this.classHeader,
+            description: 'Nothing to see here.',
+            equipped: {},
+            gender: 'Male',
+            inventory: [],
+            level: '1',
+            maxAttributes: {
+                charisma: 10,
+                constitution: 10,
+                dexterity: 10,
+                intelligence: 10,
+                strength: 10,
+                wisdom: 10
+            },
+            race: this.raceHeader,
+            status: "0",
+            stats: {
+                hitPoints: 100,
+                manaPoints: 100,
+                movePoints: 100
+            },
+            maxStats: {
+                hitPoints: 100,
+                manaPoints: 100,
+                movePoints: 100
+            }
+        };
+
+        this.service.createCharacter(playerInfo);
+
+
     }
 
 }

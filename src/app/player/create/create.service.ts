@@ -29,6 +29,19 @@ export class CreateService {
         return this._http.get<Data[]>('http://localhost:57814/api/Character/Class');
     }
 
+    createCharacter(data) {
+        console.log('post this ', data);
+        this._http.post('http://localhost:57814/api/Character/Player', JSON.stringify(data), {
+            headers: this.headers,
+            responseType: 'text'
+        }).subscribe(
+            response => {
+                console.log(response);
+            },
+            err => console.log(err)
+        );
+    }
+
     raceFormGroup(): FormGroup {
 
         return this._formBuilder.group({
@@ -40,6 +53,30 @@ export class CreateService {
 
         return this._formBuilder.group({
             class: ['', Validators.required]
+        });
+    }
+
+    appearanceFormGroup(): FormGroup {
+
+        return this._formBuilder.group({
+            char: this._formBuilder.group({
+                name: ['', Validators.required],
+            }),
+            bodyType: this._formBuilder.group({
+                body: ['', Validators.required],
+                skinColor: ['', Validators.required],
+                gender: ['', Validators.required],
+            }),
+            facialFeatures: this._formBuilder.group({
+                face: ['', Validators.required],
+                eyeColor: ['', Validators.required],
+            }),
+            hair: this._formBuilder.group({
+                hairColor: ['', Validators.required],
+                hairTexture: ['', Validators.required],
+                hairLength: ['', Validators.required],
+                facialHair: ['', Validators.required],
+            })
         });
     }
 

@@ -56,7 +56,7 @@ header {
     .create-character__race--card {
       border: 1px solid #111;
       background-color: #111;
-      background: url(/assets/images/character/human.png) #c7c7c7 no-repeat top center;
+      background: url(/assets/images/character/race/human.png) #c7c7c7 no-repeat top center;
       margin-bottom: 15px;
       height: 100px;
       text-align: center;
@@ -64,45 +64,103 @@ header {
       position: relative;
       transition: background-color 250ms linear;
       &--Elf {
-        background: url(/assets/images/character/elf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/elf.png) #c7c7c7 no-repeat top center;
       }
 
       &--Wood-elf {
-        background: url(/assets/images/character/woodelf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/woodelf.png) #c7c7c7 no-repeat top center;
       }
 
       &--Dark {
-        background: url(/assets/images/character/darkelf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/darkelf.png) #c7c7c7 no-repeat top center;
       }
 
       &--Half.Drow {
-        background: url(/assets/images/character/halfDrow.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/halfdrow.png) #c7c7c7 no-repeat top center;
       }
 
       &--Half.Elf {
-        background: url(/assets/images/character/halfelf.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/halfelf.png) #c7c7c7 no-repeat top center;
       }
 
       &--Dwarves {
-        background: url(/assets/images/character/dwarves.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/dwarves.png) #c7c7c7 no-repeat top center;
       }
 
       &--Mau {
-        background: url(/assets/images/character/mau.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/mau.png) #c7c7c7 no-repeat top center;
       }
 
       &--Tlaloc {
-        background: url(/assets/images/character/tlaloc.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/tlaloc.png) #c7c7c7 no-repeat top center;
       }
 
       &--Gnome {
-        background: url(/assets/images/character/gnome.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/gnome.png) #c7c7c7 no-repeat top center;
       }
 
       &--Minotaur {
-        background: url(/assets/images/character/orc.png) #c7c7c7 no-repeat top center;
+        background: url(/assets/images/character/race/minotaur.png) #c7c7c7 no-repeat top center;
       }
-      &--active {
+      &.active {
+        background-color: $primary-color-500;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $primary-color-500;
+        transition: background-color 250ms linear;
+      }
+      p {
+        align-self: center;
+        background: #000;
+        position: absolute;
+        bottom: -1px;
+        padding: 5px 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .create-character__choice {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-gap: 30px;
+    position: relative;
+
+    .create-character__choice--card {
+      border: 1px solid #111;
+      background-color: #111;
+      background: url(/assets/images/character/class/fighter.png) #c7c7c7 no-repeat top center;
+      margin-bottom: 15px;
+      height: 100px;
+      text-align: center;
+      background-size: 80% !important;
+      position: relative;
+      transition: background-color 250ms linear;
+      &--Fighter {
+        background: url(/assets/images/character/class/fighter.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Mage {
+        background: url(/assets/images/character/class/mage.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Cleric {
+        background: url(/assets/images/character/class/cleric.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Bard {
+        background: url(/assets/images/character/class/bard.png) #c7c7c7 no-repeat top center;
+      }
+
+      &--Rogue,
+      &--Thief {
+        background: url(/assets/images/character/class/rogue.png) #c7c7c7 no-repeat top center;
+      }
+
+      &.active {
         background-color: $primary-color-500;
       }
       &:hover {
@@ -130,11 +188,18 @@ header {
     display: grid;
     grid-template-columns: 1fr 151px;
     grid-gap: 30px;
+
+    &--description {
+      display: block;
+      grid-gap: 0;
+      grid-template-columns: none;
+    }
     h2 {
       margin-top: 0;
     }
 
-    .create-character__raceImage {
+    .create-character__raceImage,
+    .create-character__image {
       background-color: #c7c7c7;
       border: 2px solid #000;
       text-align: center;
@@ -142,6 +207,16 @@ header {
     }
     img {
       max-width: 100%;
+    }
+
+    .create-character__description {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: white 3px solid;
+      border-bottom: white 3px solid;
+      padding: 10px 0;
+      grid-gap: 5px;
+      margin-bottom: 20px;
     }
   }
 }
@@ -170,4 +245,10 @@ h1 {
       margin-left: 0;
     }
   }
+}
+
+.final-step {
+  width: 450px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
