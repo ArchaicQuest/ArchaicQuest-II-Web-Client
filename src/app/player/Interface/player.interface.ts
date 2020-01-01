@@ -22,22 +22,8 @@ export interface Player {
         manaPoints: number;
         movePoints: number;
     };
-    attributes: {
-        strength: number;
-        dexterity: number;
-        constitution: number;
-        wisdom: number;
-        intelligence: number;
-        charisma: number;
-    };
-    maxAttributes: {
-        strength: number;
-        dexterity: number;
-        constitution: number;
-        wisdom: number;
-        intelligence: number;
-        charisma: number;
-    };
+    attributes: any;
+    maxAttributes: any;
     targetName?: string;
     armorRating: {
         armour: number;

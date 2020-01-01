@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateAccountComponent } from '../player/account/account.component';
 
 
 @Component({
@@ -7,12 +9,24 @@ import { Component } from '@angular/core';
     styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent {
-    constructor() { }
+    constructor(public dialog: MatDialog) { }
 
     signIn() {
         //Auth logic
 
 
+    }
+
+    openDialog(): void {
+        const dialogRef = this.dialog.open(CreateAccountComponent, {
+            minWidth: '450px',
+            data: {}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            console.log(result)
+        });
     }
 
     createAccount() {

@@ -27,6 +27,8 @@ import { PlayerAppearanceComponent } from './player/create/Appearance/appearance
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateAccountComponent } from './player/account/account.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -35,7 +37,11 @@ import { MatSelectModule } from '@angular/material/select';
         InputComponent,
         CreatePlayerComponent,
         WelcomeComponent,
-        PlayerAppearanceComponent
+        PlayerAppearanceComponent,
+        CreateAccountComponent
+    ],
+    entryComponents: [
+        CreateAccountComponent
     ],
     imports: [
         BrowserModule,
@@ -53,6 +59,7 @@ import { MatSelectModule } from '@angular/material/select';
         MatExpansionModule,
         MatOptionModule,
         MatSelectModule,
+        MatDialogModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({

@@ -134,12 +134,17 @@ export class CreatePlayerComponent implements OnInit {
                 magic: 1
             },
             attributes: {
-                charisma: 10,
-                constitution: 10,
-                dexterity: 10,
-                intelligence: 10,
-                strength: 10,
-                wisdom: 10
+                attribute: {
+                    Strength: 15,
+                    Dexterity: 10,
+                    Constitution: 10,
+                    Wisdom: 10,
+                    Intelligence: 20,
+                    Charisma: 20,
+                    Hitpoints: 20,
+                    Mana: 120,
+                    Moves: 20
+                }
             },
             className: this.classHeader,
             description: 'Nothing to see here.',
@@ -148,15 +153,20 @@ export class CreatePlayerComponent implements OnInit {
             inventory: [],
             level: '1',
             maxAttributes: {
-                charisma: 10,
-                constitution: 10,
-                dexterity: 10,
-                intelligence: 10,
-                strength: 10,
-                wisdom: 10
+                attribute: {
+                    Strength: 15,
+                    Dexterity: 10,
+                    Constitution: 10,
+                    Wisdom: 10,
+                    Intelligence: 20,
+                    Charisma: 20,
+                    Hitpoints: 20,
+                    Mana: 120,
+                    Moves: 20
+                }
             },
             race: this.raceHeader,
-            status: "0",
+            status: '0',
             stats: {
                 hitPoints: 100,
                 manaPoints: 100,
