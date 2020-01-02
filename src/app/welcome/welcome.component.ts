@@ -20,6 +20,7 @@ export class WelcomeComponent {
     openDialog(): void {
         const dialogRef = this.dialog.open(CreateAccountComponent, {
             minWidth: '450px',
+            maxWidth: '450px',
             data: {}
         });
 
