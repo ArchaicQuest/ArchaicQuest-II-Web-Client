@@ -30,6 +30,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateAccountComponent } from './player/account/account.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ManageCharactersComponent } from './player/manage/manage.component';
+import { ManageCharactersService } from './player/manage/manage.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -39,7 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
         CreatePlayerComponent,
         WelcomeComponent,
         PlayerAppearanceComponent,
-        CreateAccountComponent
+        CreateAccountComponent,
+        ManageCharactersComponent
     ],
     entryComponents: [
         CreateAccountComponent
@@ -73,7 +76,7 @@ import { ToastrModule } from 'ngx-toastr';
         }),
         BrowserAnimationsModule,
     ],
-    providers: [AppService, CreateService],
+    providers: [AppService, CreateService, ManageCharactersService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

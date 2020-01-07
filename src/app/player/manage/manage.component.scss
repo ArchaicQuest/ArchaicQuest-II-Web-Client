@@ -1,0 +1,26 @@
+@import "../../_styles/theme.scss";
+header {
+  background-color: #222;
+  border-bottom: 2px solid $primary-color-500;
+  box-shadow: 0 5px 13px #111;
+  position: relative;
+}
+
+.manage-character-wrapper {
+  background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
+    url(/assets/images/background-creation.jpg) no-repeat top center;
+  background-size: cover;
+  height: calc(100vh - 210px);
+  padding-top: 90px;
+}
+
+.logo {
+  margin: 0 auto;
+  padding-top: 20px;
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+}
