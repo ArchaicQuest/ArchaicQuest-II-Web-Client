@@ -29,6 +29,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateAccountComponent } from './player/account/account.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
     declarations: [
         AppComponent,
@@ -60,6 +61,9 @@ import { CreateAccountComponent } from './player/account/account.component';
         MatOptionModule,
         MatSelectModule,
         MatDialogModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-center'
+        }),
         EffectsModule.forRoot([]),
         StoreModule.forRoot({ appReducer }),
         StoreDevtoolsModule.instrument({

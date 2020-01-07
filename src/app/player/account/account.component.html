@@ -1,24 +1,24 @@
 <h1 mat-dialog-title>Sign up</h1>
 <div mat-dialog-content>
     <p>A step away from exploring dungeons, looting corpses, and becoming the next hero. </p>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input matInput placeholder="Password">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Password">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" type="password">
-    </mat-form-field>
-
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password">
+        </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions>
     <small>We won't spam you or sell your information. E-mail required for account verification and password recovery
         only.
         If signing up for news letter this will be sporadic and no more than monthly.</small>
-    <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>Sign Up</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="signUp()">Sign Up</button>
 </div>
