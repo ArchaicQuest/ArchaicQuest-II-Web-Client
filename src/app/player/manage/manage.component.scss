@@ -4,6 +4,17 @@ header {
   border-bottom: 2px solid $primary-color-500;
   box-shadow: 0 5px 13px #111;
   position: relative;
+
+  .logo {
+    margin: 0 auto;
+    padding-top: 20px;
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 5px;
+  }
 }
 
 .manage-character-wrapper {
@@ -14,13 +25,51 @@ header {
   padding-top: 90px;
 }
 
-.logo {
+.manage-character-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1200px;
   margin: 0 auto;
-  padding-top: 20px;
-  display: block;
-}
+  grid-gap: 30px;
 
-h1 {
-  text-align: center;
-  margin-top: 5px;
+  .manage-character-list,
+  .manage-character-new,
+  .manage-character-stats {
+    background: #424242;
+    border: 2px solid #111;
+    line-height: 1.5;
+    padding: 15px;
+  }
+
+  .manage-character-stats {
+    margin-top: 30px;
+  }
+
+  .manage-character-list__player {
+    border: 1px solid #111;
+    padding: 15px;
+    background: #222;
+    margin-bottom: 10px;
+    transition: all 250ms linear;
+    position: relative;
+    left: 0;
+
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $primary-color-500;
+      color: $accent-color-500;
+      transition: all 250ms linear;
+      position: relative;
+      left: 10px;
+    }
+  }
 }
