@@ -1,7 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { HttpService } from 'src/app/_shared/http.service';
 @Injectable({
     providedIn: 'root'
 })
@@ -13,24 +12,12 @@ export class AccountService {
         password: ['', Validators.required],
     });
 
-    private headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-    });
 
-    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _toast: ToastrService) { }
+    constructor(private _http: HttpService, private _formBuilder: FormBuilder) { }
 
 
     signUp(data) {
-        console.log('post this ', data);
-        this._http.post('http://localhost:57814/api/Account', JSON.stringify(data), {
-            headers: this.headers,
-            responseType: 'text'
-        }).subscribe(
-            response => {
-                this._toast.success(`Account created successfully.`);
-            },
-            err => this._toast.success(`Something went wrong, try refreshing the page and trying again.`)
-        );
+        this._http.post('http://localhost:57814/api/Account', data);
     }
 
 }

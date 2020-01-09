@@ -32,6 +32,7 @@ import { CreateAccountComponent } from './player/account/account.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ManageCharactersComponent } from './player/manage/manage.component';
 import { ManageCharactersService } from './player/manage/manage.service';
+import { HttpService } from './_shared/http.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -76,7 +77,7 @@ import { ManageCharactersService } from './player/manage/manage.service';
         }),
         BrowserAnimationsModule,
     ],
-    providers: [AppService, CreateService, ManageCharactersService],
+    providers: [AppService, CreateService, ManageCharactersService, HttpService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

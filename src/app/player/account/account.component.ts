@@ -20,7 +20,9 @@ export class CreateAccountComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    signUp() {
+    signUp(event: any) {
+
+        event.target.disabled = true;
 
         const data = {
             username: this.form.get('username').value,
