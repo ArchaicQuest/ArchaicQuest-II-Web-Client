@@ -5,14 +5,32 @@
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="email">
+
+            <mat-error class="error-message"
+                *ngIf="form.get('email').hasError('pattern') && (form.get('email').dirty || form.get('email').touched)">
+                Enter a valid email</mat-error>
+
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput placeholder="Username" formControlName="username">
+            <mat-error class="error-message"
+                *ngIf="form.get('username').hasError('required') && (form.get('username').dirty || form.get('username').touched)">
+                Enter a username</mat-error>
+            <mat-error class="error-message"
+                *ngIf="form.get('username').hasError('minlength') && (form.get('password').dirty || form.get('password').touched)">
+                Username needs to be atleast 3 characters long</mat-error>
+
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off">
+            <mat-error class="error-message"
+                *ngIf="form.get('password').hasError('required') && (form.get('password').dirty || form.get('password').touched)">
+                Enter a password</mat-error>
+            <mat-error class="error-message"
+                *ngIf="form.get('password').hasError('minlength') && (form.get('password').dirty || form.get('password').touched)">
+                Password needs to be atleast 6 characters long</mat-error>
         </mat-form-field>
     </form>
 </div>

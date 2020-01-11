@@ -9,11 +9,10 @@ import { Router } from '@angular/router';
 export class AccountService {
 
     public signUpForm = this._formBuilder.group({
-        username: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', Validators.required],
+        username: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
 
     constructor(
         private _http: HttpService,
@@ -38,6 +37,7 @@ export class AccountService {
             }
         );
     }
+
 
 
 

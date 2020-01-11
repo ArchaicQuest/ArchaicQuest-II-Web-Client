@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss']
 })
-export class CreateAccountComponent implements OnInit, OnDestroy {
+export class CreateAccountComponent implements OnInit {
     public form: FormGroup;
     constructor(
         public dialogRef: MatDialogRef<CreateAccountComponent>,
@@ -34,15 +34,8 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
     }
 
 
-
     ngOnInit() {
         this.form = this._service.signUpForm;
     }
-
-    ngOnDestroy() {
-        this.dialogRef.close();
-    }
-
-
 
 }
