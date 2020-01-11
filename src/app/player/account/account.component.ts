@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { CreateService } from './../create/create.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountService } from './account.service';
@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss']
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent implements OnInit, OnDestroy {
     public form: FormGroup;
     constructor(
         public dialogRef: MatDialogRef<CreateAccountComponent>,
@@ -37,6 +37,10 @@ export class CreateAccountComponent implements OnInit {
 
     ngOnInit() {
         this.form = this._service.signUpForm;
+    }
+
+    ngOnDestroy() {
+        this.dialogRef.close();
     }
 
 

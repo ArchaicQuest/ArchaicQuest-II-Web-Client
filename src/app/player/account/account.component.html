@@ -12,7 +12,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" type="password" formControlName="password">
+            <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off">
         </mat-form-field>
     </form>
 </div>
@@ -20,5 +20,6 @@
     <small>We won't spam you or sell your information. E-mail required for account verification and password recovery
         only.
         If signing up for news letter this will be sporadic and no more than monthly.</small>
-    <button mat-raised-button color="primary" cdkFocusInitial (click)="signUp($event)">Sign Up</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="signUp($event)" [disabled]="!form.valid">Sign
+        Up</button>
 </div>

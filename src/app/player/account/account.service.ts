@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpService } from 'src/app/_shared/http.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Injectable({
     providedIn: 'root'
 })
@@ -14,7 +15,12 @@ export class AccountService {
     });
 
 
-    constructor(private _http: HttpService, private _formBuilder: FormBuilder, private _toast: ToastrService) { }
+    constructor(
+        private _http: HttpService,
+        private _formBuilder: FormBuilder,
+        private _toast: ToastrService,
+        private _router: Router
+    ) { }
 
     toggleSignUpButton(button: any) {
         button.disabled = !button.disabled;
@@ -24,7 +30,7 @@ export class AccountService {
         this._http.post('http://localhost:57814/api/Account', data).subscribe(
             response => {
                 this._toast.success(response);
-                this.toggleSignUpButton(button); //redirect to char manager
+                this._router.navigate(['/account/create-character']);
             },
             err => {
                 this._toast.error(err.error);
@@ -32,5 +38,7 @@ export class AccountService {
             }
         );
     }
+
+
 
 }
