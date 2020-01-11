@@ -22,7 +22,7 @@ export class CreateAccountComponent implements OnInit {
 
     signUp(event: any) {
 
-        event.target.disabled = true;
+        this._service.toggleSignUpButton(event.target);
 
         const data = {
             username: this.form.get('username').value,
@@ -30,8 +30,9 @@ export class CreateAccountComponent implements OnInit {
             password: this.form.get('password').value
         };
 
-        this._service.signUp(data);
+        this._service.signUp(data, event.target);
     }
+
 
 
     ngOnInit() {

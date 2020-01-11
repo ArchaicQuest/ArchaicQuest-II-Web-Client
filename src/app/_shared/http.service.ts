@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
@@ -11,21 +10,13 @@ export class HttpService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private _http: HttpClient, private _toast: ToastrService) { }
+    constructor(private _http: HttpClient) { }
 
-    post(url, data) {
-        this._http.post(url, JSON.stringify(data), {
+    post<T>(url: string, data: T): Observable<any> {
+        return this._http.post(url, JSON.stringify(data), {
             headers: this.headers,
             responseType: 'text'
-        }).subscribe(
-            response => {
-                console.log(response)
-                this._toast.success(`Account created successfully.`);
-            },
-            err => {
-                this._toast.error(err.error);
-            }
-        );
+        });
     }
 
 }
