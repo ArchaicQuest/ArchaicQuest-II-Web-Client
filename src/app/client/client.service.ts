@@ -20,7 +20,7 @@ export class ClientService {
     }
 
     private initHub() {
-        this.updateWindow('', '<div class="loading">Connecting to ArchaicQuest, please wait</div>');
+        this.updateWindow('', '<div>Connecting to ArchaicQuest, please wait.</div>');
         this.connectToHub();
 
     }
@@ -44,25 +44,25 @@ export class ClientService {
         this.connection.on('SendMessage', (sender, message) => {
             console.log('send message', sender + ' ' + message);
             this.updateWindow(sender, message);
-            this.eventChange();
+
         });
 
         this.connection.on('SendAction', (sender, message) => {
 
-            console.log('send actrion', sender + ' ' + message);
+            console.log('send action', sender + ' ' + message);
             this.updateWindow(sender, message);
-            this.eventChange();
+
         });
     }
 
     private eventChange() {
-        console.log(this.data);
         this.$data.next(this.data);
     }
 
 
-    public updateWindow(sender: string = 'blank sender', message: string = '') {
+    public updateWindow(sender: string = '', message: string = '') {
         this.data.push(sender + ' ' + message);
+        this.eventChange();
     }
 
     public sendToServer(message: string) {

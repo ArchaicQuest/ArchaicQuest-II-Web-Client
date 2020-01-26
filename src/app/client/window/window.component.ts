@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit, ViewEncapsulation } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { takeWhile } from 'rxjs/operators';
@@ -10,21 +10,19 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-window',
     templateUrl: './window.component.html',
-    styleUrls: ['./window.component.scss']
+    styleUrls: ['./window.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
-    public windowData: string;
+    public windowData = '';
     public $data: Subscription;
     public componentActive = true;
-    public isConnecting = true;
     @ViewChild('window', { static: true }) window: ElementRef;
 
     constructor(private clientService: ClientService) { }
 
     ngOnInit() {
-        //this.clientService.updateWindow('Malleus', 'Welcome to archaicQuest II');
-        this.isConnecting = true;///this.clientService.connected;
-        console.log(this.isConnecting)
+
     }
 
     ngOnDestroy() {
@@ -33,7 +31,12 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
     ngAfterContentInit(): void {
         this.$data = this.clientService.$data.subscribe(x => {
-            this.windowData += x.pop();
+            console.log(x)
+
+            if (x.length) {
+
+                this.windowData += x.pop();
+            }
         });
 
     }
