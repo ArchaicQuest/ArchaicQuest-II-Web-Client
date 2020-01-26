@@ -33,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ManageCharactersComponent } from './player/manage/manage.component';
 import { ManageCharactersService } from './player/manage/manage.service';
 import { HttpService } from './_shared/http.service';
+import { Safe } from './_shared/pipes/safe';
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,7 +44,8 @@ import { HttpService } from './_shared/http.service';
         WelcomeComponent,
         PlayerAppearanceComponent,
         CreateAccountComponent,
-        ManageCharactersComponent
+        ManageCharactersComponent,
+        Safe
     ],
     entryComponents: [
         CreateAccountComponent
