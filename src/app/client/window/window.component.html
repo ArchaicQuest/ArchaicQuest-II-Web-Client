@@ -1,5 +1,5 @@
-<div class="window" #window [innerHTML]="data | safeHtml">
+<div class="window" #window [innerHTML]="windowData | safeHtml">
 
 </div>
-
+<mat-spinner *ngIf="isConnecting"></mat-spinner>
 <app-input></app-input>

@@ -34,6 +34,7 @@ import { ManageCharactersComponent } from './player/manage/manage.component';
 import { ManageCharactersService } from './player/manage/manage.service';
 import { HttpService } from './_shared/http.service';
 import { Safe } from './_shared/pipes/safe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
     declarations: [
         AppComponent,
@@ -67,6 +68,7 @@ import { Safe } from './_shared/pipes/safe';
         MatOptionModule,
         MatSelectModule,
         MatDialogModule,
+        MatProgressSpinnerModule,
         ToastrModule.forRoot({
             positionClass: 'toast-bottom-center'
         }),

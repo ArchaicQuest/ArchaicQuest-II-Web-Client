@@ -4,6 +4,8 @@ import { AppState } from 'src/app/state/app.state';
 import { takeWhile } from 'rxjs/operators';
 import { UpdateWindow } from 'src/app/state/app.actions';
 import { selectData } from 'src/app/state/app.selector';
+import { ClientService } from '../client.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-window',
@@ -11,14 +13,18 @@ import { selectData } from 'src/app/state/app.selector';
     styleUrls: ['./window.component.scss']
 })
 export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
-    public data: string;
+    public windowData: string;
+    public $data: Subscription;
     public componentActive = true;
+    public isConnecting = true;
     @ViewChild('window', { static: true }) window: ElementRef;
 
-    constructor(private store: Store<AppState>) { }
+    constructor(private clientService: ClientService) { }
 
     ngOnInit() {
-        this.store.dispatch(new UpdateWindow({ sender: 'Malleus', message: 'Welcome to archaicQuest II' }));
+        //this.clientService.updateWindow('Malleus', 'Welcome to archaicQuest II');
+        this.isConnecting = true;///this.clientService.connected;
+        console.log(this.isConnecting)
     }
 
     ngOnDestroy() {
@@ -26,9 +32,10 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     }
 
     ngAfterContentInit(): void {
-        this.store.pipe(select(selectData)).subscribe((data: string) => {
-            this.data = data;
+        this.$data = this.clientService.$data.subscribe(x => {
+            this.windowData += x.pop();
         });
+
     }
 
 
