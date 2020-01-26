@@ -24,12 +24,13 @@ export function appReducer(state: AppState = intitalState, action: AppActions) {
         case AppActionTypes.UpdateWindow: {
             return {
                 ...state,
-                data: state.appReducer.data += action.payload,
+                data: state.appReducer.data += action.payload.sender + ": " + action.payload.message,
             };
         }
         case AppActionTypes.sendToServer: {
             return {
                 ...state,
+                data: action.payload
 
             };
         }

@@ -18,7 +18,7 @@ export class InputComponent implements OnInit {
     }
 
     sendToServer() {
-        this.addItemService.sendToServer(this.input.nativeElement.value + '\r\n');
+        this.addItemService.sendToServer(this.input.nativeElement.value);
     }
 
 }

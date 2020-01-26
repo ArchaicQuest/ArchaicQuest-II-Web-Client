@@ -18,7 +18,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     constructor(private store: Store<AppState>) { }
 
     ngOnInit() {
-        this.store.dispatch(new UpdateWindow('<p>Welcome to archaicQuest II</p>'));
+        this.store.dispatch(new UpdateWindow({ sender: 'Malleus', message: 'Welcome to archaicQuest II' }));
     }
 
     ngOnDestroy() {
