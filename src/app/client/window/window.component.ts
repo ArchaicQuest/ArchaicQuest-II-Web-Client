@@ -1,9 +1,4 @@
 import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit, ViewEncapsulation } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
-import { takeWhile } from 'rxjs/operators';
-import { UpdateWindow } from 'src/app/state/app.actions';
-import { selectData } from 'src/app/state/app.selector';
 import { ClientService } from '../client.service';
 import { Subscription } from 'rxjs';
 

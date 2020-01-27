@@ -22,16 +22,16 @@ export class CreateService {
     constructor(private _http: HttpClient, private _formBuilder: FormBuilder) { }
 
     getRace(): Observable<Race[]> {
-        return this._http.get<Race[]>('http://localhost:57814/api/Character/Race');
+        return this._http.get<Race[]>('http://localhost:62640/api/Character/Race');
     }
 
     getClass(): Observable<Data[]> {
-        return this._http.get<Data[]>('http://localhost:57814/api/Character/Class');
+        return this._http.get<Data[]>('http://localhost:62640/api/Character/Class');
     }
 
     createCharacter(data) {
         console.log('post this ', data);
-        this._http.post('http://localhost:57814/api/Character/Player', JSON.stringify(data), {
+        this._http.post('http://localhost:62640/api/Character/Player', JSON.stringify(data), {
             headers: this.headers,
             responseType: 'text'
         }).subscribe(

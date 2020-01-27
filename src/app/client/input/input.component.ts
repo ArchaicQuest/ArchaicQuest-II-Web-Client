@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
-import { SendToServer } from 'src/app/state/app.actions';
 import { AppService } from 'src/app/app.service';
 
 @Component({

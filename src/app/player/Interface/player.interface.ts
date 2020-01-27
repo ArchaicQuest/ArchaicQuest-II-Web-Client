@@ -1,5 +1,6 @@
 export interface Player {
-    id?: number;
+    aid: string;
+    id?: string;
     name: string;
     gender: string;
     race: string;

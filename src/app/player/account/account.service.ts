@@ -26,9 +26,20 @@ export class AccountService {
     }
 
     signUp(data, button) {
-        this._http.post('http://localhost:57814/api/Account', data).subscribe(
+        this._http.post('http://localhost:62640/api/Account', data).subscribe(
             response => {
-                this._toast.success(response);
+                const serverResponse: { toast: string, id: string } = JSON.parse(response);
+                this._toast.success(serverResponse.toast);
+
+                /*
+                   TODO:
+                   Hash username instead and save that in the DB on login.
+                   Return hash to frontend, hash is valid for the session.
+                   Invalidate hash after x time, using hash is far safer.
+                   In the mean time don't smite me :D
+                */
+                sessionStorage.setItem('id', serverResponse.id);
+
                 this._router.navigate(['/account/create-character']);
             },
             err => {

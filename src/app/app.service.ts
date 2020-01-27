@@ -1,13 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as signalR from '@aspnet/signalr';
-import { Store } from '@ngrx/store';
-import { AppState } from './state/app.state';
-import {
-    ConnectToServerSuccess,
-    ConnectToServer,
-    UpdateWindow
-} from './state/app.actions';
+import { ClientService } from './client/client.service';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -16,12 +11,11 @@ export class AppService {
     private connection: signalR.HubConnection;
     private connectionId: string;
 
-    constructor(private store: Store<AppState>) {
+    constructor(private clientService: ClientService) {
         this.initHub();
     }
 
     private initHub() {
-        this.store.dispatch(new ConnectToServer());
         this.connectToHub();
     }
 
@@ -32,7 +26,6 @@ export class AppService {
         this.connection
             .start()
             .then(x => {
-                this.store.dispatch(new ConnectToServerSuccess(true));
                 this.createEvents();
                 this.connectionId = this.connection['connection'].connectionId;
                 this.connection.send('welcome', this.connectionId);
@@ -42,11 +35,11 @@ export class AppService {
 
     private createEvents() {
         this.connection.on('SendMessage', (sender, message) => {
-            this.store.dispatch(new UpdateWindow({ sender, message }));
+            this.clientService.updateWindow(sender, message);
         });
 
         this.connection.on('SendAction', (sender, message) => {
-            this.store.dispatch(new UpdateWindow({ sender, message }));
+            this.clientService.updateWindow(sender, message);
         });
     }
 

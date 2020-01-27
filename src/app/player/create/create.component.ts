@@ -126,7 +126,8 @@ export class CreatePlayerComponent implements OnInit {
 
     playGame() {
         const playerInfo: Player = {
-            id: -1,
+            aid: sessionStorage.getItem('id'),
+            id: "0000-0000-0000-0000",
             name: this.name,
             alignmentScore: 0,
             armorRating: {
