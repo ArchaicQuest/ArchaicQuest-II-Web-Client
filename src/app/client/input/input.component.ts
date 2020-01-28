@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { ClientService } from '../client.service';
 
 @Component({
     selector: 'app-input',
@@ -9,13 +10,13 @@ import { AppService } from 'src/app/app.service';
 export class InputComponent implements OnInit {
     @ViewChild('input', { static: false }) input: ElementRef;
     @ViewChild('btn', { static: false }) btn: ElementRef;
-    constructor(private addItemService: AppService) { }
+    constructor(private clientService: ClientService) { }
 
     ngOnInit() {
     }
 
     sendToServer() {
-        this.addItemService.sendToServer(this.input.nativeElement.value);
+        this.clientService.sendToServer(this.input.nativeElement.value);
     }
 
 }

@@ -31,6 +31,7 @@ import { ManageCharactersService } from './player/manage/manage.service';
 import { HttpService } from './_shared/http.service';
 import { Safe } from './_shared/pipes/safe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ClientService } from './client/client.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -70,7 +71,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         }),
         BrowserAnimationsModule,
     ],
-    providers: [AppService, CreateService, ManageCharactersService, HttpService],
+    providers: [ClientService, CreateService, ManageCharactersService, HttpService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

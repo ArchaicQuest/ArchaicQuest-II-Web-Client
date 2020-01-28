@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpService } from '../_shared/http.service';
 import { clientRoutes } from './client.routes';
-import { ClientService } from './client.service';
+
 
 @NgModule({
     declarations: [
@@ -40,7 +40,7 @@ import { ClientService } from './client.service';
 
         BrowserAnimationsModule,
     ],
-    providers: [ClientService, HttpService],
+    providers: [HttpService],
 
 })
 export class ClientModule { }

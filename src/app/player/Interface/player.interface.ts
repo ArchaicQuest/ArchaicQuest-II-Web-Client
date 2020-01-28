@@ -1,5 +1,5 @@
 export interface Player {
-    aid: string;
+    accountId: string;
     id?: string;
     name: string;
     gender: string;
