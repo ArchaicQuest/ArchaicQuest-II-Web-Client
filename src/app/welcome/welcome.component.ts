@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAccountComponent } from '../player/account/account.component';
 import { Router } from '@angular/router';
+import { AccountService } from '../player/account/account.service';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -10,12 +12,18 @@ import { Router } from '@angular/router';
     styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent {
-    constructor(public dialog: MatDialog, private _router: Router) { }
+  public form: FormGroup;
+    constructor(public dialog: MatDialog, private _router: Router, private _service: AccountService) { }
 
-    signIn() {
-        //Auth logic
+    signIn(event: any) {
+      this._service.toggleSignUpButton(event.target);
 
+      const data = {
+          email: this.form.get('email').value,
+          password: this.form.get('password').value
+      };
 
+      this._service.login(data, event.target);
     }
 
     openDialog(): void {
@@ -29,15 +37,5 @@ export class WelcomeComponent {
             .subscribe(() => {
                 dialogRef.close();
             });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            console.log(result)
-        });
-    }
-
-    createAccount() {
-
-    }
 
 }

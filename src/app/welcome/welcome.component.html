@@ -1,51 +1,67 @@
 <div class="welcome-container">
+  <div class="welcome-log-in">
+    <div class="welcome-log-in__form">
+      <img
+        src="http://archaicquest.com/UI/Images/archaic-quest.png"
+        alt="ArchaicQuest logo Text based game"
+      />
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" />
+          <mat-error
+            class="error-message"
+            *ngIf="
+              form.get('email').hasError('required') &&
+              (form.get('email').dirty || form.get('email').touched)
+            "
+          >
+            Enter your Email address</mat-error
+          >
 
+        </mat-form-field>
 
-    <div class="welcome-log-in">
-        <div class="welcome-log-in__form">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off" />
+          <mat-error class="error-message"
+                *ngIf="form.get('password').hasError('required') && (form.get('password').dirty || form.get('password').touched)">
+                Enter your password</mat-error>
+        </mat-form-field>
+      </form>
 
-            <img src="http://archaicquest.com/UI/Images/archaic-quest.png" alt="ArchaicQuest logo Text based game" />
-            <mat-form-field appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="Username">
-            </mat-form-field>
+      <button mat-raised-button color="primary" (click)="signUp($event)" [disabled]="!form.valid">Sign in</button>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password">
-            </mat-form-field>
+      <p class="forgot-password"><a href="">Forgot password</a></p>
 
+      <div class="or">
+        <hr class="bar" />
+        <span>OR</span>
+        <hr class="bar" />
+      </div>
 
-            <button mat-raised-button color="primary">Sign in</button>
-
-            <p class="forgot-password"><a href="">Forgot password</a></p>
-
-            <div class="or">
-                <hr class="bar">
-                <span>OR</span>
-                <hr class="bar">
-            </div>
-
-            <button mat-stroked-button color="primary" routerLink="/account/create-character">Create your first
-                character</button>
-
-        </div>
-
+      <button
+        mat-stroked-button
+        color="primary"
+        routerLink="/account/create-character"
+      >
+        Create your first character
+      </button>
     </div>
+  </div>
 
-    <div class="welcome-intro">
-        <h1>ArchaicQuest <span>A text based RPG | Multi-User Dungeon</span></h1>
+  <div class="welcome-intro">
+    <h1>ArchaicQuest <span>A text based RPG | Multi-User Dungeon</span></h1>
 
+    <p class="welcome-tag-line">
+      A world of text adventure is waiting for you. Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat
+    </p>
 
-        <p class="welcome-tag-line">A world of text adventure is waiting for you. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-
-        <button mat-stroked-button color="primary" (click)="openDialog()">Create your first character</button>
-
-
-    </div>
-
-
-
+    <button mat-stroked-button color="primary" (click)="openDialog()">
+      Create your first character
+    </button>
+  </div>
 </div>
