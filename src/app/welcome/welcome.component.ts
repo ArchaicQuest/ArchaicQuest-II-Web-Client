@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAccountComponent } from '../player/account/account.component';
 import { Router } from '@angular/router';
@@ -11,19 +11,25 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './welcome.component.html',
     styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent {
-  public form: FormGroup;
+export class WelcomeComponent implements OnInit {
+    public form: FormGroup;
+    public loading: boolean;
     constructor(public dialog: MatDialog, private _router: Router, private _service: AccountService) { }
 
+    ngOnInit() {
+        this.form = this._service.loginForm;
+    }
+
     signIn(event: any) {
-      this._service.toggleSignUpButton(event.target);
 
-      const data = {
-          email: this.form.get('email').value,
-          password: this.form.get('password').value
-      };
+        this._service.toggleSignUpButton(event.target);
 
-      this._service.login(data, event.target);
+        const data = {
+            username: this.form.get('email').value,
+            password: this.form.get('password').value
+        };
+
+        this._service.login(data, event.target);
     }
 
     openDialog(): void {
@@ -38,4 +44,5 @@ export class WelcomeComponent {
                 dialogRef.close();
             });
 
+    }
 }
