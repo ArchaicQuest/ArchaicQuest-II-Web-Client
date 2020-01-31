@@ -4,24 +4,29 @@
     <h1>Character selection</h1>
 </header>
 <div class="manage-character-wrapper">
+
+    <div class="loader" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+
     <div class="manage-character-container">
+
         <div class="manage-character-list">
+
+
             <h2>Pick a character to play</h2>
 
-            <div class="manage-character-list__player">
-                <h3>Malleus Malefica</h3>
-                <p>A level 51, Male Human Mage.</p>
-                <p>Last played: 08/01/2019 23:00</p>
+            <div class="manage-character-list__player" *ngFor="let char of characters; trackBy: trackBy">
+                <h3>{{char.name}}</h3>
+                <p>A level {{char.level}}, {{char.gender}} {{char.race}} {{char.className}}.</p>
+                <p>Last played: {{char.LastLoginTime | date: 'mediumDate'}}</p>
             </div>
-            <div class="manage-character-list__player">
-                <h3>Drizzt Du'urden</h3>
-                <p>A level 51, Male Dark Elf Blade master.</p>
-                <p>Last played: 31/03/2019 21:22</p>
-            </div>
-            <div class="manage-character-list__player">
-                <h3>Freyja</h3>
-                <p>A level 5, Female Elf Cleric.</p>
-                <p>Last played: 09/11/2019 00:00</p>
+
+            <div class="manage-character-list__player--no-characters" *ngIf="characters.length === 0 && !isLoading">
+                <p>You don't have <b><i>ANY</i></b> characters yet?!!<br />
+                    Grab a drink, grab snacks and click the button below to start your adventure in ArchaicQuest.</p>
+                <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
+                    character</button>
             </div>
         </div>
 
@@ -29,13 +34,14 @@
             <div class="manage-character-new">
                 <h2>New Character</h2>
                 <p>There is no limit to the amount of fun and characters you can have.</p>
-                <button mat-raised-button color="primary">Create a new character</button>
+                <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
+                    character</button>
             </div>
 
             <div class="manage-character-stats">
                 <h2>Account Stats</h2>
-
-                <table>
+                <p>Coming soon.</p>
+                <!-- <table>
                     <tr>
                         <td>
                             Cumulative Hours:
@@ -84,7 +90,7 @@
                             xx
                         </td>
                     </tr>
-                </table>
+                </table> -->
 
             </div>
         </div>

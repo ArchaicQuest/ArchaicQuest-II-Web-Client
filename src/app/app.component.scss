@@ -53,3 +53,18 @@ select:-webkit-autofill:focus {
   border-top-color: #000000;
   animation: spinner 0.8s linear infinite;
 }
+
+// .mat-spinner {
+//   position: absolute !important;
+//   left: calc(50% - 50px);
+//   top: calc(50% - 50px);
+//   z-index: 99;
+
+//   &:after {
+//     content: "";
+//     width: 100vw;
+//     height: 100vh;
+//     background: rgba(000, 000, 000, 0.7);
+//     display: block;
+//   }
+// }

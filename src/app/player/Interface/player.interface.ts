@@ -38,4 +38,8 @@ export interface Player {
     };
     qffects?: any;
     config?: any;
+    joinedDate?: Date;
+    LastLoginTime?: Date;
+    LastCommandTime?: Date;
+
 }
