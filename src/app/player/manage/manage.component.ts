@@ -56,6 +56,10 @@ export class ManageCharactersComponent implements OnInit {
 
 
 
+    PlayCharacter(id: string) {
+        this._service.PlayCharacter(id);
+    }
+
 
 
 }

@@ -16,7 +16,8 @@
 
             <h2>Pick a character to play</h2>
 
-            <div class="manage-character-list__player" *ngFor="let char of characters; trackBy: trackBy">
+            <div class="manage-character-list__player" *ngFor="let char of characters; trackBy: trackBy"
+                (click)="PlayCharacter(char.id)">
                 <h3>{{char.name}}</h3>
                 <p>A level {{char.level}}, {{char.gender}} {{char.race}} {{char.className}}.</p>
                 <p>Last played: {{char.LastLoginTime | date: 'mediumDate'}}</p>

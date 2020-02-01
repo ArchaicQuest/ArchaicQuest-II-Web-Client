@@ -25,8 +25,8 @@ export class WelcomeComponent implements OnInit {
         this._service.toggleSignUpButton(event.target);
 
         const data = {
-            username: this.form.get('email').value,
-            password: this.form.get('password').value
+            username: (this.form.get('email').value as string).toLowerCase().trim(),
+            password: (this.form.get('password').value as string).toLowerCase().trim()
         };
 
         this._service.login(data, event.target);
