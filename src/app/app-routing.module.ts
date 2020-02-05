@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: '', component: WelcomeComponent },
     { path: 'account/create-character', component: CreatePlayerComponent },
     { path: 'account/manage-characters', component: ManageCharactersComponent },
-    { path: 'play', component: ClientComponent }
+    { path: 'play', loadChildren: './client/client.module#ClientModule' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

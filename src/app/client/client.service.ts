@@ -69,8 +69,8 @@ export class ClientService {
     }
 
     public sendToServer(message: string) {
-        console.log('what', message)
-        this.connection.send('send', message).catch(err => { });
+        this.updateWindow('', `<p class="echo">${message}</p>`);
+        this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
 
     public returnConnection() {

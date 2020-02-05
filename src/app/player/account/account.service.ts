@@ -30,6 +30,7 @@ export class AccountService {
         button.disabled = !button.disabled;
     }
 
+
     signUp(data, button) {
         this._http.post('http://localhost:62640/api/Account', data).subscribe(
             response => {

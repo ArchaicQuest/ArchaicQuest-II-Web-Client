@@ -1,5 +1,4 @@
-<div class="input">
-
-    <input type="text" placeholder="Enter commands here, /? for help." #input />
-    <button type="submit" #btn (click)="sendToServer()">Send</button>
-</div>
+<form [formGroup]="form">
+    <input type="text" placeholder="Enter commands here, /? for help." formControlName="input" maxlength="751" />
+    <button type="submit" #btn (click)="sendToServer()" [disabled]="form.invalid">Send</button>
+</form>

@@ -35,15 +35,11 @@ import { ClientService } from './client/client.service';
 @NgModule({
     declarations: [
         AppComponent,
-        ClientComponent,
-        WindowComponent,
-        InputComponent,
         CreatePlayerComponent,
         WelcomeComponent,
         PlayerAppearanceComponent,
         CreateAccountComponent,
         ManageCharactersComponent,
-        Safe
     ],
     entryComponents: [
         CreateAccountComponent
@@ -71,7 +67,7 @@ import { ClientService } from './client/client.service';
         }),
         BrowserAnimationsModule,
     ],
-    providers: [ClientService, CreateService, ManageCharactersService, HttpService],
+    providers: [CreateService, ManageCharactersService, HttpService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

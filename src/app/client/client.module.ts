@@ -3,7 +3,6 @@ import { ClientComponent } from './client.component';
 import { WindowComponent } from './window/window.component';
 import { InputComponent } from './input/input.component';
 import { Safe } from '../_shared/pipes/safe';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -15,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpService } from '../_shared/http.service';
 import { clientRoutes } from './client.routes';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { clientRoutes } from './client.routes';
     entryComponents: [
     ],
     imports: [
-        BrowserModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
@@ -37,8 +36,7 @@ import { clientRoutes } from './client.routes';
         MatDialogModule,
         MatProgressSpinnerModule,
         RouterModule.forChild(clientRoutes),
-
-        BrowserAnimationsModule,
+        CommonModule
     ],
     providers: [HttpService],
 
