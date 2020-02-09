@@ -12,7 +12,9 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     public windowData = '';
     public $data: Subscription;
     public componentActive = true;
-    @ViewChild('window', { static: true }) window: ElementRef;
+    private lastKnownScrollPosition = 0;
+    userScrolled = false;
+    @ViewChild('window', { static: true }) window: HTMLElement;
 
     constructor(private clientService: ClientService) { }
 
@@ -25,13 +27,26 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     }
 
     ngAfterContentInit(): void {
+        let userScrolled = false;
         this.$data = this.clientService.$data.subscribe(x => {
-            console.log(x)
 
             if (x.length) {
 
+                const clientWindow = document.getElementById('js-client-window')
+
+                const isScrolledToBottom = clientWindow.scrollHeight - clientWindow.clientHeight <= clientWindow.scrollTop + 1;
+
                 this.windowData += x.pop();
+
+                if (isScrolledToBottom) {
+                    clientWindow.scrollTop = clientWindow.scrollHeight - clientWindow.clientHeight;
+                }
+
+
+
             }
+
+
         });
 
     }
