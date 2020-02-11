@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit, ViewEncapsulation } from '@angular/core';
 import { ClientService } from '../client.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-window',
@@ -16,7 +17,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     userScrolled = false;
     @ViewChild('window', { static: true }) window: HTMLElement;
 
-    constructor(private clientService: ClientService) { }
+    constructor(private clientService: ClientService, private _snackBar: MatSnackBar) { }
 
     ngOnInit() {
 
@@ -27,31 +28,16 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     }
 
     ngAfterContentInit(): void {
-        let userScrolled = false;
+
         this.$data = this.clientService.$data.subscribe(x => {
 
             if (x.length) {
-
-                const clientWindow = document.getElementById('js-client-window')
-
-                const isScrolledToBottom = clientWindow.scrollHeight - clientWindow.clientHeight <= clientWindow.scrollTop + 1;
-
+                // if user has scrolled above, show notification of new messages
+                // let snackBarRef = this._snackBar.open('new message', 'View', {
+                //     duration: 4000
+                // });
                 this.windowData += x.pop();
-
-                if (isScrolledToBottom) {
-                    clientWindow.scrollTop = clientWindow.scrollHeight - clientWindow.clientHeight;
-                }
-
-
-
             }
-
-
         });
-
     }
-
-
-
-
 }

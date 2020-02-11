@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { HttpService } from '../_shared/http.service';
 import { clientRoutes } from './client.routes';
 import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CommonModule } from '@angular/common';
         MatDialogModule,
         MatProgressSpinnerModule,
         RouterModule.forChild(clientRoutes),
-        CommonModule
+        CommonModule,
+        MatSnackBarModule
     ],
     providers: [HttpService],
 
