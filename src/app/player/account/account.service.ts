@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpService } from 'src/app/_shared/http.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
@@ -32,7 +33,7 @@ export class AccountService {
 
 
     signUp(data, button) {
-        this._http.post('http://localhost:62640/api/Account', data).subscribe(
+        this._http.post(`${environment.hostAPI}/api/Account`, data).subscribe(
             response => {
                 const serverResponse: { toast: string, id: string } = JSON.parse(response);
                 this._toast.success(serverResponse.toast);
@@ -56,7 +57,7 @@ export class AccountService {
     }
 
     login(data, button) {
-        return this._http.post('http://localhost:62640/api/Account/Login', data).subscribe(
+        return this._http.post(`${environment.hostAPI}/api/Account/Login`, data).subscribe(
             response => {
                 const serverResponse: { toast: string, id: string } = JSON.parse(response);
                 this._toast.success(serverResponse.toast);

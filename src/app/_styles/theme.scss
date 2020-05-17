@@ -26,15 +26,15 @@ $link-text-hover: $primary-color-700;
 */
 
 a {
-  color: $link-text;
-  text-decoration: none;
-  transition: all 0.2s linear;
-  &:hover {
-    color: $link-text-hover;
-    padding-bottom: 3px;
-    border-bottom: 1px solid $link-text-hover;
+    color: $link-text;
+    text-decoration: none;
     transition: all 0.2s linear;
-  }
+    &:hover {
+        color: $link-text-hover;
+        padding-bottom: 3px;
+        border-bottom: 1px solid $link-text-hover;
+        transition: all 0.2s linear;
+    }
 }
 
 /*
@@ -43,41 +43,41 @@ a {
 */
 
 $mat-red-overwrite: (
-  100: #ffcdd2,
-  500: #ac1f1e,
-  700: #d32f2f,
-  contrast: (
-    100: $dark-text,
-    500: $light-text,
-    700: $light-text
-  )
+    100: #ffcdd2,
+    500: #ac1f1e,
+    700: #d32f2f,
+    contrast: (
+        100: $dark-text,
+        500: $light-text,
+        700: $light-text,
+    ),
 );
 
 $primary-palette: (
-  100: $primary-color-100,
-  500: $primary-color-500,
-  700: $primary-color-700,
-  contrast: (
-    100: black,
-    500: black,
-    700: black
-  )
+    100: $primary-color-100,
+    500: $primary-color-500,
+    700: $primary-color-700,
+    contrast: (
+        100: black,
+        500: black,
+        700: black,
+    ),
 );
 
 // accent palette
 $accent-palette: (
-  100: $accent-color-100,
-  500: $accent-color-500,
-  700: $accent-color-700,
-  contrast: (
-    100: white,
-    500: white,
-    700: white
-  )
+    100: $accent-color-100,
+    500: $accent-color-500,
+    700: $accent-color-700,
+    contrast: (
+        100: white,
+        500: white,
+        700: white,
+    ),
 );
 
 $typography-config: mat-typography-config(
-  $font-family: $font-family
+    $font-family: $font-family,
 );
 
 // Define the app theme.
@@ -95,66 +95,66 @@ $app-theme: mat-dark-theme($primary, $accent, $warn);
 /* Button overrides */
 .mat-button:hover .mat-button-focus-overlay,
 .mat-stroked-button:hover .mat-button-focus-overlay {
-  opacity: 1 !important;
+    opacity: 1 !important;
 }
 
 .mat-raised-button {
-  border: 1px solid $dark-text;
+    border: 1px solid $dark-text;
 }
 
 .mat-raised-button.mat-primary:hover {
-  background-color: $primary-color-600;
+    background-color: $primary-color-600;
 }
 
 .mat-raised-button.mat-accent:hover {
-  background-color: $accent-color-100;
+    background-color: $accent-color-100;
 }
 
-.mat-stroked-button.mat-primary {
-  color: #fff;
-  height: 51px;
-  width: 60%;
+::ng-deep .mat-stroked-button.mat-primary {
+    color: #fff;
+    height: 51px;
+    width: 60%;
 
-  &:not([disabled]) {
-    border-color: rgba(255, 255, 255, 1);
-    border-width: 2px;
-  }
-
-  &:hover {
-    .mat-button-wrapper {
-      color: $dark-text !important;
+    &:not([disabled]) {
+        border-color: rgba(255, 255, 255, 1);
+        border-width: 2px;
     }
-    color: $dark-text;
-    background-color: $primary-color-500;
-    border-color: $primary-color-500;
 
-    .mat-button-focus-overlay {
-      opacity: 0;
-      display: none;
+    &:hover {
+        .mat-button-wrapper {
+            color: $dark-text !important;
+        }
+        color: $dark-text;
+        background-color: $primary-color-500;
+        border-color: $primary-color-500;
+
+        .mat-button-focus-overlay {
+            opacity: 0;
+            display: none;
+        }
     }
-  }
 }
 
 .mat-form-field,
 button {
-  width: 100%;
+    width: 100%;
 }
 
 button {
-  height: 51px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:disabled {
+    height: 51px;
     &:hover {
-      cursor: not-allowed;
-      background-color: #333 !important;
+        cursor: pointer;
     }
-  }
+    &:disabled {
+        &:hover {
+            cursor: not-allowed;
+            background-color: #333 !important;
+        }
+    }
 }
 
 // radio
 
 .mat-radio-label {
-  margin-left: 10px;
+    margin-left: 10px;
 }

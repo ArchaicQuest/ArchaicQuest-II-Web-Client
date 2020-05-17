@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Race } from '../Interface/race.interface';
 import { Data } from 'src/app/_shared/interface/data.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -22,18 +23,18 @@ export class CreateService {
     constructor(private _http: HttpClient, private _formBuilder: FormBuilder) { }
 
     getRace(): Observable<Race[]> {
-        return this._http.get<Race[]>('http://localhost:62640/api/Character/Race');
+        return this._http.get<Race[]>(`${environment.hostAPI}/api/Character/Race`);
     }
 
     getClass(): Observable<Data[]> {
-        return this._http.get<Data[]>('http://localhost:62640/api/Character/Class');
+        return this._http.get<Data[]>(`${environment.hostAPI}/api/Character/Class`);
     }
 
     createCharacter(data) {
         console.log('post this ', data);
-        this._http.post('http://localhost:62640/api/Character/Player', JSON.stringify(data), {
+        this._http.post(`${environment.hostAPI}/api/Character/Player`, JSON.stringify(data), {
             headers: this.headers,
-            responseType: 'text'
+            // responseType: 'text'
         }).subscribe(
             response => {
                 console.log(response);

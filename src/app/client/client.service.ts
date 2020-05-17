@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import * as signalR from '@aspnet/signalr';
 import { BehaviorSubject } from 'rxjs';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -29,7 +28,7 @@ export class ClientService {
 
     private connectToHub() {
         this.connection = new signalR.HubConnection(
-            'http://localhost:62640/Hubs/game'
+            `${environment.hostAPI}/Hubs/game`
         );
         this.connection
             .start()
