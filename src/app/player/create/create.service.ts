@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Race } from '../Interface/race.interface';
 import { Data } from 'src/app/_shared/interface/data.interface';
 import { environment } from 'src/environments/environment';
+import { ManageCharactersService } from '../manage/manage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,7 @@ export class CreateService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private _http: HttpClient, private _formBuilder: FormBuilder) { }
+    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _service: ManageCharactersService, ) { }
 
     getRace(): Observable<Race[]> {
         return this._http.get<Race[]>(`${environment.hostAPI}/api/Character/Race`);
@@ -36,8 +37,8 @@ export class CreateService {
             headers: this.headers,
             // responseType: 'text'
         }).subscribe(
-            response => {
-                console.log(response);
+            (response: string) => {
+                this._service.PlayCharacter(response);
             },
             err => console.log(err)
         );
