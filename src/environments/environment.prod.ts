@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    hostAPI: '//api.archaicquest.com'
+    hostAPI: 'https://api.archaicquest.com'
 };
