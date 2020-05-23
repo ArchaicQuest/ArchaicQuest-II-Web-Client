@@ -27,17 +27,26 @@ export class ClientService {
     }
 
     private connectToHub() {
-        this.connection = new signalR.HubConnection(
-            `${environment.hostAPI}/Hubs/game`
-        );
+        this.connection = new signalR.HubConnectionBuilder()
+            .withUrl(`${environment.hostAPI}/Hubs/game`)
+            .build();
+
         this.connection
             .start()
             .then(x => {
                 this.connected = true;
                 this.createEvents();
                 this.connectionId = this.connection['connection'].connectionId;
-                this.connection.send('welcome', this.connectionId);
-                this.connection.send('AddCharacter', this.connectionId, this.characterId);
+
+                this.connection.invoke('getConnectionId')
+                    .then((connectionId) => {
+                        console.log(connectionId)
+                        this.connectionId = connectionId;
+                        this.connection.send('welcome', this.connectionId);
+                        this.connection.send('AddCharacter', this.connectionId, this.characterId);
+                    });
+
+
             })
             .catch(err => console.error(err.toString()));
     }
