@@ -1,14 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import * as signalR from '@aspnet/signalr';
+import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ClientService {
-    // private host = environment.hostAPI;
-    private connection: signalR.HubConnection;
+export class ClientService implements OnDestroy {
+    private connection: HubConnection;
     private connectionId: string;
     private characterId: string;
     public connected = false;
@@ -16,22 +15,24 @@ export class ClientService {
     public $data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.data);
 
     constructor() {
-        this.initHub();
+
     }
 
-    private initHub() {
+    public initHub() {
+        this.connection = new HubConnectionBuilder()
+            .withUrl(`${environment.hostAPI}/Hubs/game`)
+            .withAutomaticReconnect()
+            .build();
+
         this.updateWindow('', '<div>Connecting to ArchaicQuest, please wait.</div>');
         this.characterId = sessionStorage.getItem('characterId');
         this.connectToHub();
 
     }
 
-    private connectToHub() {
-        this.connection = new signalR.HubConnectionBuilder()
-            .withUrl(`${environment.hostAPI}/Hubs/game`)
-            .build();
+    private async connectToHub() {
 
-        this.connection
+        await this.connection
             .start()
             .then(x => {
                 this.connected = true;
@@ -83,5 +84,17 @@ export class ClientService {
 
     public returnConnection() {
         return this.connection;
+    }
+
+    public closeConnection() {
+        this.connection.off('SendMessage');
+        this.connection.off('SendAction');
+        this.connection.stop().then(() => {
+            console.log("connection closed");
+        }).catch(err => console.log(err));
+    }
+
+    ngOnDestroy(): void {
+        this.connection = null;
     }
 }

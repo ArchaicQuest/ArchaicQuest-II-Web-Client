@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy, AfterContentInit, ViewEncapsulation } from '@angular/core';
 import { ClientService } from '../client.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-window',
@@ -14,6 +15,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     public $data: Subscription;
     public componentActive = true;
     private lastKnownScrollPosition = 0;
+    private unsubscribe$ = new Subject<void>();
     userScrolled = false;
     @ViewChild('window', { static: true }) window: HTMLElement;
 
@@ -23,13 +25,10 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
     }
 
-    ngOnDestroy() {
-        console.log("ngOnDestroy InDashBoard");
-    }
 
     ngAfterContentInit(): void {
 
-        this.$data = this.clientService.$data.subscribe(x => {
+        this.$data = this.clientService.$data.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 
             if (x.length) {
                 // if user has scrolled above, show notification of new messages
@@ -39,5 +38,10 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
                 this.windowData += x.pop();
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }
