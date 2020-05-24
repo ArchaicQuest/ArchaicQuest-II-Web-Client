@@ -39,7 +39,7 @@
                 <hr class="bar" />
             </div>
 
-            <button mat-stroked-button color="primary" routerLink="/account/create-character">
+            <button class="ghost-button" mat-stroked-button color="primary" (click)="openDialog()">
                 Create your account
             </button>
         </div>
@@ -55,7 +55,7 @@
             ullamco laboris nisi ut aliquip ex ea commodo consequat
         </p>
 
-        <button mat-stroked-button color="primary" (click)="openDialog()">
+        <button class="ghost-button" mat-stroked-button color="primary" (click)="openDialog()">
             Create your account
         </button>
     </div>
