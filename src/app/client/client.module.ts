@@ -16,6 +16,7 @@ import { HttpService } from '../_shared/http.service';
 import { clientRoutes } from './client.routes';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StatComponent } from './stat-bar/stat-bar.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         ClientComponent,
         WindowComponent,
         InputComponent,
+        StatComponent,
         Safe
     ],
     entryComponents: [

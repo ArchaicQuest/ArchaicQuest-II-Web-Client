@@ -13,6 +13,12 @@ export class ClientService implements OnDestroy {
     public connected = false;
     public data: string[] = [];
     public $data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.data);
+    public stats: {
+        hp: {
+            min: number,
+            max: number
+        }
+    };
 
     constructor() {
 
@@ -59,6 +65,12 @@ export class ClientService implements OnDestroy {
 
         });
 
+        this.connection.on('UpdatePlayerHP', (currentHp, maxHP) => {
+            console.log('UpdatePlayerHP', currentHp + ' ' + maxHP);
+            //   this.updateWindow(sender, message);
+
+        });
+
         this.connection.on('SendAction', (sender, message) => {
 
             console.log('send action', sender + ' ' + message);
@@ -69,6 +81,11 @@ export class ClientService implements OnDestroy {
 
     private eventChange() {
         this.$data.next(this.data);
+    }
+
+    public updateStats(current: number, max: number, type: string) {
+        this.data.push(sender + ' ' + message);
+        this.eventChange();
     }
 
 
