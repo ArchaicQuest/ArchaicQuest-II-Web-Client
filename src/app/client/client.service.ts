@@ -84,8 +84,8 @@ export class ClientService implements OnDestroy {
     }
 
     public updateStats(current: number, max: number, type: string) {
-        this.data.push(sender + ' ' + message);
-        this.eventChange();
+       // this.data.push(sender + ' ' + message);
+      //  this.eventChange();
     }
 
 
