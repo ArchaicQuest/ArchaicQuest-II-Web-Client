@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { ClientService } from '../client.service';
 import { Validators, FormBuilder } from '@angular/forms';
@@ -8,13 +8,16 @@ import { Validators, FormBuilder } from '@angular/forms';
     templateUrl: './stat-bar.component.html',
     styleUrls: ['./stat-bar.component.scss']
 })
-export class StatComponent implements OnInit {
 
+export class StatComponent implements OnInit {
+    @Input() type: string;
 
     constructor(private _clientService: ClientService) { }
 
     ngOnInit() {
+
     }
+
 
 
 
