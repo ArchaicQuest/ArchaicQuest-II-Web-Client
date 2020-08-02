@@ -115,6 +115,13 @@ export class ClientService implements OnDestroy {
             this.updateWindow(sender, message);
 
         });
+
+        this.connection.on('Close', (sender, message) => {
+
+            console.log('close action', sender + ' ' + message);
+            this.closeConnection();
+
+        });
     }
 
 

@@ -2,11 +2,13 @@
   display: grid;
   background: #18191b;
   padding: 0 0 0 30px;
+
   .client-window {
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
     height: calc(100vh - 75px);
+    max-width:80ch;
 
     &::-webkit-scrollbar {
       width: 11px;
