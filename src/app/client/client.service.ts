@@ -2,6 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
+import { Stats, PlayerStats } from './stat-bar/stats.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -11,14 +12,37 @@ export class ClientService implements OnDestroy {
     private connectionId: string;
     private characterId: string;
     public connected = false;
+
+    /*
+        Data
+        The data sent from the server to the client, such as room descriptions, command output, etc
+    */
     public data: string[] = [];
     public $data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.data);
-    public stats: {
+
+    /*
+        Player stats
+        The HP, Mana, Moves, and Exp sent from the server to the player
+    */
+    public stats: PlayerStats = {
         hp: {
-            min: number,
-            max: number
+            current: 0,
+            max: 0
+        },
+        mana: {
+            current: 0,
+            max: 0
+        },
+        moves: {
+            current: 0,
+            max: 0
+        },
+        exp: {
+            current: 0,
+            max: 0
         }
-    };
+    }
+    public $stats: BehaviorSubject<PlayerStats> = new BehaviorSubject<PlayerStats>(this.stats);
 
     constructor() {
 
@@ -67,8 +91,22 @@ export class ClientService implements OnDestroy {
 
         this.connection.on('UpdatePlayerHP', (currentHp, maxHP) => {
             console.log('UpdatePlayerHP', currentHp + ' ' + maxHP);
-            //   this.updateWindow(sender, message);
+            this.updateStats(currentHp, maxHP, 'hp');
+        });
 
+        this.connection.on('UpdatePlayerMana', (currentMana, maxMana) => {
+            console.log('UpdatePlayerMana', currentMana + ' ' + maxMana);
+            this.updateStats(currentMana, maxMana, 'mana');
+        });
+
+        this.connection.on('UpdatePlayerMoves', (currentMoves, maxMoves) => {
+            console.log('UpdatePlayerMana', currentMoves + ' ' + maxMoves);
+            this.updateStats(currentMoves, maxMoves, 'moves');
+        });
+
+        this.connection.on('UpdatePlayerExp', (currentExp, maxExp) => {
+            console.log('UpdatePlayerExp', currentExp + ' ' + maxExp);
+            this.updateStats(currentExp, maxExp, 'exp');
         });
 
         this.connection.on('SendAction', (sender, message) => {
@@ -79,15 +117,31 @@ export class ClientService implements OnDestroy {
         });
     }
 
+
+    public returnConnection() {
+        return this.connection;
+    }
+
+
+
+    public updateStats(current: number, max: number = 0, type: string) {
+
+        this.stats[type].max = max;
+        this.stats[type].current = current;
+
+        this.statsChange();
+    }
+
+    private statsChange() {
+        this.$stats.next(this.stats);
+    }
+
+
+    // Handles updating data in the client window
+
     private eventChange() {
         this.$data.next(this.data);
     }
-
-    public updateStats(current: number, max: number, type: string) {
-       // this.data.push(sender + ' ' + message);
-      //  this.eventChange();
-    }
-
 
     public updateWindow(sender: string = '', message: string = '') {
         this.data.push(sender + ' ' + message);
@@ -99,9 +153,7 @@ export class ClientService implements OnDestroy {
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
 
-    public returnConnection() {
-        return this.connection;
-    }
+
 
     public closeConnection() {
         this.connection.off('SendMessage');

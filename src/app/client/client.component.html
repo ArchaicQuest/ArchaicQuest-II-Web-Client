@@ -4,10 +4,10 @@
     </div>
 
     <div class="client-stats">
-        <app-stat-bar></app-stat-bar>
-        <app-stat-bar type="mana"></app-stat-bar>
-        <app-stat-bar type="moves"></app-stat-bar>
-        <app-stat-bar type="exp"></app-stat-bar>
+        <app-stat-bar [stats]="playerStats.hp"></app-stat-bar>
+        <app-stat-bar type="mana" [stats]="playerStats.mana"></app-stat-bar>
+        <app-stat-bar type="moves" [stats]="playerStats.moves"></app-stat-bar>
+        <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false"></app-stat-bar>
     </div>
     <div class="client-input">
         <app-input></app-input>
