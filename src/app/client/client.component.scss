@@ -10,6 +10,9 @@
     height: calc(100vh - 75px);
     max-width:80ch;
 
+    scrollbar-color: #555 #222;
+    scrollbar-width: thin;
+
     &::-webkit-scrollbar {
       width: 11px;
       height: 11px;
@@ -28,6 +31,8 @@
     &::-webkit-scrollbar-thumb:active {
       background: rgba(255, 255, 255, 0.9);
     }
+
+    
   }
 
   .client-input {
