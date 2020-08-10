@@ -1,8 +1,42 @@
 <div class="client">
-    <div class="client-window">
-        <app-window></app-window>
-    </div>
+    <div class="client-grid">
+        <div class="client-player-stats">
 
+            <div>
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="Score">Score</mat-tab>
+                    <mat-tab label="Description">Description</mat-tab>
+
+                </mat-tab-group>
+            </div>
+            <div>
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="Inventory">Inventory</mat-tab>
+                    <mat-tab label="Equipment">Equipment</mat-tab>
+                    <mat-tab label="Affects">Affects</mat-tab>
+                    <mat-tab label="Quests">Quests</mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+        <div class="client-window">
+
+            <app-window></app-window>
+
+        </div>
+        <div class="client-game-info">
+
+            <div>Map</div>
+            <div>
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="All">All</mat-tab>
+                    <mat-tab label="Newbie">Newbie</mat-tab>
+                    <mat-tab label="Gossip">Gossip</mat-tab>
+                    <mat-tab label="Room">Room</mat-tab>
+                    <mat-tab label="OOC">OOC</mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
     <div class="client-stats">
         <app-stat-bar [stats]="playerStats.hp"></app-stat-bar>
         <app-stat-bar type="mana" [stats]="playerStats.mana"></app-stat-bar>
