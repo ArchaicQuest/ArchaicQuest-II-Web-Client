@@ -20,6 +20,12 @@ export class ClientService implements OnDestroy {
     public data: string[] = [];
     public $data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.data);
 
+    public eq: string = "";
+    public $eq: BehaviorSubject<string> = new BehaviorSubject<string>(this.eq);
+
+    public inv: string = "";
+    public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
+
     /*
         Player stats
         The HP, Mana, Moves, and Exp sent from the server to the player
@@ -109,6 +115,18 @@ export class ClientService implements OnDestroy {
             this.updateStats(currentExp, maxExp, 'exp');
         });
 
+        this.connection.on('EquipmentUpdate', (eq) => {
+            console.log('EquipmentUpdate', eq);
+            this.eq = eq;
+            this.EquipmentChange();
+        });
+
+        this.connection.on('InventoryUpdate', (inv) => {
+            console.log('InventoryUpdate', inv);
+            this.inv = inv;
+            this.$inv.next(this.inv);
+        });
+
         this.connection.on('SendAction', (sender, message) => {
 
             console.log('send action', sender + ' ' + message);
@@ -127,6 +145,10 @@ export class ClientService implements OnDestroy {
 
     public returnConnection() {
         return this.connection;
+    }
+
+    private EquipmentChange() {
+        this.$eq.next(this.eq);
     }
 
 

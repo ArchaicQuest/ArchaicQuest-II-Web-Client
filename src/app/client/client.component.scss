@@ -5,8 +5,12 @@
 
   .client-grid {
     display: grid;
-    grid-template-columns: 1fr 50% 1fr;
-    grid-gap: 30px;
+     
+    @media (min-width : 1920px){
+      display: grid;
+      grid-template-columns: 1fr 50% 1fr;
+      grid-gap: 30px;
+  }
 
     &::ng-deep {
       .mat-tab-label {
@@ -15,30 +19,57 @@
     }
 
     .client-player-stats {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-gap: 30px;
+      
+      display: none;
 
-      div {
+      @media (min-width : 1920px){
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 30px;
+    }
+
+
+      .client-grid-content {
         border:2px solid #333;
+   
+      
+
         &::ng-deep {
           .mat-tab-body {
            padding: 15px;
           }
+
+          .mat-tab-body-content  {
+            max-height: calc(39vh - 45px);
+          }
         }
+
+ 
       }
     }
 
     .client-game-info {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-gap: 30px;
+     
+      display: none;
 
-      div {
+      @media (min-width : 1920px){
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 30px;
+    }
+
+
+      .client-grid-content {
         border:2px solid #333;
+   
+    
+        
         &::ng-deep {
           .mat-tab-body {
            padding: 15px;
+          }
+          .mat-tab-body-content {
+            max-height: calc(39vh - 45px);
           }
         }
       }

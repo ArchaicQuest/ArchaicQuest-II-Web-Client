@@ -34,6 +34,10 @@ export class ClientComponent implements OnInit, OnDestroy {
             max: 0
         }
     };
+    public $eq: Subscription;
+    public eq: string;
+    public $inv: Subscription;
+    public inv: string;
 
     constructor(private clientService: ClientService) { }
 
@@ -53,6 +57,16 @@ export class ClientComponent implements OnInit, OnDestroy {
             this.playerStats.moves.max = x.moves.max;
             this.playerStats.exp.current = x.exp.current;
             this.playerStats.exp.max = x.exp.max;
+        });
+
+        this.$eq = this.clientService.$eq.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+            console.log(x)
+            this.eq = x;
+        });
+
+        this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+            console.log(x)
+            this.inv = x;
         });
     }
 
