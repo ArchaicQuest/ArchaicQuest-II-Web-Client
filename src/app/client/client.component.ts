@@ -3,6 +3,7 @@ import { ClientService } from './client.service';
 import { Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
+import { Player } from '../player/Interface/player.interface';
 
 @Component({
     selector: 'app-client',
@@ -38,6 +39,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     public eq: string;
     public $inv: Subscription;
     public inv: string;
+    public $playerScore: Subscription;
+    public playerScore: Player;
 
     constructor(private clientService: ClientService) { }
 
@@ -67,6 +70,16 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log(x)
             this.inv = x;
+        });
+
+        this.$playerScore = this.clientService.$playerScore.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+
+            if (x == null) {
+                return;
+            }
+
+            this.playerScore = JSON.parse((x as unknown as string)).player;
+
         });
     }
 

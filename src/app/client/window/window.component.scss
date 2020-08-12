@@ -23,6 +23,21 @@
   color:yellow;
   margin-bottom: 0;
 }
+.score-table {
+  width:100%;
+  max-width: 72ch;
+  border-bottom: 1px dashed #555;
+  border-top: 1px dashed #555;
+  padding: 10px 0;
+
+
+}
+
+.cell-title  {
+  color: #2ecc71;
+}
+
+
 
 .player {
   color: darkorange;

@@ -4,7 +4,27 @@
 
             <div class="client-grid-content">
                 <mat-tab-group mat-align-tabs="start">
-                    <mat-tab label="Score">Score</mat-tab>
+                    <mat-tab label="Score">
+                        <div class="client-grid-content-data">
+                            <h2>{{playerScore?.name}}</h2>
+                            <hr />
+                            <p>Level {{playerScore?.level}} {{playerScore?.gender}} {{playerScore?.race}}
+                                {{playerScore?.className}}</p>
+                            <p>{{playerScore?.alignmentScore}}</p>
+                            <hr />
+                            <table style="width:100%">
+                                <tr>
+                                    <td>STR:</td>
+                                    <td>33</td>
+                                    <td>Dex:</td>
+                                    <td>90</td>
+                                </tr>
+                            </table>
+
+                            {{playerScore?.attributes | json}}
+                        </div>
+
+                    </mat-tab>
                     <mat-tab label="Description">Description</mat-tab>
 
                 </mat-tab-group>

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
+import { Player } from '../player/Interface/player.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +26,9 @@ export class ClientService implements OnDestroy {
 
     public inv: string = "";
     public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
+
+    public playerScore: Player;
+    public $playerScore: BehaviorSubject<Player> = new BehaviorSubject<Player>(this.playerScore);
 
     /*
         Player stats
@@ -125,6 +129,12 @@ export class ClientService implements OnDestroy {
             console.log('InventoryUpdate', inv);
             this.inv = inv;
             this.$inv.next(this.inv);
+        });
+
+        this.connection.on('ScoreUpdate', (player) => {
+            console.log('ScoreUpdate', player);
+            this.playerScore = player;
+            this.$playerScore.next(this.playerScore);
         });
 
         this.connection.on('SendAction', (sender, message) => {
