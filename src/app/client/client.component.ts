@@ -41,7 +41,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     public inv: string;
     public $playerScore: Subscription;
     public playerScore: Player;
-
+    public $comms: Subscription;
+    public comms: string;
     constructor(private clientService: ClientService) { }
 
     ngOnInit() {
@@ -70,6 +71,11 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log(x)
             this.inv = x;
+        });
+
+        this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+            console.log(x)
+            this.comms = x;
         });
 
         this.$playerScore = this.clientService.$playerScore.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {

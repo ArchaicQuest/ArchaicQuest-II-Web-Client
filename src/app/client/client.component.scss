@@ -48,6 +48,21 @@
       }
     }
 
+    .player-info {
+      text-align: center;
+      h2 {
+        margin-top: 0;
+        border-bottom: 1px solid #888;
+padding-bottom: 5px;
+      }
+    }
+
+    .player-info-table {
+      td {
+        max-width: 15px;
+      }
+    }
+
     .client-game-info {
      
       display: none;

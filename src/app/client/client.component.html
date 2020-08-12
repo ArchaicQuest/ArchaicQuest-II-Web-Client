@@ -6,22 +6,88 @@
                 <mat-tab-group mat-align-tabs="start">
                     <mat-tab label="Score">
                         <div class="client-grid-content-data">
-                            <h2>{{playerScore?.name}}</h2>
+                            <div class="player-info">
+                                <h2>{{playerScore?.name}}</h2>
+
+                                <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
+                                    {{playerScore?.className}}</p>
+                                <p>True Neutral</p>
+                            </div>
                             <hr />
-                            <p>Level {{playerScore?.level}} {{playerScore?.gender}} {{playerScore?.race}}
-                                {{playerScore?.className}}</p>
-                            <p>{{playerScore?.alignmentScore}}</p>
-                            <hr />
-                            <table style="width:100%">
+                            <table style="width:100%" class="player-info-table">
                                 <tr>
                                     <td>STR:</td>
-                                    <td>33</td>
-                                    <td>Dex:</td>
-                                    <td>90</td>
+                                    <td>{{playerScore?.attributes.Attribute.Strength}}</td>
+                                    <td>DEX:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Dexterity}}</td>
+                                </tr>
+                                <tr>
+                                    <td>CON:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                                    <td>INT:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                                </tr>
+                                <tr>
+                                    <td>WIS:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Wisdom}}</td>
+                                    <td>CHA:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
                                 </tr>
                             </table>
 
-                            {{playerScore?.attributes | json}}
+                            <hr />
+
+                            <table style="width:100%" class="player-info-table">
+                                <tr>
+                                    <td>Armour:</td>
+                                    <td>{{playerScore?.armorRating.armour}}</td>
+                                    <td>Damage:</td>
+                                    <td>xxx</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Hit roll:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                                    <td>Dam Roll:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Spell Res:</td>
+                                    <td>{{playerScore?.armorRating.magic}}</td>
+                                    <td>Spell dam:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                                </tr>
+                            </table>
+
+                            <hr />
+
+                            <table style="width:100%" class="player-info-table">
+                                <tr>
+                                    <td>Qpoints:</td>
+                                    <td>000</td>
+                                    <td>Mob Kills:</td>
+                                    <td>100,000</td>
+
+                                </tr>
+                                <tr>
+                                    <td>trains:</td>
+                                    <td>99</td>
+                                    <td>Mob Deaths:</td>
+                                    <td>9999</td>
+                                </tr>
+                                <tr>
+                                    <td>Prac:</td>
+                                    <td>999</td>
+                                    <td>Player Kills:</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Weight:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Strength * 3}}</td>
+                                    <td>Gold:</td>
+                                    <td>1000</td>
+                                </tr>
+                            </table>
                         </div>
 
                     </mat-tab>
@@ -52,7 +118,9 @@
             <div class="client-grid-content">Map</div>
             <div class="client-grid-content">
                 <mat-tab-group mat-align-tabs="start">
-                    <mat-tab label="All">All</mat-tab>
+                    <mat-tab label="All">
+                        <div class="client-grid-content-data" [innerHTML]="comms | safeHtml"></div>
+                    </mat-tab>
                     <mat-tab label="Newbie">Newbie</mat-tab>
                     <mat-tab label="Gossip">Gossip</mat-tab>
                     <mat-tab label="Room">Room</mat-tab>
