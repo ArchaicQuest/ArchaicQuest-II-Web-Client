@@ -30,6 +30,12 @@ export class ClientService implements OnDestroy {
     public comms: string = "";
     public $comms: BehaviorSubject<string> = new BehaviorSubject<string>(this.comms);
 
+    public map: { map: string, roomId: number } = {
+        map: "",
+        roomId: 0
+    };
+    public $map: BehaviorSubject<{ map: string, roomId: number }> = new BehaviorSubject<{ map: string, roomId: number }>(this.map);
+
     public playerScore: Player;
     public $playerScore: BehaviorSubject<Player> = new BehaviorSubject<Player>(this.playerScore);
 
@@ -146,6 +152,13 @@ export class ClientService implements OnDestroy {
             this.$comms.next(this.comms);
         });
 
+        this.connection.on('MapUpdate', (map, roomId) => {
+            console.log('MapUpdate', roomId);
+            this.map.map = JSON.parse(map);
+            this.map.roomId = roomId;
+            this.$map.next(this.map);
+        });
+
         this.connection.on('SendAction', (sender, message) => {
 
             console.log('send action', sender + ' ' + message);
@@ -210,6 +223,8 @@ export class ClientService implements OnDestroy {
             console.log("connection closed");
         }).catch(err => console.log(err));
     }
+
+
 
     ngOnDestroy(): void {
         this.connection = null;

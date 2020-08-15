@@ -137,3 +137,10 @@ padding-bottom: 5px;
     margin-top: 30px;
   }
 }
+
+#container {
+  min-width: 250px;
+  min-height: 250px;
+  height: calc(45vh - 45px);
+  overflow: hidden;
+}
