@@ -27,8 +27,8 @@ export class ClientService implements OnDestroy {
     public inv: string = "";
     public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
 
-    public comms: string = "";
-    public $comms: BehaviorSubject<string> = new BehaviorSubject<string>(this.comms);
+    public comms: { text: string, type: string } = { text: '', type: '' };
+    public $comms: BehaviorSubject<{ text: string, type: string }> = new BehaviorSubject<{ text: string, type: string }>(this.comms);
 
     public map: { map: string, roomId: number } = {
         map: "",
@@ -146,8 +146,8 @@ export class ClientService implements OnDestroy {
             this.$playerScore.next(this.playerScore);
         });
 
-        this.connection.on('CommUpdate', (txt) => {
-            console.log('CommUpdate', txt);
+        this.connection.on('CommUpdate', (txt, type) => {
+            console.log('CommUpdate', txt, type);
             this.comms = txt;
             this.$comms.next(this.comms);
         });

@@ -122,12 +122,35 @@
             <div class="client-grid-content">
                 <mat-tab-group mat-align-tabs="start">
                     <mat-tab label="All">
-                        <div class="client-grid-content-data" [innerHTML]="comms | safeHtml"></div>
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.all" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
                     </mat-tab>
-                    <mat-tab label="Newbie">Newbie</mat-tab>
-                    <mat-tab label="Gossip">Gossip</mat-tab>
-                    <mat-tab label="Room">Room</mat-tab>
-                    <mat-tab label="OOC">OOC</mat-tab>
+                    <mat-tab label="Newbie">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.newbie" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Gossip">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.gossip" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Room">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.room" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="OOC">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.ooc" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
                 </mat-tab-group>
             </div>
         </div>

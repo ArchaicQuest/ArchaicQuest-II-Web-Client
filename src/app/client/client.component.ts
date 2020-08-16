@@ -45,7 +45,7 @@ export class ClientComponent implements OnInit, OnDestroy {
     public $playerScore: Subscription;
     public playerScore: Player;
     public $comms: Subscription;
-    public comms: string;
+    public comms: { text: string, type: string };
     public $map: Subscription;
     //public map: string;
     public channels: {
@@ -54,7 +54,13 @@ export class ClientComponent implements OnInit, OnDestroy {
         newbie: string[],
         gossip: string[],
         ooc: string[]
-    }
+    } = {
+            all: [],
+            room: [],
+            newbie: [],
+            gossip: [],
+            ooc: []
+        }
     public map: { map: string, roomId: number } = {
         map: "",
         roomId: 1
@@ -101,9 +107,34 @@ export class ClientComponent implements OnInit, OnDestroy {
 
         this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log(x)
+            if (x.text == '') { return; }
             this.comms = x;
-            this.channels.all.push(x);
-            this.channels.room.concat(x);
+
+            debugger;
+            switch (x.type) {
+                case "room":
+                    this.channels.all.push(x.text);
+                    this.channels.room.push(x.text);
+                    break;
+                case "newbie":
+                    this.channels.all.push(x.text);
+                    this.channels.newbie.push(x.text);
+
+                    break;
+                case "gossip":
+                    this.channels.all.push(x.text);
+                    this.channels.gossip.push(x.text);
+
+                    break;
+                case "ooc":
+                    this.channels.all.push(x.text);
+                    this.channels.ooc.push(x.text);
+
+                    break;
+
+                default:
+                    break;
+            }
 
         });
 
@@ -129,7 +160,7 @@ export class ClientComponent implements OnInit, OnDestroy {
             this.map.map = x.map;
             this.map.roomId = x.roomId;
 
-            if (x != null) {
+            if (x != null || x.map != null) {
                 this.generateMap();
             }
 
@@ -141,13 +172,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
     generateMap() {
 
-
-
-        //if (this.sigma == null || this.sigma.graph == null) {
-
-        // var playerNode = (this.map as any).nodes.
-        //  console.log("containers", this.mapContainer.innerHTML)
-        this.mapContainer.innerHTML = "";
+        this.mapContainer.nativeElement.innerHTML = "";
 
         for (var i in this.map.map['nodes']) {
             if (this.map.map['nodes'][i].id == "node" + this.map.roomId) {
@@ -155,7 +180,6 @@ export class ClientComponent implements OnInit, OnDestroy {
                 break;
             };
         }
-
 
         var graph = this.map.map;
         this.sigma = new sigma({
@@ -167,12 +191,8 @@ export class ClientComponent implements OnInit, OnDestroy {
         });
 
         this.sigma.graph.read(graph);
-
-
         this.sigma.refresh();
-        //}
 
-        // Finally, let's ask our sigma instance to refresh:
 
     }
 
