@@ -108,9 +108,7 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log(x)
             if (x.text == '') { return; }
-            this.comms = x;
 
-            debugger;
             switch (x.type) {
                 case "room":
                     this.channels.all.push(x.text);

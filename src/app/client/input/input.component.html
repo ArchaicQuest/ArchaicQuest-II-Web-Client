@@ -1,4 +1,5 @@
 <form [formGroup]="form">
-    <input type="text" placeholder="Enter commands here, /? for help." formControlName="input" maxlength="751" />
-    <button type="submit" #btn (click)="sendToServer()" [disabled]="form.invalid">Send</button>
+    <input #inputTxt type="text" placeholder="Enter commands here, /? for help." formControlName="input"
+        maxlength="751" />
+    <button type="submit" #btn (click)="sendToServer(); inputTxt.select()" [disabled]="form.invalid">Send</button>
 </form>

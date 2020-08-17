@@ -148,7 +148,11 @@ export class ClientService implements OnDestroy {
 
         this.connection.on('CommUpdate', (txt, type) => {
             console.log('CommUpdate', txt, type);
-            this.comms = txt;
+            this.comms = {
+                text: txt,
+                type: type
+
+            };
             this.$comms.next(this.comms);
         });
 
