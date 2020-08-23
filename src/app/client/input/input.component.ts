@@ -9,7 +9,6 @@ import { Validators, FormBuilder } from '@angular/forms';
     styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-
     public form = this._formBuilder.group({
         input: ['', [Validators.required, Validators.maxLength(750)]],
     });
@@ -19,7 +18,9 @@ export class InputComponent implements OnInit {
     }
 
     sendToServer() {
+
         this._clientService.sendToServer(this.cleanInput());
+
     }
 
     /*

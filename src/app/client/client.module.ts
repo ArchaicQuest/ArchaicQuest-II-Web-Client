@@ -16,13 +16,15 @@ import { HttpService } from '../_shared/http.service';
 import { clientRoutes } from './client.routes';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { StatComponent } from './stat-bar/stat-bar.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
     declarations: [
         ClientComponent,
         WindowComponent,
         InputComponent,
+        StatComponent,
         Safe
     ],
     entryComponents: [
@@ -38,6 +40,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatProgressSpinnerModule,
         RouterModule.forChild(clientRoutes),
         CommonModule,
+        MatTabsModule,
         MatSnackBarModule
     ],
     providers: [HttpService],

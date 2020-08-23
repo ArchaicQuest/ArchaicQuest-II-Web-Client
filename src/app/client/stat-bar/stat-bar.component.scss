@@ -1,0 +1,56 @@
+
+::host {
+    background-color: #000;
+}
+.stat-bar {
+    background: linear-gradient(270deg, #ff0000, #b70000);
+    background-size: 400% 400%;
+
+    -webkit-animation: statBarSwirlAnimation 5s ease infinite;
+    -moz-animation: statBarSwirlAnimation 5s ease infinite;
+    animation: statBarSwirlAnimation 5s ease infinite;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 0;
+
+    &--mana {
+        background: linear-gradient(270deg, #0098ff, #0050ac);
+        background-size: 400% 400%;    
+    }
+
+    &--moves {
+        background: linear-gradient(270deg, #52db44, #019b15);
+        background-size: 400% 400%;    
+    }
+
+    &--exp {
+        background: linear-gradient(270deg, #e773f3, #93019b);
+        background-size: 400% 400%;    
+    }
+}
+
+@-webkit-keyframes statBarSwirlAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes statBarSwirlAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes statBarSwirlAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.stat-bar__max {
+    display: none;
+
+    @media (min-width : 768px){
+        display: inline;
+    }
+}

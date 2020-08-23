@@ -1,8 +1,166 @@
 <div class="client">
-    <div class="client-window">
-        <app-window></app-window>
-    </div>
+    <div class="client-grid">
+        <div class="client-player-stats">
 
+            <div class="client-grid-content">
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="Score">
+                        <div class="client-grid-content-data">
+                            <div class="player-info">
+                                <h2>{{playerScore?.name}}</h2>
+
+                                <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
+                                    {{playerScore?.className}}</p>
+                                <p>True Neutral</p>
+                            </div>
+                            <hr />
+                            <table style="width:100%" class="player-info-table">
+                                <tr>
+                                    <td>STR:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Strength}}</td>
+                                    <td>DEX:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Dexterity}}</td>
+                                </tr>
+                                <tr>
+                                    <td>CON:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                                    <td>INT:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                                </tr>
+                                <tr>
+                                    <td>WIS:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Wisdom}}</td>
+                                    <td>CHA:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                                </tr>
+                            </table>
+
+                            <hr />
+
+                            <table style="width:100%" class="player-info-table">
+                                <tr>
+                                    <td>Armour:</td>
+                                    <td>{{playerScore?.armorRating.armour}}</td>
+                                    <td>Damage:</td>
+                                    <td>xxx</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Hit roll:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                                    <td>Dam Roll:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Spell Res:</td>
+                                    <td>{{playerScore?.armorRating.magic}}</td>
+                                    <td>Spell dam:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                                </tr>
+                            </table>
+
+                            <hr />
+
+                            <table style="width:100%" class="player-info-table">
+                                <tr>
+                                    <td>Qpoints:</td>
+                                    <td>000</td>
+                                    <td>Mob Kills:</td>
+                                    <td>100,000</td>
+
+                                </tr>
+                                <tr>
+                                    <td>trains:</td>
+                                    <td>99</td>
+                                    <td>Mob Deaths:</td>
+                                    <td>9999</td>
+                                </tr>
+                                <tr>
+                                    <td>Prac:</td>
+                                    <td>999</td>
+                                    <td>Player Kills:</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Weight:</td>
+                                    <td>{{playerScore?.attributes.Attribute.Strength * 3}}</td>
+                                    <td>Gold:</td>
+                                    <td>1000</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Description">Description</mat-tab>
+
+                </mat-tab-group>
+            </div>
+            <div class="client-grid-content">
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="Inventory">
+                        <div class="client-grid-content-data" [innerHTML]="inv | safeHtml"></div>
+                    </mat-tab>
+                    <mat-tab label="Equipment">
+                        <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
+                    </mat-tab>
+                    <mat-tab label="Affects">Affects</mat-tab>
+                    <mat-tab label="Quests">Quests</mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+        <div class="client-window">
+
+            <app-window></app-window>
+
+        </div>
+        <div class="client-game-info">
+
+            <div class="client-grid-content">
+
+                <div id="container" #mapContainer></div>
+            </div>
+            <div class="client-grid-content">
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="All">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.all" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Newbie">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.newbie" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Gossip">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.gossip" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Room">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.room" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="OOC">
+                        <div class="client-grid-content-data">
+                            <div *ngFor="let msg of channels?.ooc" [innerHTML]="msg | safeHtml">
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+    <div class="client-stats">
+        <app-stat-bar [stats]="playerStats.hp"></app-stat-bar>
+        <app-stat-bar type="mana" [stats]="playerStats.mana"></app-stat-bar>
+        <app-stat-bar type="moves" [stats]="playerStats.moves"></app-stat-bar>
+        <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false"></app-stat-bar>
+    </div>
     <div class="client-input">
         <app-input></app-input>
     </div>

@@ -2,6 +2,8 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
+import { Stats, PlayerStats } from './stat-bar/stats.interface';
+import { Player } from '../player/Interface/player.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +13,55 @@ export class ClientService implements OnDestroy {
     private connectionId: string;
     private characterId: string;
     public connected = false;
+
+    /*
+        Data
+        The data sent from the server to the client, such as room descriptions, command output, etc
+    */
     public data: string[] = [];
     public $data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.data);
+
+    public eq: string = "";
+    public $eq: BehaviorSubject<string> = new BehaviorSubject<string>(this.eq);
+
+    public inv: string = "";
+    public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
+
+    public comms: { text: string, type: string } = { text: '', type: '' };
+    public $comms: BehaviorSubject<{ text: string, type: string }> = new BehaviorSubject<{ text: string, type: string }>(this.comms);
+
+    public map: { map: string, roomId: number } = {
+        map: "",
+        roomId: 0
+    };
+    public $map: BehaviorSubject<{ map: string, roomId: number }> = new BehaviorSubject<{ map: string, roomId: number }>(this.map);
+
+    public playerScore: Player;
+    public $playerScore: BehaviorSubject<Player> = new BehaviorSubject<Player>(this.playerScore);
+
+    /*
+        Player stats
+        The HP, Mana, Moves, and Exp sent from the server to the player
+    */
+    public stats: PlayerStats = {
+        hp: {
+            current: 0,
+            max: 0
+        },
+        mana: {
+            current: 0,
+            max: 0
+        },
+        moves: {
+            current: 0,
+            max: 0
+        },
+        exp: {
+            current: 0,
+            max: 0
+        }
+    }
+    public $stats: BehaviorSubject<PlayerStats> = new BehaviorSubject<PlayerStats>(this.stats);
 
     constructor() {
 
@@ -59,18 +108,105 @@ export class ClientService implements OnDestroy {
 
         });
 
+        this.connection.on('UpdatePlayerHP', (currentHp, maxHP) => {
+            console.log('UpdatePlayerHP', currentHp + ' ' + maxHP);
+            this.updateStats(currentHp, maxHP, 'hp');
+        });
+
+        this.connection.on('UpdatePlayerMana', (currentMana, maxMana) => {
+            console.log('UpdatePlayerMana', currentMana + ' ' + maxMana);
+            this.updateStats(currentMana, maxMana, 'mana');
+        });
+
+        this.connection.on('UpdatePlayerMoves', (currentMoves, maxMoves) => {
+            console.log('UpdatePlayerMana', currentMoves + ' ' + maxMoves);
+            this.updateStats(currentMoves, maxMoves, 'moves');
+        });
+
+        this.connection.on('UpdatePlayerExp', (currentExp, maxExp) => {
+            console.log('UpdatePlayerExp', currentExp + ' ' + maxExp);
+            this.updateStats(currentExp, maxExp, 'exp');
+        });
+
+        this.connection.on('EquipmentUpdate', (eq) => {
+            console.log('EquipmentUpdate', eq);
+            this.eq = eq;
+            this.EquipmentChange();
+        });
+
+        this.connection.on('InventoryUpdate', (inv) => {
+            console.log('InventoryUpdate', inv);
+            this.inv = inv;
+            this.$inv.next(this.inv);
+        });
+
+        this.connection.on('ScoreUpdate', (player) => {
+            console.log('ScoreUpdate', player);
+            this.playerScore = player;
+            this.$playerScore.next(this.playerScore);
+        });
+
+        this.connection.on('CommUpdate', (txt, type) => {
+            console.log('CommUpdate', txt, type);
+            this.comms = {
+                text: txt,
+                type: type
+
+            };
+            this.$comms.next(this.comms);
+        });
+
+        this.connection.on('MapUpdate', (map, roomId) => {
+            console.log('MapUpdate', roomId);
+            this.map.map = JSON.parse(map);
+            this.map.roomId = roomId;
+            this.$map.next(this.map);
+        });
+
         this.connection.on('SendAction', (sender, message) => {
 
             console.log('send action', sender + ' ' + message);
             this.updateWindow(sender, message);
 
         });
+
+        this.connection.on('Close', (sender, message) => {
+
+            console.log('close action', sender + ' ' + message);
+            this.closeConnection();
+
+        });
     }
+
+
+    public returnConnection() {
+        return this.connection;
+    }
+
+    private EquipmentChange() {
+        this.$eq.next(this.eq);
+    }
+
+
+
+    public updateStats(current: number, max: number = 0, type: string) {
+
+        this.stats[type].max = max;
+        this.stats[type].current = current;
+
+        this.statsChange();
+    }
+
+    private statsChange() {
+        this.$stats.next(this.stats);
+    }
+
+
+    // Handles updating data in the client window
 
     private eventChange() {
         this.$data.next(this.data);
     }
-
 
     public updateWindow(sender: string = '', message: string = '') {
         this.data.push(sender + ' ' + message);
@@ -82,9 +218,7 @@ export class ClientService implements OnDestroy {
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
 
-    public returnConnection() {
-        return this.connection;
-    }
+
 
     public closeConnection() {
         this.connection.off('SendMessage');
@@ -93,6 +227,8 @@ export class ClientService implements OnDestroy {
             console.log("connection closed");
         }).catch(err => console.log(err));
     }
+
+
 
     ngOnDestroy(): void {
         this.connection = null;
