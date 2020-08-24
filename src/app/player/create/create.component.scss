@@ -6,6 +6,29 @@ header {
   position: relative;
 }
 
+table, th, td {
+  border-collapse: collapse;
+}
+table {
+  width:100%;
+  border: 1px solid #111;
+
+  tr:nth-of-type(even) {
+    background-color:#666;
+  }
+
+  tr td {
+    padding:5px 0px 3px 10px;
+  }
+
+  tr td:nth-of-type(even)  {
+    text-align: center;
+    border-left:1px solid #111;
+    padding:0;
+  }
+
+}
+
 .create-character-wizard__nav {
   background: #111;
   position: fixed;

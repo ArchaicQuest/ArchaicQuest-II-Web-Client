@@ -16,6 +16,14 @@ export class CreatePlayerComponent implements OnInit {
     races: Race[];
     raceForm: FormGroup;
     raceHeader: string;
+    raceAttributes: {
+        Strength: number;
+        Dexterity: number;
+        Constitution: number;
+        Wisdom: number;
+        Intelligence: number;
+        Charisma: number;
+    }
     raceDescription: string;
     raceImage: string;
     selectedIndex: number;
@@ -47,6 +55,17 @@ export class CreatePlayerComponent implements OnInit {
             this.races = data;
             this.raceHeader = data[0].name;
             this.raceDescription = data[0].description;
+
+            this.raceAttributes = {
+                Charisma: data[0].attributes.attribute.Charisma,
+                Constitution: data[0].attributes.attribute.Constitution,
+                Dexterity: data[0].attributes.attribute.Dexterity,
+                Intelligence: data[0].attributes.attribute.Intelligence,
+                Strength: data[0].attributes.attribute.Strength,
+                Wisdom: data[0].attributes.attribute.Wisdom,
+            }
+
+
         });
 
         this.service.getClass().subscribe(data => {
@@ -65,6 +84,14 @@ export class CreatePlayerComponent implements OnInit {
             console.log(value);
             this.raceHeader = value.name;
             this.raceDescription = value.description;
+            this.raceAttributes = {
+                Charisma: value.attributes.attribute.Charisma,
+                Constitution: value.attributes.attribute.Constitution,
+                Dexterity: value.attributes.attribute.Dexterity,
+                Intelligence: value.attributes.attribute.Intelligence,
+                Strength: value.attributes.attribute.Strength,
+                Wisdom: value.attributes.attribute.Wisdom,
+            }
             this.raceImage = `/assets/images/character/race/${value.name.replace('-', '').replace(' ', '').toLowerCase()}.png`;
         });
 
