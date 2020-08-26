@@ -55,6 +55,7 @@ export class CreatePlayerComponent implements OnInit {
             this.races = data;
             this.raceHeader = data[0].name;
             this.raceDescription = data[0].description;
+            this.raceImage = '/assets/images/character/race/human.png';
 
             this.raceAttributes = {
                 Charisma: data[0].attributes.attribute.Charisma,
@@ -163,15 +164,15 @@ export class CreatePlayerComponent implements OnInit {
             },
             attributes: {
                 attribute: {
-                    Strength: 15,
-                    Dexterity: 10,
-                    Constitution: 10,
-                    Wisdom: 10,
-                    Intelligence: 20,
-                    Charisma: 20,
-                    Hitpoints: 20,
-                    Mana: 120,
-                    Moves: 20
+                    Strength: this.raceAttributes.Strength,
+                    Dexterity: this.raceAttributes.Dexterity,
+                    Constitution: this.raceAttributes.Constitution,
+                    Wisdom: this.raceAttributes.Wisdom,
+                    Intelligence: this.raceAttributes.Intelligence,
+                    Charisma: this.raceAttributes.Charisma,
+                    Hitpoints: 30,
+                    Mana: 60,
+                    Moves: 100
                 }
             },
             className: this.classHeader,
@@ -182,15 +183,15 @@ export class CreatePlayerComponent implements OnInit {
             level: '1',
             maxAttributes: {
                 attribute: {
-                    Strength: 15,
-                    Dexterity: 10,
-                    Constitution: 10,
-                    Wisdom: 10,
-                    Intelligence: 20,
-                    Charisma: 20,
-                    Hitpoints: 20,
-                    Mana: 120,
-                    Moves: 20
+                    Strength: this.raceAttributes.Strength,
+                    Dexterity: this.raceAttributes.Dexterity,
+                    Constitution: this.raceAttributes.Constitution,
+                    Wisdom: this.raceAttributes.Wisdom,
+                    Intelligence: this.raceAttributes.Intelligence,
+                    Charisma: this.raceAttributes.Charisma,
+                    Hitpoints: 30,
+                    Mana: 60,
+                    Moves: 100
                 }
             },
             race: this.raceHeader,
