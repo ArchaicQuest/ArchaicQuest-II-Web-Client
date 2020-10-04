@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatComponent } from './stat-bar/stat-bar.component';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @NgModule({
     declarations: [
         ClientComponent,
@@ -41,7 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
         RouterModule.forChild(clientRoutes),
         CommonModule,
         MatTabsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ScrollingModule
     ],
     providers: [HttpService],
 

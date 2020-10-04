@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ClientService } from './client.service';
 import { Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { sigma } from 'sigma';
+import { animation } from '@angular/animations';
 
 
 @Component({
     selector: 'app-client',
     templateUrl: './client.component.html',
-    styleUrls: ['./client.component.scss']
+    styleUrls: ['./client.component.scss'],
+
 })
 
 export class ClientComponent implements OnInit, OnDestroy {
@@ -171,26 +173,57 @@ export class ClientComponent implements OnInit, OnDestroy {
     generateMap() {
 
         this.mapContainer.nativeElement.innerHTML = "";
+        this.sigma = new sigma({
+            container: 'container', settings: {
+                labelThreshold: 5000,
+                skipErrors: true,
+                scalingMode: 'outside'
+            },
 
+        });
+
+        var pnode = '';
         for (var i in this.map.map['nodes']) {
             if (this.map.map['nodes'][i].id == "node" + this.map.roomId) {
                 this.map.map['nodes'][i].color = '#FF7619'
+                pnode = this.map.map['nodes'][i];
+
                 break;
             };
+
         }
+        // console.log("xcx", this.map.map['nodes'])
+        if (this.map.map['nodes'] == null) { return; }
+        // let newNodes = this.map.map['nodes'].filter(x => x.x >= x.x + 7);
+        // console.log("filter ", newNodes);
+
 
         var graph = this.map.map;
-        this.sigma = new sigma({
-            container: 'container', settings: {
-                defaultNodeColor: '#ec5148',
-                labelThreshold: 5000,
-                skipErrors: false
-            },
-        });
+
+
 
         this.sigma.graph.read(graph);
-        this.sigma.refresh();
 
+
+        this.sigma.refresh();
+        // HOLY SHIT that took a long time to figure out.
+        // camera controls in sigmajs don't mirror the x,y coords of the grid
+        // calling the below, passing in the id of the active node
+        // returns an object that has the real camera x, y coords
+        // using this you can move the camera around.
+        // console.log("ss", this.sigma.graph.nodes(pnode["id"]))
+        sigma.misc.animation.camera(
+            this.sigma.camera,
+            {
+                x: this.sigma.graph.nodes(pnode["id"])["read_cam0:x"],
+                y: this.sigma.graph.nodes(pnode["id"])["read_cam0:y"],
+                angle: 0,
+                ratio: 1
+            },
+            {
+                duration: 0
+            }
+        );
 
     }
 

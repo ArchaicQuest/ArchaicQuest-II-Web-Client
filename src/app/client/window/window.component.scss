@@ -2,6 +2,9 @@
   background: #111;
   white-space: pre;
 }
+table {
+  width:100%;
+}
 .echo {
   color: #666;
   margin: 0;
@@ -13,6 +16,15 @@
   padding-bottom: 5px;
   margin-top: 0px;
   white-space: normal;
+  max-width: 720px;
+}
+
+.room-description {
+  max-width: 720px;
+}
+
+.hint {
+  color:yellow;
 }
 
 .room-exits {
@@ -23,6 +35,15 @@
   color:yellow;
   margin-bottom: 0;
 }
+
+.room-emote {
+  margin-bottom: 0;
+}
+.mob-emote {
+  color:#CCCC00;
+  margin-bottom: 0;
+}
+
 .score-table {
   width:100%;
   max-width: 72ch;
