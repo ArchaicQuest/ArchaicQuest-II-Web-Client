@@ -146,12 +146,12 @@
                             <div>
                                 Face: &nbsp;{{face}}
                             </div>
-                            <div>
+                            <div *ngIf="gender == 'Male'">
                                 Facial Hair: &nbsp;{{facialHair}}
                             </div>
 
                         </div>
-                        <p>You can add a character description in game, one is required to complete the aAcademy.</p>
+                        <p>You can add a character description in game, one is required to complete the Academy.</p>
 
 
                     </div>
@@ -159,7 +159,8 @@
                 <div class="wizard-controls">
                     <button mat-raised-button color="accent" matStepperPrevious>Back</button>
 
-                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    <button mat-raised-button color="primary" matStepperNext
+                        [disabled]="appearanceForm.invalid">Next</button>
                 </div>
             </form>
         </mat-step>

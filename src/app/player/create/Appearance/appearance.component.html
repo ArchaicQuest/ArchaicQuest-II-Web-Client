@@ -1,49 +1,36 @@
-<mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+<form [formGroup]="form">
+    <div formGroupName="char">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name" (focusout)="checkName();">
+            <!-- <button mat-raised-button color="primary" matSuffix>Random</button> -->
+        </mat-form-field>
 
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Name
-            </mat-panel-title>
 
-        </mat-expansion-panel-header>
+        <mat-radio-group color="primary" formControlName="gender">
+            <mat-radio-button value="Male" checked radioGroup="radioGender">Male</mat-radio-button>
+            <mat-radio-button value="Female" radioGroup="radioGender">Female</mat-radio-button>
+        </mat-radio-group>
 
-        <form [formGroup]="form">
-            <div formGroupName="char">
+    </div>
+</form>
+
+<form [formGroup]="form">
+    <div formGroupName="bodyType">
+        <div class="form-controls">
+            <div>
                 <mat-form-field appearance="outline">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Name" formControlName="name">
-                    <!-- <button mat-raised-button color="primary" matSuffix>Random</button> -->
-                </mat-form-field>
-            </div>
-        </form>
-        <mat-action-row>
-            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>
-
-    </mat-expansion-panel>
-
-
-    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Body Type
-            </mat-panel-title>
-
-        </mat-expansion-panel-header>
-        <form [formGroup]="form">
-            <div formGroupName="bodyType">
-                <mat-form-field>
-                    <mat-label>Body</mat-label>
+                    <mat-label>Build</mat-label>
                     <mat-select formControlName="body">
                         <mat-option *ngFor="let data of bodyTypes$" [value]="data.name">
                             {{data.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+            </div>
 
-                <mat-form-field>
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Skin Colour</mat-label>
                     <mat-select formControlName="skinColor">
                         <mat-option *ngFor="let data of skinColorTypes$" [value]="data.name">
@@ -51,34 +38,18 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-radio-group color="primary" formControlName="gender">
-                    <mat-radio-button value="Male" checked radioGroup="radioGender">Male</mat-radio-button>
-                    <mat-radio-button value="Female" radioGroup="radioGender">Female</mat-radio-button>
-                </mat-radio-group>
-
-
             </div>
-        </form>
-        <mat-action-row>
-            <button mat-raised-button color="accent" (click)="prevStep()">Previous</button>
-            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>
 
-    </mat-expansion-panel>
+        </div>
 
-    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(3)" hideToggle>
-
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Facial Features
-            </mat-panel-title>
-
-        </mat-expansion-panel-header>
-        <form [formGroup]="form">
-            <div formGroupName="facialFeatures">
-
-                <mat-form-field>
+    </div>
+</form>
+<!-- <h3>Facial Features</h3> -->
+<form [formGroup]="form">
+    <div formGroupName="facialFeatures">
+        <div class="form-controls">
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Facial Features</mat-label>
                     <mat-select formControlName="face">
                         <mat-option *ngFor="let data of facialTypes$" [value]="data.name">
@@ -86,8 +57,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Eye Colour</mat-label>
                     <mat-select formControlName="eyeColor">
                         <mat-option *ngFor="let data of eyeColorTypes$" [value]="data.name">
@@ -96,26 +68,16 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-        </form>
-        <mat-action-row>
-            <button mat-raised-button color="accent" (click)="prevStep()">Previous</button>
-            <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>
+        </div>
+    </div>
+</form>
 
-    </mat-expansion-panel>
-
-
-    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Hair
-            </mat-panel-title>
-
-        </mat-expansion-panel-header>
-        <form [formGroup]="form">
-            <div formGroupName="hair">
-                <mat-form-field>
+<!-- <h3>Hair</h3> -->
+<form [formGroup]="form">
+    <div formGroupName="hair">
+        <div class="form-controls">
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Hair Colour</mat-label>
                     <mat-select formControlName="hairColor">
                         <mat-option *ngFor="let data of hairColorTypes$" [value]="data.name">
@@ -123,8 +85,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Hair Length</mat-label>
                     <mat-select formControlName="hairLength">
                         <mat-option *ngFor="let data of hairLengthTypes$" [value]="data.name">
@@ -132,8 +95,11 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field>
+            </div>
+        </div>
+        <div class="form-controls">
+            <div>
+                <mat-form-field appearance="outline">
                     <mat-label>Hair Texture</mat-label>
                     <mat-select formControlName="hairTexture">
                         <mat-option *ngFor="let data of hairTextureTypes$" [value]="data.name">
@@ -141,8 +107,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field>
+            </div>
+            <div *ngIf="this.form?.get('char.gender').value == '' || this.form?.get('char.gender').value == 'Male'">
+                <mat-form-field appearance="outline">
                     <mat-label>Facial Hair</mat-label>
                     <mat-select formControlName="facialHair">
                         <mat-option *ngFor="let data of facialHairTypes$" [value]="data.name">
@@ -151,14 +118,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-        </form>
-        <mat-action-row>
-            <button mat-raised-button color="accent" (click)="prevStep()">Back</button>
-            <button mat-raised-button color="primary" (click)="nextStep()">End</button>
-        </mat-action-row>
+        </div>
 
-    </mat-expansion-panel>
-
-
-
-</mat-accordion>
+    </div>
+</form>

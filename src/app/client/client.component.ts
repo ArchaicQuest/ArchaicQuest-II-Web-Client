@@ -218,7 +218,7 @@ export class ClientComponent implements OnInit, OnDestroy {
                 x: this.sigma.graph.nodes(pnode["id"])["read_cam0:x"],
                 y: this.sigma.graph.nodes(pnode["id"])["read_cam0:y"],
                 angle: 0,
-                ratio: 1
+                ratio: 0.6
             },
             {
                 duration: 0

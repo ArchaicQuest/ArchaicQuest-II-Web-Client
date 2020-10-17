@@ -7,3 +7,31 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.form-controls {
+  display: block;
+  flex-direction: row;
+
+  div {
+    width: 100%;
+    margin-right: 20px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .form-controls {
+    display: flex;
+  }
+}
+
+.mat-radio-button {
+  margin-bottom: 20px;
+}
+#mat-radio-2 {
+  margin-left: -10px;
+}
+

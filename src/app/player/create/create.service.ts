@@ -21,7 +21,7 @@ export class CreateService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _service: ManageCharactersService, ) { }
+    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _service: ManageCharactersService,) { }
 
     getRace(): Observable<Race[]> {
         return this._http.get<Race[]>(`${environment.hostAPI}/api/Character/Race`);
@@ -30,6 +30,7 @@ export class CreateService {
     getClass(): Observable<Data[]> {
         return this._http.get<Data[]>(`${environment.hostAPI}/api/Character/Class`);
     }
+
 
     createCharacter(data) {
         console.log('post this ', data);
@@ -63,11 +64,12 @@ export class CreateService {
         return this._formBuilder.group({
             char: this._formBuilder.group({
                 name: ['', Validators.required],
+                gender: ['', Validators.required],
             }),
             bodyType: this._formBuilder.group({
                 body: ['', Validators.required],
                 skinColor: ['', Validators.required],
-                gender: ['', Validators.required],
+
             }),
             facialFeatures: this._formBuilder.group({
                 face: ['', Validators.required],
@@ -77,7 +79,7 @@ export class CreateService {
                 hairColor: ['', Validators.required],
                 hairTexture: ['', Validators.required],
                 hairLength: ['', Validators.required],
-                facialHair: ['', Validators.required],
+                facialHair: ['',],
             })
         });
     }

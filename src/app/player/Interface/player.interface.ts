@@ -41,5 +41,12 @@ export interface Player {
     joinedDate?: Date;
     LastLoginTime?: Date;
     LastCommandTime?: Date;
-
+    Build: string,
+    Face: string,
+    Skin: string,
+    Eyes: string,
+    FacialHair: string,
+    HairColour: string,
+    HairLength: string,
+    HairTexture: string,
 }

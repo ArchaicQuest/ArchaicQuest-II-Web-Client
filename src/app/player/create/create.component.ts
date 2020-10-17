@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateService } from './create.service';
 import { Race } from '../Interface/race.interface';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { Data } from 'src/app/_shared/interface/data.interface';
 import { Player } from '../Interface/player.interface';
 import { map, catchError } from 'rxjs/operators';
@@ -52,7 +52,7 @@ export class CreatePlayerComponent implements OnInit {
 
     ngOnInit() {
         this.service.getRace().subscribe(data => {
-            this.races = data;
+            this.races = data.filter(x => x.playable == true);
             this.raceHeader = data[0].name;
             this.raceDescription = data[0].description;
             this.raceImage = '/assets/images/character/race/human.png';
@@ -73,13 +73,14 @@ export class CreatePlayerComponent implements OnInit {
             this.classes = data;
             this.classHeader = data[0].name;
             this.classDescription = data[0].description;
+            this.classImage = '/assets/images/character/class/fighter.png';
         });
 
         this.raceForm = this.service.raceFormGroup();
         this.classForm = this.service.classFormGroup();
         this.appearanceForm = this.service.appearanceFormGroup();
 
-        this.gender = this.appearanceForm.get('bodyType.gender').value;
+        this.gender = "Male";
 
         this.raceForm.get('race').valueChanges.subscribe(value => {
             console.log(value);
@@ -105,12 +106,15 @@ export class CreatePlayerComponent implements OnInit {
 
         this.appearanceForm.get('char.name').valueChanges.subscribe(value => {
             this.name = value;
+
+
         });
         this.appearanceForm.get('bodyType.body').valueChanges.subscribe(value => {
             this.build = value;
         });
-        this.appearanceForm.get('bodyType.gender').valueChanges.subscribe(value => {
+        this.appearanceForm.get('char.gender').valueChanges.subscribe(value => {
             this.gender = value;
+
         });
         this.appearanceForm.get('bodyType.skinColor').valueChanges.subscribe(value => {
             this.skinColor = value;
@@ -176,7 +180,7 @@ export class CreatePlayerComponent implements OnInit {
                 }
             },
             className: this.classHeader,
-            description: 'Nothing to see here.',
+            description: `You see nothing special about ${this.name.toLowerCase().charAt(0).toUpperCase() + this.name.toLowerCase().slice(1)}.`,
             equipped: {},
             gender: 'Male',
             inventory: [],
@@ -205,7 +209,16 @@ export class CreatePlayerComponent implements OnInit {
                 hitPoints: 100,
                 manaPoints: 100,
                 movePoints: 100
-            }
+            },
+            Build: this.build,
+            Eyes: this.eyeColor,
+            Face: this.face,
+            FacialHair: this.facialHair,
+            HairColour: this.hairColor,
+            HairLength: this.hairLength,
+            HairTexture: this.hairTexture,
+            Skin: this.skinColor,
+
         };
 
         this.service.createCharacter(playerInfo);

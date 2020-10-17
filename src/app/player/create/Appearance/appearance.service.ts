@@ -1,14 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Data } from 'src/app/_shared/interface/data.interface';
 import { Option } from 'src/app/_shared/interface/option.interface';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
 export class AppearanceService {
+
+    private headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+    });
+
+    constructor(private _http: HttpClient) { }
+
+    checkName(name: string): Observable<boolean> {
+        return this._http.get<boolean>(`${environment.hostAPI}/api/Character/Player/NameAllowed/${name}`);
+    }
 
     getBodyTypes(): Option[] {
 

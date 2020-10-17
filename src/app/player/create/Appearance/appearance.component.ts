@@ -40,6 +40,16 @@ export class PlayerAppearanceComponent implements OnInit {
     }
 
 
+
+    checkName(): any {
+
+        this.service.checkName(this.form.get('char.name').value).subscribe((x) => {
+            console.log(x);
+        })
+    }
+
+
+
     setStep(index: number) {
         this.step = index;
     }
