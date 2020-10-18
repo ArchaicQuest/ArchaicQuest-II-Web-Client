@@ -1,17 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Race } from '../Interface/race.interface';
 import { Data } from 'src/app/_shared/interface/data.interface';
 import { environment } from 'src/environments/environment';
 import { ManageCharactersService } from '../manage/manage.service';
+import { AppearanceService } from './Appearance/appearance.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CreateService {
 
+    private validationTimeout: any;
     public createPlayerForm = this._formBuilder.group({
         id: [''],
         name: ['', Validators.required],
@@ -21,7 +23,7 @@ export class CreateService {
         'Content-Type': 'application/json',
     });
 
-    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _service: ManageCharactersService,) { }
+    constructor(private _http: HttpClient, private _formBuilder: FormBuilder, private _service: ManageCharactersService, private _appearanceService: AppearanceService) { }
 
     getRace(): Observable<Race[]> {
         return this._http.get<Race[]>(`${environment.hostAPI}/api/Character/Race`);
@@ -59,12 +61,35 @@ export class CreateService {
         });
     }
 
+
+    validateName(c: FormControl) {
+        return this.nameAvailable(c.value);
+    }
+    nameAvailable(name: string) {
+        clearTimeout(this.validationTimeout);
+        return new Promise((resolve) => {
+            this.validationTimeout = setTimeout(() => {
+                let req = this._appearanceService.checkName(name);
+                req.subscribe(result => {
+                    if (result) {
+                        return resolve(null)
+                    }
+                    else {
+                        return resolve({ name: result })
+                    }
+                },
+                    error => { })
+            }, 600);
+        });
+    }
+
+
     appearanceFormGroup(): FormGroup {
 
         return this._formBuilder.group({
             char: this._formBuilder.group({
-                name: ['', Validators.required],
-                gender: ['', Validators.required],
+                name: ['', Validators.required, this.validateName.bind(this)],
+                gender: ['Male', Validators.required],
             }),
             bodyType: this._formBuilder.group({
                 body: ['', Validators.required],

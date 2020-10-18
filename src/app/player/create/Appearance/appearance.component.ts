@@ -4,6 +4,7 @@ import { Data } from '@angular/router';
 import { AppearanceService } from './appearance.service';
 import { Option } from 'src/app/_shared/interface/option.interface';
 import { FormGroup } from '@angular/forms';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-player-appearance',
@@ -40,13 +41,6 @@ export class PlayerAppearanceComponent implements OnInit {
     }
 
 
-
-    checkName(): any {
-
-        this.service.checkName(this.form.get('char.name').value).subscribe((x) => {
-            console.log(x);
-        })
-    }
 
 
 

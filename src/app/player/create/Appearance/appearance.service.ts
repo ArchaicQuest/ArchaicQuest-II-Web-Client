@@ -15,7 +15,7 @@ export class AppearanceService {
     constructor(private _http: HttpClient) { }
 
     checkName(name: string): Observable<boolean> {
-        return this._http.get<boolean>(`${environment.hostAPI}/api/Character/Player/NameAllowed/${name}`);
+        return this._http.get<boolean>(`${environment.hostAPI}/api/player/NameAllowed?name=${name}`);
     }
 
     getBodyTypes(): Option[] {

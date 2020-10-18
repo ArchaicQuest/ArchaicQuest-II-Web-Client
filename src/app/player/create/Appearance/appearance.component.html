@@ -2,13 +2,16 @@
     <div formGroupName="char">
         <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" formControlName="name" (focusout)="checkName();">
+            <input matInput placeholder="Name" formControlName="name">
             <!-- <button mat-raised-button color="primary" matSuffix>Random</button> -->
-        </mat-form-field>
 
+
+        </mat-form-field>
+        <div class="form-error" *ngIf="form.get('char.name').errors?.name == false">A character with this name already
+            exists or is an unacceptable name. </div>
 
         <mat-radio-group color="primary" formControlName="gender">
-            <mat-radio-button value="Male" checked radioGroup="radioGender">Male</mat-radio-button>
+            <mat-radio-button value="Male" radioGroup="radioGender">Male</mat-radio-button>
             <mat-radio-button value="Female" radioGroup="radioGender">Female</mat-radio-button>
         </mat-radio-group>
 
