@@ -56,7 +56,7 @@ export class CreatePlayerComponent implements OnInit {
             this.raceHeader = data[0].name;
             this.raceDescription = data[0].description;
             this.raceImage = '/assets/images/character/race/human.png';
-
+            this.selectedIndex = 0;
             this.raceAttributes = {
                 Charisma: data[0].attributes.attribute.Charisma,
                 Constitution: data[0].attributes.attribute.Constitution,
@@ -66,6 +66,8 @@ export class CreatePlayerComponent implements OnInit {
                 Wisdom: data[0].attributes.attribute.Wisdom,
             }
 
+            this.raceForm.get('race').setValue(data[0]);
+
 
         });
 
@@ -74,6 +76,8 @@ export class CreatePlayerComponent implements OnInit {
             this.classHeader = data[0].name;
             this.classDescription = data[0].description;
             this.classImage = '/assets/images/character/class/fighter.png';
+            this.classForm.get('class').setValue(data[0]);
+            this.selectedClassIndex = 0;
         });
 
         this.raceForm = this.service.raceFormGroup();

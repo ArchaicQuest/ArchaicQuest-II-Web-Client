@@ -50,8 +50,9 @@ table {
 }
 
 .create-character-wrapper {
+
   background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
-    url(/assets/images/background-creation.jpg) no-repeat top center;
+    url(/assets/images/creation-bg1.jpg) no-repeat top center;
   background-size: cover;
   height: calc(100vh - 210px);
   padding-top: 90px;
@@ -59,6 +60,7 @@ table {
   .create-character-section {
     max-width: 1200px;
     margin: 0 auto;
+    box-shadow: 0px 0px 20px 10px #000;
   }
 
   .create-character-container {
@@ -246,13 +248,14 @@ table {
 
 .logo {
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 15px;
   display: block;
 }
 
 h1 {
   text-align: center;
   margin-top: 5px;
+  font-size: 20px;
 }
 
 .wizard-controls {
