@@ -55,7 +55,11 @@ table {
     url(/assets/images/creation-bg1.jpg) no-repeat top center;
   background-size: cover;
   height: calc(100vh - 210px);
-  padding-top: 90px;
+  padding-top: 0;
+
+  @media (min-width : 768px){
+    padding-top: 90px;
+}
 
   .create-character-section {
     max-width: 1200px;
@@ -211,8 +215,12 @@ table {
     border: 2px solid #111;
     line-height: 1.5;
     display: grid;
-    grid-template-columns: 1fr 151px;
+    grid-template-columns: 1fr;
     grid-gap: 30px;
+
+    @media (min-width : 1280px){
+      grid-template-columns: 1fr 151px;
+  }
 
     &--description {
       display: block;
