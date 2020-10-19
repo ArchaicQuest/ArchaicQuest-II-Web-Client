@@ -49,6 +49,7 @@ export class ClientComponent implements OnInit, OnDestroy {
     public $comms: Subscription;
     public comms: { text: string, type: string };
     public $map: Subscription;
+    public showInfoMobile: boolean;
     //public map: string;
     public channels: {
         all: string[],
@@ -236,4 +237,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
     }
 
+    showInfo() {
+        this.showInfoMobile = !this.showInfoMobile;
+    }
 }

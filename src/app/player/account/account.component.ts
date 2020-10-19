@@ -25,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
         this._service.toggleSignUpButton(event.target);
 
         const data = {
-            username: this.form.get('username').value,
+            username: this.form.get('email').value,
             email: this.form.get('email').value,
             password: this.form.get('password').value
         };

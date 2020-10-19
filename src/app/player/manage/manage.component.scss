@@ -7,13 +7,14 @@ header {
 
   .logo {
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 15px;
     display: block;
   }
 
   h1 {
     text-align: center;
     margin-top: 5px;
+    font-size: 20px;
   }
 }
 
@@ -21,7 +22,7 @@ header {
   background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
     url(/assets/images/creation-bg1.jpg) no-repeat top center;
   background-size: cover;
-  height: calc(100vh - 210px);
+  height:calc(100vh - 37px);
   padding-top: 90px;
 
   .loader {
@@ -55,6 +56,7 @@ header {
     border: 2px solid #111;
     line-height: 1.5;
     padding: 15px;
+    box-shadow: 0px 0px 20px 3px #000;
   }
 
   .manage-character-stats {

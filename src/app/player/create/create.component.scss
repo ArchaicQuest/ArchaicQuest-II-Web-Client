@@ -54,7 +54,7 @@ table {
   background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
     url(/assets/images/creation-bg1.jpg) no-repeat top center;
   background-size: cover;
-  height: calc(100vh - 210px);
+  height: calc(100vh - 112px);
   padding-top: 0;
 
   @media (min-width : 768px){
@@ -282,7 +282,16 @@ h1 {
 }
 
 .final-step {
-  width: 450px;
+  width: 100%;
   margin: 0 auto;
   line-height: 1.5;
+
+  
+  @media (min-width : 768px){
+    max-width: 450px
+}
+}
+
+.char-desc {
+  color:#2ecc71;
 }

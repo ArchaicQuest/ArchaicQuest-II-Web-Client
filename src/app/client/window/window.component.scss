@@ -5,6 +5,14 @@
 table {
   width:100%;
 }
+
+pre {
+  display: none;
+
+  @media (min-width : 600){
+    display: block;
+}
+}
 .echo {
   color: #666;
   margin: 0;
@@ -50,7 +58,12 @@ table {
   border-bottom: 1px dashed #555;
   border-top: 1px dashed #555;
   padding: 10px 0;
+font-size: 12px;
 
+@media (min-width: 768px){
+  font-size: 14px;
+
+}
 
 }
 

@@ -6,9 +6,13 @@
     background: linear-gradient(270deg, #ff0000, #b70000);
     background-size: 400% 400%;
 
-    -webkit-animation: statBarSwirlAnimation 5s ease infinite;
-    -moz-animation: statBarSwirlAnimation 5s ease infinite;
-    animation: statBarSwirlAnimation 5s ease infinite;
+  
+
+    @media (min-width : 728px){
+        -webkit-animation: statBarSwirlAnimation 5s ease infinite;
+        -moz-animation: statBarSwirlAnimation 5s ease infinite;
+        animation: statBarSwirlAnimation 5s ease infinite;
+    }
 
     text-align: center;
     font-weight: bold;

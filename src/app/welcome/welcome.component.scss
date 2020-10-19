@@ -54,6 +54,14 @@
       width: 100%;
       margin: 0 auto;
 
+      button {
+        max-width:403px;
+
+        @media (min-width : 1280px){
+          max-width: 100%
+      }
+      }
+
       @media (min-width : 1280px){
         width: 403px;
     }
@@ -64,7 +72,7 @@
     font-size: 18px;
     font-family: serif;
     text-shadow: 1px 1px 3px #000;
-    max-width: 750px;
+    max-width: 460px;
     text-align: center;
     margin: 0 auto 50px auto;
     line-height: 1.2;
@@ -73,6 +81,7 @@ padding: 0 20px;
     @media (min-width : 1280px){
       font-size: 35px;
       padding: 0;
+      max-width: 750px;
   }
   }
 
@@ -108,4 +117,9 @@ padding: 0 20px;
       max-width: 255px;
     }
   }
+}
+
+
+ ::ng-deep .mat-dialog-container {
+  margin: 0 45px;
 }

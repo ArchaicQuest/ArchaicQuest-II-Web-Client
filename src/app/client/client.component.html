@@ -1,6 +1,6 @@
 <div class="client">
     <div class="client-grid">
-        <div class="client-player-stats">
+        <div class="client-player-stats show-info-mobile">
 
             <div class="client-grid-content">
                 <mat-tab-group mat-align-tabs="start">
@@ -109,6 +109,16 @@
             </div>
         </div>
         <div class="client-window">
+            <button class="ui-buttons" (click)=showInfo()>
+                INFO
+            </button>
+            <button class="ui-button--map ui-buttons">
+                MAP
+            </button>
+
+            <button class="ui-button--settings ui-buttons">
+                CONFIG
+            </button>
 
             <app-window></app-window>
 

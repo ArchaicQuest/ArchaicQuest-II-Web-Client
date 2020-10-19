@@ -11,7 +11,7 @@
                 Enter a valid email</mat-error>
 
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput placeholder="Username" formControlName="username">
             <mat-error class="error-message"
@@ -21,7 +21,7 @@
                 *ngIf="form.get('username').hasError('minlength') && (form.get('password').dirty || form.get('password').touched)">
                 Username needs to be atleast 3 characters long</mat-error>
 
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off">
