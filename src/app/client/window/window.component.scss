@@ -9,9 +9,10 @@ table {
 pre {
   display: none;
 
-  @media (min-width : 600){
+  @media (min-width: 600px){
     display: block;
 }
+
 }
 .echo {
   color: #666;
@@ -76,14 +77,33 @@ font-size: 12px;
 }
 
 .combat-start {
-  margin-bottom: 15px;;
+  margin-bottom: 15px;
 }
 
 .cell-title  {
   color: #2ecc71;
 }
+.ooc {
+  color: chartreuse;
+  span {
+    color: #fff;
+  }
+}
 
+.gossip {
+  color: fuchsia;
+  span {
+    color: #fff;
+  }
+}
 
+.newbie {
+  color: yellow;
+
+  span {
+    color: red;
+  }
+}
 .char-look {
   border-top: 1px solid #cccc;
   border-bottom: 1px solid #cccc;
