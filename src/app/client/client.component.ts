@@ -87,7 +87,7 @@ export class ClientComponent implements OnInit, OnDestroy {
     ngAfterContentInit(): void {
 
         this.$stats = this.clientService.$stats.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
-            console.log(x)
+
             this.playerStats.hp.current = x.hp.current;
             this.playerStats.hp.max = x.hp.max;
             this.playerStats.mana.current = x.mana.current;
@@ -99,7 +99,7 @@ export class ClientComponent implements OnInit, OnDestroy {
         });
 
         this.$eq = this.clientService.$eq.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
-            console.log(x)
+
             this.eq = x;
         });
 
@@ -109,7 +109,7 @@ export class ClientComponent implements OnInit, OnDestroy {
         });
 
         this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
-            console.log(x)
+
             if (x.text == '') { return; }
 
             switch (x.type) {
@@ -156,7 +156,6 @@ export class ClientComponent implements OnInit, OnDestroy {
     ngAfterViewInit() {
 
         this.$map = this.clientService.$map.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
-            console.log(x)
 
             this.map.map = x.map;
             this.map.roomId = x.roomId;
@@ -185,6 +184,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
         var pnode = '';
         for (var i in this.map.map['nodes']) {
+
             if (this.map.map['nodes'][i].id == "node" + this.map.roomId) {
                 this.map.map['nodes'][i].color = '#FF7619'
                 pnode = this.map.map['nodes'][i];
@@ -193,10 +193,10 @@ export class ClientComponent implements OnInit, OnDestroy {
             };
 
         }
-        // console.log("xcx", this.map.map['nodes'])
+
         if (this.map.map['nodes'] == null) { return; }
         // let newNodes = this.map.map['nodes'].filter(x => x.x >= x.x + 7);
-        // console.log("filter ", newNodes);
+        // console.log("edges ", this.map.map['edges']);
 
 
         var graph = this.map.map;

@@ -38,7 +38,7 @@ export class ManageCharactersComponent implements OnInit {
                     new Date(a.LastLoginTime).getTime() - new Date(b.LastLoginTime).getTime()
                 );
 
-                console.log(this.characters);
+
 
                 this.isLoading = false;
 

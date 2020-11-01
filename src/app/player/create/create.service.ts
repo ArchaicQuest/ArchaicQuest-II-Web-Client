@@ -35,7 +35,7 @@ export class CreateService {
 
 
     createCharacter(data) {
-        console.log('post this ', data);
+
         this._http.post(`${environment.hostAPI}/api/Character/Player`, JSON.stringify(data), {
             headers: this.headers,
             // responseType: 'text'

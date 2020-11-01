@@ -90,7 +90,7 @@ export class ClientService implements OnDestroy {
 
                 this.connection.invoke('getConnectionId')
                     .then((connectionId) => {
-                        console.log(connectionId)
+
                         this.connectionId = connectionId;
                         this.connection.send('welcome', this.connectionId);
                         this.connection.send('AddCharacter', this.connectionId, this.characterId);
@@ -103,33 +103,33 @@ export class ClientService implements OnDestroy {
 
     private createEvents() {
         this.connection.on('SendMessage', (sender, message) => {
-            console.log('send message', sender + ' ' + message);
+
             this.updateWindow(sender, message);
 
         });
 
         this.connection.on('UpdatePlayerHP', (currentHp, maxHP) => {
-            console.log('UpdatePlayerHP', currentHp + ' ' + maxHP);
+
             this.updateStats(currentHp, maxHP, 'hp');
         });
 
         this.connection.on('UpdatePlayerMana', (currentMana, maxMana) => {
-            console.log('UpdatePlayerMana', currentMana + ' ' + maxMana);
+
             this.updateStats(currentMana, maxMana, 'mana');
         });
 
         this.connection.on('UpdatePlayerMoves', (currentMoves, maxMoves) => {
-            console.log('UpdatePlayerMana', currentMoves + ' ' + maxMoves);
+
             this.updateStats(currentMoves, maxMoves, 'moves');
         });
 
         this.connection.on('UpdatePlayerExp', (currentExp, maxExp) => {
-            console.log('UpdatePlayerExp', currentExp + ' ' + maxExp);
+
             this.updateStats(currentExp, maxExp, 'exp');
         });
 
         this.connection.on('EquipmentUpdate', (eq) => {
-            console.log('EquipmentUpdate', eq);
+
             this.eq = eq;
             this.EquipmentChange();
         });
@@ -141,13 +141,13 @@ export class ClientService implements OnDestroy {
         });
 
         this.connection.on('ScoreUpdate', (player) => {
-            console.log('ScoreUpdate', player);
+
             this.playerScore = player;
             this.$playerScore.next(this.playerScore);
         });
 
         this.connection.on('CommUpdate', (txt, type) => {
-            console.log('CommUpdate', txt, type);
+
             this.comms = {
                 text: txt,
                 type: type
@@ -157,7 +157,7 @@ export class ClientService implements OnDestroy {
         });
 
         this.connection.on('MapUpdate', (map, roomId) => {
-            console.log('MapUpdate', roomId);
+
             this.map.map = JSON.parse(map);
             this.map.roomId = roomId;
             this.$map.next(this.map);
@@ -165,14 +165,14 @@ export class ClientService implements OnDestroy {
 
         this.connection.on('SendAction', (sender, message) => {
 
-            console.log('send action', sender + ' ' + message);
+
             this.updateWindow(sender, message);
 
         });
 
         this.connection.on('Close', (sender, message) => {
 
-            console.log('close action', sender + ' ' + message);
+
             this.closeConnection();
 
         });
