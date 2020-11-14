@@ -104,7 +104,32 @@
                         <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
                     </mat-tab>
                     <mat-tab label="Affects">Affects</mat-tab>
-                    <mat-tab label="Quests">Quests</mat-tab>
+                    <mat-tab label="Quests">
+                        <div class="client-grid-content-data">
+
+
+                            <div *ngFor="let q of quest">
+                                <h3>{{q?.Title}}</h3>
+                                <p>Area: {{q?.Area}}</p>
+                                <p>Kill:</p>
+
+                                <ol>
+                                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}</li>
+                                </ol>
+
+
+                                <p>{{q?.Description}}</p>
+
+                                Reward:
+                                <ul>
+                                    <li>{{q?.ExpGain}} Experience points</li>
+                                    <li>{{q?.GoldGain}} Gold</li>
+                                    <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </mat-tab>
                 </mat-tab-group>
             </div>
         </div>

@@ -6,6 +6,7 @@ import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { sigma } from 'sigma';
 import { animation } from '@angular/animations';
+import { Quest } from '../_shared/interface/quest.interface';
 
 
 @Component({
@@ -42,6 +43,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     };
     public $eq: Subscription;
     public eq: string;
+    public $quest: Subscription;
+    public quest: Quest[];
     public $inv: Subscription;
     public inv: string;
     public $playerScore: Subscription;
@@ -103,8 +106,15 @@ export class ClientComponent implements OnInit, OnDestroy {
             this.eq = x;
         });
 
+        this.$quest = this.clientService.$quest.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+            if (x == '') { return; }
+
+            this.quest = JSON.parse(x);
+            console.log(this.quest);
+        });
+
         this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
-            console.log(x)
+            console.log("inv", x)
             this.inv = x;
         });
 
@@ -132,7 +142,9 @@ export class ClientComponent implements OnInit, OnDestroy {
                     this.channels.ooc.push(x.text);
 
                     break;
-
+                case "all":
+                    this.channels.all.push(x.text);
+                    break;
                 default:
                     break;
             }
@@ -145,7 +157,7 @@ export class ClientComponent implements OnInit, OnDestroy {
             if (x == null) {
                 return;
             }
-
+            debugger;
             this.playerScore = JSON.parse((x as unknown as string)).player;
 
         });

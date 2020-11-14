@@ -24,6 +24,9 @@ export class ClientService implements OnDestroy {
     public eq: string = "";
     public $eq: BehaviorSubject<string> = new BehaviorSubject<string>(this.eq);
 
+    public quest: string = "";
+    public $quest: BehaviorSubject<any> = new BehaviorSubject<string>(this.quest);
+
     public inv: string = "";
     public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
 
@@ -128,6 +131,13 @@ export class ClientService implements OnDestroy {
             this.updateStats(currentExp, maxExp, 'exp');
         });
 
+        this.connection.on('QuestUpdate', (quest) => {
+
+            this.quest = quest;
+            this.questChange();
+        });
+
+
         this.connection.on('EquipmentUpdate', (eq) => {
 
             this.eq = eq;
@@ -183,10 +193,12 @@ export class ClientService implements OnDestroy {
         return this.connection;
     }
 
+    private questChange() {
+        this.$quest.next(this.quest);
+    }
     private EquipmentChange() {
         this.$eq.next(this.eq);
     }
-
 
 
     public updateStats(current: number, max: number = 0, type: string) {
