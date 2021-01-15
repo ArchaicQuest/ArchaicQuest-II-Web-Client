@@ -162,6 +162,55 @@ p {
 
 }
 
+.motd {
+  font-size: 10px;
+}
 pre {
   font-size: 10px;
+}
+
+
+.help-section {
+  max-width: 720px;
+  table {
+      color: #fff;
+      max-width: 720px;
+  
+      td {
+          padding: 3px 10px;
+      width: inherit;
+          &:first-of-type {
+              border-right: 1px white dashed;
+              width: 118px;
+              color:aqua;
+              padding-left: 0;
+          }
+      }
+      border-top: 2px aqua dashed;
+      border-bottom: 2px aqua dashed;
+  
+       
+  }
+  
+  pre {
+      color: #fff;
+      font-size: 16px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      white-space: break-spaces;
+  }
+  
+  border-bottom:  2px aqua dashed;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  }
+
+  .help-list {
+
+  td {
+ 
+    &:first-of-type {
+color:aqua;
+        width: 118px;
+    }
+  }
 }
