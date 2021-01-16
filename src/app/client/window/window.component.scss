@@ -172,6 +172,9 @@ pre {
 
 .help-section {
   max-width: 720px;
+
+
+
   table {
       color: #fff;
       max-width: 720px;
@@ -191,6 +194,25 @@ pre {
   
        
   }
+
+  .simple {
+    border-collapse: collapse;
+    tr:nth-child(even) {
+      background-color: #242528;
+    }
+    td {
+     
+      &:first-of-type {
+          border-right: 0 none;
+          width: auto;
+          color:yellow;
+          padding-left: 0;
+      }
+  }
+  border-top: 0 none;
+  border-bottom: 0 none;
+  }
+  
   
   pre {
       color: #fff;
