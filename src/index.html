@@ -15,6 +15,29 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lusitana&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
+    <script>
+        window.onbeforeunload = function () {
+            event.preventDefault();
+            return "Are you sure to exit ArchaicQuest?";
+        };
+
+        function disableBackspaceNavigation() {
+            window.onkeydown = function (e) {
+                if (e.keyCode == 8 && !isTextBox(e.target)) e.preventDefault();
+            }
+        }
+
+        function isTextBox(element) {
+            var tagName = element.tagName.toLowerCase();
+            if (tagName !== "input") return false;
+
+            var typeAttr = element.getAttribute('type').toLowerCase();
+            return typeAttr === 'text';
+        }
+
+        disableBackspaceNavigation();
+
+    </script>
 </head>
 
 <body>

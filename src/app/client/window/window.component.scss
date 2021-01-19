@@ -236,3 +236,22 @@ color:aqua;
     }
   }
 }
+
+table.simple {
+  width:730px;
+  border-collapse: collapse;
+  tr:nth-child(even) {
+    background-color: #242528;
+  }
+  td {
+   
+    &:first-of-type {
+        border-right: 0 none;
+        width: auto;
+        color:yellow;
+        padding-left: 0;
+    }
+}
+border-top: 0 none;
+border-bottom: 0 none;
+}

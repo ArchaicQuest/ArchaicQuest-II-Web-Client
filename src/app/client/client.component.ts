@@ -85,6 +85,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.clientService.initHub();
+
     }
 
     ngAfterContentInit(): void {

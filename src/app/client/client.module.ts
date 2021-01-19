@@ -19,13 +19,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatComponent } from './stat-bar/stat-bar.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TabDirective } from '../_shared/directives/tab-directive';
 @NgModule({
     declarations: [
         ClientComponent,
         WindowComponent,
         InputComponent,
         StatComponent,
-        Safe
+        Safe,
+        TabDirective
     ],
     entryComponents: [
     ],
@@ -42,7 +45,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
         CommonModule,
         MatTabsModule,
         MatSnackBarModule,
-        ScrollingModule
+        ScrollingModule,
+        MatAutocompleteModule
+
     ],
     providers: [HttpService],
 
