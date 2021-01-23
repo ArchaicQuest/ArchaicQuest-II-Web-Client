@@ -255,3 +255,21 @@ table.simple {
 border-top: 0 none;
 border-bottom: 0 none;
 }
+
+
+.verbose-exit-wrapper {
+ 
+  .dark-room {
+
+    .verbose-exit, .verbose-exit-name {
+    color:#666!important;
+    }
+  }
+
+  .verbose-exit {
+    color: #fff;
+    white-space: nowrap;
+width: 1%;
+
+  }
+}
