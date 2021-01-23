@@ -1,10 +1,5 @@
 <form [formGroup]="form">
-    <input tab-directive [matAutocomplete]="auto" #inputTxt type="text" placeholder="Enter commands here, /? for help."
-        formControlName="input" maxlength="751" />
-    <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let command of filteredCommands | async" [value]="command">
-            {{command}}
-        </mat-option>
-    </mat-autocomplete>
+    <input #inputTxt type="text" placeholder="Enter commands here, /? for help." formControlName="input"
+        maxlength="751" />
     <button type="submit" #btn (click)="sendToServer(); inputTxt.select()" [disabled]="form.invalid">Send</button>
 </form>

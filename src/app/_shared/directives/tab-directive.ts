@@ -8,7 +8,7 @@ export class TabDirective {
     observable: any;
     constructor(@Optional() private autoTrigger: MatAutocompleteTrigger, @Optional() private control: NgControl) { }
 
-    @HostListener('keydown.tab', ['$event.target']) onBlur() {
+    @HostListener('keydown.tab') onBlur() {
         if (this.autoTrigger.activeOption) {
             this.autoTrigger.writeValue(this.autoTrigger.activeOption.value)
             //this.autoTrigger._handleFocus();
