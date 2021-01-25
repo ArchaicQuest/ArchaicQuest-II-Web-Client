@@ -76,6 +76,9 @@ export class InputComponent implements OnInit {
 
     }
 
+    OnClickToServer(command: string) {
+        this._clientService.sendToServer(command);
+    }
 
     sendToServer() {
         this.passedCommands.push(this.cleanInput());

@@ -158,7 +158,7 @@ export class ClientComponent implements OnInit, OnDestroy {
             if (x == null) {
                 return;
             }
-            debugger;
+
             this.playerScore = JSON.parse((x as unknown as string)).player;
 
         });

@@ -257,19 +257,34 @@ border-bottom: 0 none;
 }
 
 
+
 .verbose-exit-wrapper {
  
-  .dark-room {
-
-    .verbose-exit, .verbose-exit-name {
-    color:#666!important;
-    }
-  }
-
   .verbose-exit {
     color: #fff;
     white-space: nowrap;
 width: 1%;
 
+  }
+}
+
+.room-dark { 
+
+  .verbose-exit {
+    color:#666!important;
+  }
+ .verbose-exit-wrapper .verbose-exit  {
+    color:#666!important;
+  }
+  .verbose-exit-name a, .verbose-exit-wrapper, .verbose-exit, table td {
+ color:#666!important;
+ }
+}
+
+.verbose-exit-name a {
+  color:#2ecc71;
+
+  &:hover {
+    border-bottom-color: #2ecc71;
   }
 }

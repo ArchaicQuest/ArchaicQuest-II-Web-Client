@@ -11,6 +11,7 @@ import { trigger, style, transition, animate } from '@angular/animations';
     styleUrls: ['./window.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
+    host: { '(window:post-to-server)': 'OnClickSendToServer($event)' },
     animations: [
         trigger('fadeIn', [
             transition(':enter', [
@@ -30,7 +31,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     userScrolled = false;
     @ViewChild('window', { static: true }) window: HTMLElement;
 
-    constructor(private clientService: ClientService, private _snackBar: MatSnackBar) { }
+    constructor(private clientService: ClientService, private _snackBar: MatSnackBar, private elRef: ElementRef) { }
 
     ngOnInit() {
 
@@ -40,6 +41,10 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
         return index
     }
 
+    OnClickSendToServer(command: CustomEvent) {
+        console.log(command)
+        this.clientService.sendToServer(command.detail);
+    }
 
     ngAfterContentInit(): void {
 
@@ -52,8 +57,11 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
                 // });
                 this.windowData = x;
 
+
             }
         });
+
+
     }
 
     ngOnDestroy(): void {
