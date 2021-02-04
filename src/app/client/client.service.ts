@@ -39,7 +39,7 @@ export class ClientService implements OnDestroy {
     };
     public $map: BehaviorSubject<{ map: string, roomId: number }> = new BehaviorSubject<{ map: string, roomId: number }>(this.map);
 
-    public playerScore: Player;
+    public playerScore: Player = null;
     public $playerScore: BehaviorSubject<Player> = new BehaviorSubject<Player>(this.playerScore);
 
     /*

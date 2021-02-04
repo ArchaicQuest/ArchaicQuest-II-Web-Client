@@ -66,7 +66,8 @@ pre {
 
 .mob, .improve {
   color:yellow;
-  margin-bottom: 0;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .room-emote {
@@ -211,6 +212,26 @@ pre {
   }
   border-top: 0 none;
   border-bottom: 0 none;
+  }
+
+  .simple.heading {
+    td {
+   
+      &:first-of-type {
+ 
+          color:#fff; 
+      }
+
+    
+  }
+
+  tr:nth-child(odd) {
+    td {
+    color:yellow;
+    font-weight: bold;
+    margin: 10px 0;
+    }
+  }
   }
   
   
