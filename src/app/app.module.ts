@@ -32,6 +32,7 @@ import { HttpService } from './_shared/http.service';
 import { Safe } from './_shared/pipes/safe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ClientService } from './client/client.service';
+import { ContextModalComponent } from './context-modal/context-modal.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,9 +41,11 @@ import { ClientService } from './client/client.service';
         PlayerAppearanceComponent,
         CreateAccountComponent,
         ManageCharactersComponent,
+        ContextModalComponent,
     ],
     entryComponents: [
-        CreateAccountComponent
+        CreateAccountComponent,
+        ContextModalComponent
     ],
     imports: [
         BrowserModule,

@@ -4,6 +4,8 @@ import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signal
 import { BehaviorSubject } from 'rxjs';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
+import { ContextModalComponent } from '../context-modal/context-modal.component';
+import { MatDialog } from '@angular/material';
 
 @Injectable({
     providedIn: 'root'
@@ -66,7 +68,7 @@ export class ClientService implements OnDestroy {
     }
     public $stats: BehaviorSubject<PlayerStats> = new BehaviorSubject<PlayerStats>(this.stats);
 
-    constructor() {
+    constructor(public dialog: MatDialog) {
 
     }
 
@@ -103,6 +105,16 @@ export class ClientService implements OnDestroy {
             })
             .catch(err => console.error(err.toString()));
     }
+
+    // openDialog(data: { name: string, desc: string, type: string }) {
+    //     this.dialog.open(ContextModalComponent, {
+    //         data: {
+    //             name: data.name,
+    //             desc: data.desc,
+    //             type: data.type
+    //         }
+    //     });
+    // }
 
     private createEvents() {
         this.connection.on('SendMessage', (sender, message) => {

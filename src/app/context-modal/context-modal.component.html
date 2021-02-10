@@ -1,0 +1,16 @@
+<h3>{{data.name}}</h3>
+
+<p>{{data.desc}}</p>
+
+<div class="button-row">
+
+    <button mat-raised-button color="primary" (click)="sendToServer('get ' + data.keyword)">Get</button>
+    <button mat-raised-button color="primary" (click)="sendToServer('examine ' + data.keyword)">Examine</button>
+
+    <button mat-raised-button color="primary" (click)="sendToServer('open ' + data.keyword)"
+        *ngIf='isContainer(data.type) && canOpen(data.canOpen)'>Open</button>
+    <button mat-raised-button color="primary" (click)="sendToServer('close ' + data.keyword)"
+        *ngIf='isContainer(data.type)  && canOpen(data.canOpen)'>Close</button>
+    <button mat-raised-button color="primary" (click)="sendToServer('look in ' + data.keyword)"
+        *ngIf='isContainer(data.type)'>Look in </button>
+</div>

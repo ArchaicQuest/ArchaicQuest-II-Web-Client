@@ -4,6 +4,8 @@ import { Subscription, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeUntil } from 'rxjs/operators';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { MatDialog } from '@angular/material';
+import { ContextModalComponent } from 'src/app/context-modal/context-modal.component';
 
 @Component({
     selector: 'app-window',
@@ -11,7 +13,10 @@ import { trigger, style, transition, animate } from '@angular/animations';
     styleUrls: ['./window.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
-    host: { '(window:post-to-server)': 'OnClickSendToServer($event)' },
+    host: {
+        '(window:post-to-server)': 'OnClickSendToServer($event)',
+        '(window:open-detail)': 'openDialog($event)'
+    },
     animations: [
         trigger('fadeIn', [
             transition(':enter', [
@@ -31,7 +36,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     userScrolled = false;
     @ViewChild('window', { static: true }) window: HTMLElement;
 
-    constructor(private clientService: ClientService, private _snackBar: MatSnackBar, private elRef: ElementRef) { }
+    constructor(private clientService: ClientService, private _snackBar: MatSnackBar, private elRef: ElementRef, public dialog: MatDialog) { }
 
     ngOnInit() {
 
@@ -39,6 +44,18 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
     trackByFn(index, item) {
         return index
+    }
+
+    openDialog(x: CustomEvent) {
+        this.dialog.open(ContextModalComponent, {
+            data: {
+                name: x.detail.name,
+                desc: x.detail.desc,
+                type: x.detail.type,
+                keyword: x.detail.keyword,
+                canOpen: x.detail.canOpen
+            }
+        });
     }
 
     OnClickSendToServer(command: CustomEvent) {
