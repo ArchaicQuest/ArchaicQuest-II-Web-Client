@@ -10,7 +10,7 @@ import { ClientService } from '../client/client.service';
 })
 export class ContextModalComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ContextModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, type: string, canOpen: boolean, isOpen: boolean, keyword: string }, private service: ClientService) { }
+  constructor(public dialogRef: MatDialogRef<ContextModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, type: string, canOpen: string, isOpen: boolean, keyword: string }, private service: ClientService) { }
 
   ngOnInit() {
   }
