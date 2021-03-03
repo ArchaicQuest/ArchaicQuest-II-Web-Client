@@ -37,6 +37,7 @@ export interface Player {
         copper: number;
     };
     qffects?: any;
+    weight: number,
     config?: any;
     joinedDate?: Date;
     LastLoginTime?: Date;

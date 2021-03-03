@@ -214,6 +214,7 @@ export class CreatePlayerComponent implements OnInit {
                 manaPoints: 100,
                 movePoints: 100
             },
+            weight: 0,
             Build: this.build,
             Eyes: this.eyeColor,
             Face: this.face,

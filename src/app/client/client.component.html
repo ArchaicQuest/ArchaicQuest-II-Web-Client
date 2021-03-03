@@ -7,6 +7,7 @@
                     <mat-tab label="Score">
                         <div class="client-grid-content-data">
                             <div class="player-info">
+
                                 <h2>{{playerScore?.name}}</h2>
 
                                 <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
@@ -83,11 +84,16 @@
                                 </tr>
                                 <tr>
                                     <td>Weight:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Strength * 3}}</td>
+                                    <td>{{playerScore?.weight}} lb. /
+                                        {{playerScore?.attributes.Attribute.Strength *
+                                        3}} lb.
+                                    </td>
                                     <td>Gold:</td>
-                                    <td>1000</td>
+                                    <td>{{playerScore['Money']['Gold'] == null ? 0 : playerScore['Money']['Gold']}}
+                                    </td>
                                 </tr>
                             </table>
+
                         </div>
 
                     </mat-tab>
