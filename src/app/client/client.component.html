@@ -8,6 +8,8 @@
                         <div class="client-grid-content-data">
                             <div class="player-info">
 
+
+
                                 <h2>{{playerScore?.name}}</h2>
 
                                 <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
@@ -41,20 +43,21 @@
                             <table style="width:100%" class="player-info-table">
                                 <tr>
                                     <td>Armour:</td>
-                                    <td>{{playerScore?.armorRating.armour}}</td>
+                                    <td>{{playerScore?.armorRating['Armour']}}
+                                    </td>
                                     <td>Damage:</td>
                                     <td>xxx</td>
 
                                 </tr>
                                 <tr>
                                     <td>Hit roll:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                                    <td>{{playerScore?.attributes.Attribute.HitRoll}}</td>
                                     <td>Dam Roll:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                                    <td>{{playerScore?.attributes.Attribute.DamageRoll}}</td>
                                 </tr>
                                 <tr>
                                     <td>Spell Res:</td>
-                                    <td>{{playerScore?.armorRating.magic}}</td>
+                                    <td>{{playerScore?.armorRating['Magic']}}</td>
                                     <td>Spell dam:</td>
                                     <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
                                 </tr>
@@ -109,7 +112,36 @@
                     <mat-tab label="Equipment">
                         <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
                     </mat-tab>
-                    <mat-tab label="Affects">Affects</mat-tab>
+                    <mat-tab label="Affects">
+                        <p>You are affected by the following effects:</p>
+                        <div *ngFor="let aff of affects?.custom">
+
+                            <table class="simple" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            name
+                                        </td>
+                                        <td>
+                                            duration (ticks)
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        {{aff.name}}
+                                        <div [innerHTML]="aff.benefits | safeHtml"></div>
+                                    </td>
+                                    <td>
+                                        {{aff.duration}}
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+                    </mat-tab>
                     <mat-tab label="Quests">
                         <div class="client-grid-content-data">
 

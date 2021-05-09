@@ -32,6 +32,9 @@ export class ClientService implements OnDestroy {
     public inv: string = "";
     public $inv: BehaviorSubject<string> = new BehaviorSubject<string>(this.inv);
 
+    public affects: any = "";
+    public $affects: BehaviorSubject<any> = new BehaviorSubject<string>(this.affects);
+
     public comms: { text: string, type: string } = { text: '', type: '' };
     public $comms: BehaviorSubject<{ text: string, type: string }> = new BehaviorSubject<{ text: string, type: string }>(this.comms);
 
@@ -160,6 +163,12 @@ export class ClientService implements OnDestroy {
             console.log('InventoryUpdate', inv);
             this.inv = inv;
             this.$inv.next(this.inv);
+        });
+
+        this.connection.on('UpdatePlayerAffects', (x) => {
+            console.log('UpdatePlayerAffects', x);
+            this.affects = x;
+            this.$affects.next(this.affects);
         });
 
         this.connection.on('ScoreUpdate', (player) => {

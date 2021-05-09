@@ -52,6 +52,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     public $comms: Subscription;
     public comms: { text: string, type: string };
     public $map: Subscription;
+    public $affects: Subscription;
+    public affects: any;
     public showInfoMobile: boolean;
     //public map: string;
     public channels: {
@@ -117,6 +119,11 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log("inv", x)
             this.inv = x;
+        });
+
+        this.$affects = this.clientService.$affects.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+            console.log("affects", x)
+            this.affects = x;
         });
 
         this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
