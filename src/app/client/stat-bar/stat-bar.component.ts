@@ -12,6 +12,7 @@ import { Stats } from './stats.interface';
 
 export class StatComponent implements OnInit {
     @Input() type: string;
+    @Input() label: string;
     @Input() stats: Stats;
     @Input() showCurrent: boolean = true;
 

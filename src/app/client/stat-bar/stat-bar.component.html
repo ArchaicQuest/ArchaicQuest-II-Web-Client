@@ -1,4 +1,5 @@
 <div class="stat-bar"
     [ngClass]="{'stat-bar--mana': type === 'mana', 'stat-bar--moves':type === 'moves', 'stat-bar--exp':type === 'exp' }">
     <span>{{stats?.current || 0}}</span><span class="stat-bar__max" *ngIf="showCurrent">/{{stats?.max || 0}}</span>
+    {{label}}
 </div>

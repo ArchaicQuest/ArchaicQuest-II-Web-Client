@@ -113,27 +113,65 @@
                         <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
                     </mat-tab>
                     <mat-tab label="Affects">
+
                         <p>You are affected by the following effects:</p>
-                        <div *ngFor="let aff of affects?.custom">
+                        <div>
 
                             <table class="simple" style="width:100%">
                                 <thead>
                                     <tr>
                                         <td>
-                                            name
+                                            Skill
                                         </td>
                                         <td>
-                                            duration (ticks)
+                                            Affect
                                         </td>
                                     </tr>
                                 </thead>
-                                <tr>
+                                <tr *ngFor="let aff of affects?.custom">
                                     <td>
                                         {{aff.name}}
                                         <div [innerHTML]="aff.benefits | safeHtml"></div>
                                     </td>
                                     <td>
-                                        {{aff.duration}}
+                                        <p *ngIf="aff.modifier.armour">modifies armour by {{aff.modifier.armour}}<br />
+                                            for
+                                            {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.damRoll">modifies damage roll by
+                                            {{aff.modifier.damRoll}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.hitRoll">modifies hit roll by
+                                            {{aff.modifier.hitRoll}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.saves">modifies saves by {{aff.modifier.saves}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.hp">modifies hit points by {{aff.modifier.hp}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.mana">modifies mana by {{aff.modifier.mana}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.moves">modifies moves by {{aff.modifier.moves}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.spellDam">modifies spell damage by
+                                            {{aff.modifier.spellDam}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.strength">modifies strength by
+                                            {{aff.modifier.strength}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.dexterity">modifies dexterity by
+                                            {{aff.modifier.dexterity}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.constitution">modifies constitution by
+                                            {{aff.modifier.constitution}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.intelligence">modifies intelligence by
+                                            {{aff.modifier.intelligence}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.wisdom">modifies wisdom by {{aff.modifier.wisdom}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                                        <p *ngIf="aff.modifier.charisma">modifies charisma by
+                                            {{aff.modifier.charisma}}<br />
+                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+
                                     </td>
                                 </tr>
                             </table>
@@ -229,10 +267,11 @@
         </div>
     </div>
     <div class="client-stats">
-        <app-stat-bar [stats]="playerStats.hp"></app-stat-bar>
-        <app-stat-bar type="mana" [stats]="playerStats.mana"></app-stat-bar>
-        <app-stat-bar type="moves" [stats]="playerStats.moves"></app-stat-bar>
-        <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false"></app-stat-bar>
+        <app-stat-bar [stats]="playerStats.hp" label="Hit points"></app-stat-bar>
+        <app-stat-bar type="mana" [stats]="playerStats.mana" label="Mana"></app-stat-bar>
+        <app-stat-bar type="moves" [stats]="playerStats.moves" label="Moves"></app-stat-bar>
+        <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false" label="XP til next level">
+        </app-stat-bar>
     </div>
     <div class="client-input">
         <app-input></app-input>
