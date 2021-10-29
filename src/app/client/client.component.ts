@@ -53,6 +53,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     public comms: { text: string, type: string };
     public $map: Subscription;
     public $affects: Subscription;
+    public $time: Subscription;
+    public time: string;
     public affects: any;
     public showInfoMobile: boolean;
     //public map: string;
@@ -107,6 +109,12 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$eq = this.clientService.$eq.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 
             this.eq = x;
+        });
+
+
+        this.$time = this.clientService.$time.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+
+            this.time = x;
         });
 
         this.$quest = this.clientService.$quest.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {

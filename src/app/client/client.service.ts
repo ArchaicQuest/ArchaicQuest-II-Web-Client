@@ -26,6 +26,9 @@ export class ClientService implements OnDestroy {
     public eq: string = "";
     public $eq: BehaviorSubject<string> = new BehaviorSubject<string>(this.eq);
 
+    public time: string = "";
+    public $time: BehaviorSubject<string> = new BehaviorSubject<string>(this.time);
+
     public quest: string = "";
     public $quest: BehaviorSubject<any> = new BehaviorSubject<string>(this.quest);
 
@@ -206,6 +209,13 @@ export class ClientService implements OnDestroy {
 
             this.closeConnection();
 
+        });
+
+        this.connection.on('UpdateTime', (time) => {
+
+            this.time = time;
+            this.$time.next(this.time);
+            console.log("time t " + time)
         });
     }
 

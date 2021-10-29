@@ -1,6 +1,10 @@
 .client {
   display: grid;
   background: #18191b;
+
+  .mat-expansion-panel {
+    margin-bottom: 10px;
+  }
  
 
   .client-grid {

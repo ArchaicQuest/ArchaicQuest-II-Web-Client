@@ -183,26 +183,70 @@
                     <mat-tab label="Quests">
                         <div class="client-grid-content-data">
 
+                            <h3>Active Quests</h3>
 
-                            <div *ngFor="let q of quest">
-                                <h3>{{q?.Title}}</h3>
-                                <p>Area: {{q?.Area}}</p>
-                                <p>Kill:</p>
+                            <mat-accordion *ngFor="let q of quest">
+                                <mat-expansion-panel hideToggle *ngIf="!q.Completed">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{q?.Title}}
+                                        </mat-panel-title>
 
-                                <ol>
-                                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}</li>
-                                </ol>
+                                    </mat-expansion-panel-header>
+                                    <p>Area: {{q?.Area}}</p>
+                                    <p>Kill:</p>
+
+                                    <ol>
+                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                                        </li>
+                                    </ol>
 
 
-                                <p>{{q?.Description}}</p>
+                                    <p>{{q?.Description}}</p>
 
-                                Reward:
-                                <ul>
-                                    <li>{{q?.ExpGain}} Experience points</li>
-                                    <li>{{q?.GoldGain}} Gold</li>
-                                    <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
-                                </ul>
-                            </div>
+                                    Reward:
+                                    <ul>
+                                        <li>{{q?.ExpGain}} Experience points</li>
+                                        <li>{{q?.GoldGain}} Gold</li>
+                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                                    </ul>
+                                </mat-expansion-panel>
+
+                            </mat-accordion>
+
+                            <h3>Completed Quests</h3>
+
+                            <mat-accordion *ngFor="let q of quest">
+                                <mat-expansion-panel hideToggle *ngIf="q.Completed">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{q?.Title}}
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+                                    <p>Area: {{q?.Area}}</p>
+                                    <p>Kill:</p>
+
+                                    <ol>
+                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                                        </li>
+                                    </ol>
+
+
+                                    <p>{{q?.Description}}</p>
+
+                                    Reward:
+                                    <ul>
+                                        <li>{{q?.ExpGain}} Experience points</li>
+                                        <li>{{q?.GoldGain}} Gold</li>
+                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                                    </ul>
+                                </mat-expansion-panel>
+
+                            </mat-accordion>
+
+
+
 
                         </div>
                     </mat-tab>
@@ -274,6 +318,8 @@
         </app-stat-bar>
     </div>
     <div class="client-input">
-        <app-input></app-input>
+        <app-input>
+            {{time}}
+        </app-input>
     </div>
 </div>

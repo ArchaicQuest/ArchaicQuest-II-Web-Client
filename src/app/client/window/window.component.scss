@@ -75,7 +75,7 @@ pre {
 }
 .mob-emote {
   color:#CCCC00;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .score-table {
@@ -124,6 +124,14 @@ font-size: 12px;
   }
 }
 
+
+.time-of-day {
+  color:#f4d635;
+}
+
+.weather {
+  color: deepskyblue;
+}
 .gossip {
   color: fuchsia;
   span {
