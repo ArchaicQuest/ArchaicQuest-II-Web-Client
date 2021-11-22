@@ -35,7 +35,7 @@ export class ManageCharactersComponent implements OnInit {
                 this.characters = data.profile.Characters;
 
                 this.characters.sort((a: any, b: any) =>
-                    new Date(a.LastLoginTime).getTime() - new Date(b.LastLoginTime).getTime()
+                    new Date(b.LastLoginTime).getTime() - new Date(a.LastLoginTime).getTime()
                 );
 
 
