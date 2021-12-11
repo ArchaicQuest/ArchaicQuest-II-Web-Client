@@ -6,6 +6,7 @@ import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { ContextModalComponent } from '../context-modal/context-modal.component';
 import { MatDialog } from '@angular/material';
+import { ContentModalComponent } from './content-modal/content-modal.component';
 
 @Injectable({
     providedIn: 'root'
@@ -258,8 +259,36 @@ export class ClientService implements OnDestroy {
 
     public sendToServer(message: string) {
         this.updateWindow('', `<p class="echo">${message}</p>`);
+
+        if (this.showContentModal(message)) {
+            return;
+        }
+
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
+
+    openContentDialog(title: string, desc: string) {
+        this.dialog.open(ContentModalComponent, {
+            data: {
+                name: title,
+                desc: desc,
+            },
+            width: '750px'
+        });
+    }
+
+
+
+    private showContentModal(message: string) {
+
+        if (message.toLowerCase().startsWith("write")) {
+            this.openContentDialog("Write Book", "Page");
+            return true
+        }
+
+        return false;
+    }
+
 
 
 

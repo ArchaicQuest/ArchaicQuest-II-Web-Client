@@ -33,6 +33,7 @@ import { Safe } from './_shared/pipes/safe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ClientService } from './client/client.service';
 import { ContextModalComponent } from './context-modal/context-modal.component';
+import { ContentModalComponent } from './client/content-modal/content-modal.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -42,10 +43,12 @@ import { ContextModalComponent } from './context-modal/context-modal.component';
         CreateAccountComponent,
         ManageCharactersComponent,
         ContextModalComponent,
+        ContentModalComponent
     ],
     entryComponents: [
         CreateAccountComponent,
-        ContextModalComponent
+        ContextModalComponent,
+        ContentModalComponent
     ],
     imports: [
         BrowserModule,

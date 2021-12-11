@@ -1,0 +1,22 @@
+<h3>{{data.name}}</h3>
+
+<p>{{data.desc}}</p>
+
+
+
+<mat-form-field appearance="outline" class="form-control">
+    <mat-label>Text</mat-label>
+    <textarea matInput placeholder="Description" value="" required formControlName="description" cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10"
+        (selectionChange)="triggerDescriptionResize()"></textarea>
+
+</mat-form-field>
+
+<div class="button-row">
+
+
+
+
+    <button mat-raised-button color="primary">Save</button>
+
+</div>

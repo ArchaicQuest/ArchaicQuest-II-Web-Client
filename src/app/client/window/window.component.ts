@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { MatDialog } from '@angular/material';
 import { ContextModalComponent } from 'src/app/context-modal/context-modal.component';
+import { ContentModalComponent } from '../content-modal/content-modal.component';
 
 @Component({
     selector: 'app-window',
@@ -54,14 +55,20 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
                 type: x.detail.type,
                 keyword: x.detail.keyword,
                 canOpen: x.detail.canOpen
-            }
+            },
+            width: '500px'
         });
     }
 
+
     OnClickSendToServer(command: CustomEvent) {
         console.log(command)
+
         this.clientService.sendToServer(command.detail);
     }
+
+
+
 
     ngAfterContentInit(): void {
 
