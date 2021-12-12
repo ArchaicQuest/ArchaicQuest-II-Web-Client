@@ -29,10 +29,11 @@
 
         function isTextBox(element) {
             var tagName = element.tagName.toLowerCase();
-            if (tagName !== "input") return false;
+            console.log(tagName)
+            if (tagName !== "input" && tagName !== "textarea") return false;
 
-            var typeAttr = element.getAttribute('type').toLowerCase();
-            return typeAttr === 'text';
+            return true
+
         }
 
         disableBackspaceNavigation();

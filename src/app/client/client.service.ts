@@ -30,6 +30,9 @@ export class ClientService implements OnDestroy {
     public time: string = "";
     public $time: BehaviorSubject<string> = new BehaviorSubject<string>(this.time);
 
+    public contentPopup: string = "";
+    public $contentPopup: BehaviorSubject<string> = new BehaviorSubject<string>(this.contentPopup);
+
     public quest: string = "";
     public $quest: BehaviorSubject<any> = new BehaviorSubject<string>(this.quest);
 
@@ -218,8 +221,19 @@ export class ClientService implements OnDestroy {
             this.$time.next(this.time);
             console.log("time t " + time)
         });
+
+
+        this.connection.on('UpdateContentPopUp', (content) => {
+
+            this.contentPopup = content;
+            this.$contentPopup.next(this.contentPopup);
+            console.log(content)
+        });
     }
 
+    public returnContentPopUp(): { title: string, description: string, pageNumber: number } {
+        return (this.contentPopup as unknown as { title: string, description: string, pageNumber: number });
+    }
 
     public returnConnection() {
         return this.connection;
@@ -260,34 +274,34 @@ export class ClientService implements OnDestroy {
     public sendToServer(message: string) {
         this.updateWindow('', `<p class="echo">${message}</p>`);
 
-        if (this.showContentModal(message)) {
-            return;
-        }
+        // if (this.showContentModal(message)) {
+        //     return;
+        // }
 
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
 
-    openContentDialog(title: string, desc: string) {
-        this.dialog.open(ContentModalComponent, {
-            data: {
-                name: title,
-                desc: desc,
-            },
-            width: '750px'
-        });
-    }
+    // openContentDialog(title: string, desc: string) {
+    //     this.dialog.open(ContentModalComponent, {
+    //         data: {
+    //             name: title,
+    //             desc: desc,
+    //         },
+    //         width: '750px'
+    //     });
+    // }
 
 
 
-    private showContentModal(message: string) {
+    // private showContentModal(message: string) {
 
-        if (message.toLowerCase().startsWith("write")) {
-            this.openContentDialog("Write Book", "Page");
-            return true
-        }
+    //     if (message.toLowerCase().startsWith("write")) {
+    //         this.openContentDialog("Write Book", "Page");
+    //         return true
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 
 
 

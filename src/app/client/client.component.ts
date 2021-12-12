@@ -54,7 +54,9 @@ export class ClientComponent implements OnInit, OnDestroy {
     public $map: Subscription;
     public $affects: Subscription;
     public $time: Subscription;
+    public $contentPopup: Subscription;
     public time: string;
+    public contentPopup: string;
     public affects: any;
     public showInfoMobile: boolean;
     //public map: string;
@@ -115,6 +117,11 @@ export class ClientComponent implements OnInit, OnDestroy {
         this.$time = this.clientService.$time.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 
             this.time = x;
+        });
+
+        this.$contentPopup = this.clientService.$contentPopup.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+
+            this.contentPopup = x;
         });
 
         this.$quest = this.clientService.$quest.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {

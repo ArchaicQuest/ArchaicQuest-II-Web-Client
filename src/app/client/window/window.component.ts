@@ -68,6 +68,18 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     }
 
 
+    openContentDialog(title: string, desc: string) {
+        this.dialog.open(ContentModalComponent, {
+            data: {
+                name: this.clientService.returnContentPopUp().title,
+                desc: this.clientService.returnContentPopUp().description,
+                pageNumber: this.clientService.returnContentPopUp().pageNumber,
+            },
+            width: '750px'
+        });
+    }
+
+
 
 
     ngAfterContentInit(): void {
@@ -79,6 +91,12 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
                 // let snackBarRef = this._snackBar.open('new message', 'View', {
                 //     duration: 4000
                 // });
+
+                console.log(x[x.length - 1])
+
+                if (x[x.length - 1].startsWith("You begin to writing in your book.")) {
+                    this.openContentDialog("Write Book", "Page");
+                }
                 this.windowData = x;
 
 

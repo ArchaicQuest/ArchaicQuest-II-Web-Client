@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, NgZone, OnInit, ViewChild }
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-context-modal',
@@ -10,11 +11,13 @@ import { take } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentModalComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string }, private ngZone: NgZone,) { }
+  charCount = 0;
+  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, pageNumber: number }, private ngZone: NgZone, private service: ClientService) { }
   @ViewChild('autosize', { static: true }) autosize: CdkTextareaAutosize;
 
+  dataText = ""
   ngOnInit() {
+    this.dataText = this.data.desc;
   }
 
   triggerDescriptionResize() {
