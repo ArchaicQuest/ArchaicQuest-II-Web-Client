@@ -12,7 +12,7 @@ import { ClientService } from '../client.service';
 })
 export class ContentModalComponent implements OnInit {
   charCount = 0;
-  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, pageNumber: number }, private ngZone: NgZone, private service: ClientService) { }
+  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, pageNumber: number, type: string }, private ngZone: NgZone, private service: ClientService) { }
   @ViewChild('autosize', { static: true }) autosize: CdkTextareaAutosize;
 
   dataText = ""
@@ -27,6 +27,15 @@ export class ContentModalComponent implements OnInit {
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
   sendToServer(command: string) {
+
+    this.data.desc = this.dataText;
+    if (this.data.type == "description") {
+      this.data['type'] = "description";
+    }
+    else {
+      this.data['type'] = "book";
+    }
+    this.service.saveContent(JSON.stringify(this.data))
 
     this.dialogRef.close();
   }

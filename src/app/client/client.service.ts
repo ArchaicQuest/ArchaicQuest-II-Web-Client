@@ -281,6 +281,13 @@ export class ClientService implements OnDestroy {
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
     }
 
+    // content modal content
+    // book pages, char desc etc
+    public saveContent(message: string) {
+
+        this.connection.send('CharContent', message, this.connectionId).catch(err => { });
+    }
+
     // openContentDialog(title: string, desc: string) {
     //     this.dialog.open(ContentModalComponent, {
     //         data: {

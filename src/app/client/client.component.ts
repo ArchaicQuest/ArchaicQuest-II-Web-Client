@@ -7,6 +7,8 @@ import { Player } from '../player/Interface/player.interface';
 import { sigma } from 'sigma';
 import { animation } from '@angular/animations';
 import { Quest } from '../_shared/interface/quest.interface';
+import { ContentModalComponent } from './content-modal/content-modal.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -87,7 +89,7 @@ export class ClientComponent implements OnInit, OnDestroy {
     sigma: any = null;
 
     @ViewChild('mapContainer', { static: false }) mapContainer;
-    constructor(private clientService: ClientService) { }
+    constructor(private clientService: ClientService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this.clientService.initHub();
@@ -276,5 +278,16 @@ export class ClientComponent implements OnInit, OnDestroy {
 
     showInfo() {
         this.showInfoMobile = !this.showInfoMobile;
+    }
+
+    editDescription() {
+        this.dialog.open(ContentModalComponent, {
+            data: {
+                name: "Description",
+                desc: this.playerScore.description,
+                type: "description"
+            },
+            width: '750px'
+        });
     }
 }

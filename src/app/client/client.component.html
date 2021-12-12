@@ -100,7 +100,12 @@
                         </div>
 
                     </mat-tab>
-                    <mat-tab label="Description">Description</mat-tab>
+                    <mat-tab label="Description">
+
+                        <p>{{playerScore?.description}}</p>
+
+                        <button mat-raised-button color="secondary" (click)="editDescription()">Edit</button>
+                    </mat-tab>
 
                 </mat-tab-group>
             </div>
