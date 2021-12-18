@@ -112,7 +112,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
         this.$eq = this.clientService.$eq.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 
-            this.eq = x;
+            this.eq = this.clientService.ParseHtmlColorCodes(x);
         });
 
 
@@ -135,7 +135,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
         this.$inv = this.clientService.$inv.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
             console.log("inv", x)
-            this.inv = x;
+            this.inv = this.clientService.ParseHtmlColorCodes(x);
         });
 
         this.$affects = this.clientService.$affects.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {

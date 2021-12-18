@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { ClientService } from '../client.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-context-modal',
@@ -12,11 +13,13 @@ import { ClientService } from '../client.service';
 })
 export class ContentModalComponent implements OnInit {
   charCount = 0;
-  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, pageNumber: number, type: string }, private ngZone: NgZone, private service: ClientService) { }
+  constructor(public dialogRef: MatDialogRef<ContentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { name: string, desc: string, pageNumber: number, type: string }, private ngZone: NgZone, private service: ClientService, private sanitizer: DomSanitizer) { }
   @ViewChild('autosize', { static: true }) autosize: CdkTextareaAutosize;
 
-  dataText = ""
+  dataText = "";
+  title;
   ngOnInit() {
+    this.title = this.sanitizer.bypassSecurityTrustHtml(this.service.ParseHtmlColorCodes(this.data.name));
     this.dataText = this.data.desc;
   }
 

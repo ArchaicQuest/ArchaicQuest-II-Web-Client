@@ -43,7 +43,7 @@ import { ContentModalComponent } from './client/content-modal/content-modal.comp
         CreateAccountComponent,
         ManageCharactersComponent,
         ContextModalComponent,
-        ContentModalComponent
+        ContentModalComponent,
     ],
     entryComponents: [
         CreateAccountComponent,

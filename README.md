@@ -54,3 +54,6 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 ![alt ArchaicQuestII Web Client](https://i.imgur.com/cFcbmwn.png)
 ![alt ArchaicQuestII Web Client](https://i.imgur.com/Ia9M8wt.png)
 
+## Shout-outs
+
+[Colors](https://github.com/webmuds/colors) - Converts MUD color tags to colored text.

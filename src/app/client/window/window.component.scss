@@ -47,7 +47,7 @@ pre {
   max-width: 720px;
 }
 
-.hint {
+.hint, span.wmhint  {
   color:yellow;
 }
 
@@ -61,7 +61,7 @@ pre {
   .room-exits {
     color: #666!important;
 
-  }
+  }        
 }
 
 .mob, .improve {
@@ -249,7 +249,7 @@ pre {
   
   pre {
       color: #fff;
-      font-size: 16px;
+      font-size: 15px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       white-space: break-spaces;
   }
@@ -332,6 +332,35 @@ width: 1%;
     from { opacity: 1; }
     to   { opacity: 0; }
 }
+
+ 
+/* http://www.w3schools.com/html/html_colornames.asp */
+
+span.wm1,  span.wmmaroon  { color: #800000; }
+span.wm2,  span.wmgreen   { color: #008000; }
+span.wm3,  span.wmolive   { color: #808000; }
+span.wm4,  span.wmnavy    { color: #000080; }
+span.wm5,  span.wmpurple  { color: #800080; }
+span.wm6,  span.wmteal    { color: #008080; }
+span.wm7,  span.wmgray    { color: #808080; }
+span.wm8,  span.wmsilver  { color: #C0C0C0; }
+span.wm9,  span.wmred     { color: #FF0000; }
+span.wm10, span.wmlime    { color: #00FF00; }
+span.wm11, span.wmyellow  { color: #FFFF00; }
+span.wm12, span.wmblue    { color: #0000FF; }
+span.wm13, span.wmmagenta { color: #FF00FF; }
+span.wm14, span.wmcyan    { color: #00FFFF; }
+span.wm15, span.wmwhite   { color: #FFFFFF; }
+
+span.wmgold       { color: #FFD700; }
+span.wmorange     { color: #FFA500; }
+span.wmdarkorange { color: #FF8C00; }
+span.wmorangered  { color: #FF4500; }
+span.wmbrown      { color: #A52A2A; }
+span.wmdimgray    { color: #696969; }
+
+ 
+
 
 // .popover-ui {
 //   position:relative;
