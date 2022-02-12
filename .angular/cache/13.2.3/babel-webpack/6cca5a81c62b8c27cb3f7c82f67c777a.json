@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { ClientComponent } from './client.component';\nexport const clientRoutes = [{\n  path: '',\n  component: ClientComponent\n}];","map":null,"metadata":{},"sourceType":"module"}

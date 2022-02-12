@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { ContextModalComponent } from '../context-modal/context-modal.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ContentModalComponent } from './content-modal/content-modal.component';
 import escapeHtml from 'escape-html'
 @Injectable({

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, NgZone, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { ClientService } from '../client.service';
@@ -29,7 +29,7 @@ export class ContentModalComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
-  sendToServer(command: string) {
+  sendToServer() {
 
     this.data.desc = this.dataText;
     if (this.data.type == "description") {
