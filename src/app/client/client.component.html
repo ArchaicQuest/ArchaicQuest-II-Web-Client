@@ -6,6 +6,7 @@
                 <mat-tab-group mat-align-tabs="start">
                     <mat-tab label="Score">
                         <div class="client-grid-content-data">
+
                             <div class="player-info">
 
 
@@ -45,8 +46,10 @@
                                     <td>Armour:</td>
                                     <td>{{playerScore?.armorRating['Armour']}}
                                     </td>
-                                    <td>Damage:</td>
-                                    <td>xxx</td>
+                                    <td>Avg Dam</td>
+                                    <td>{{(playerScore?.equipped?.Wielded?.Damage?.Minimum +
+                                        playerScore?.equipped?.Wielded?.Damage?.Maximum / 2) +
+                                        playerScore?.attributes?.Attribute?.DamageRoll}}</td>
 
                                 </tr>
                                 <tr>
@@ -58,8 +61,8 @@
                                 <tr>
                                     <td>Spell Res:</td>
                                     <td>{{playerScore?.armorRating['Magic']}}</td>
-                                    <td>Spell dam:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                 </tr>
                             </table>
 
@@ -68,22 +71,22 @@
                             <table style="width:100%" class="player-info-table">
                                 <tr>
                                     <td>Qpoints:</td>
-                                    <td>000</td>
+                                    <td>{{playerScore?.QuestPoints || 0}}</td>
                                     <td>Mob Kills:</td>
-                                    <td>100,000</td>
+                                    <td>{{playerScore?.MobKills}}</td>
 
                                 </tr>
                                 <tr>
                                     <td>trains:</td>
-                                    <td>99</td>
+                                    <td>{{playerScore?.Trains}}</td>
                                     <td>Mob Deaths:</td>
-                                    <td>9999</td>
+                                    <td>{{playerScore?.MobDeaths}}</td>
                                 </tr>
                                 <tr>
                                     <td>Prac:</td>
-                                    <td>999</td>
+                                    <td>{{playerScore?.Practices}}</td>
                                     <td>Player Kills:</td>
-                                    <td>1000</td>
+                                    <td>{{playerScore?.PlayerKills}}</td>
                                 </tr>
                                 <tr>
                                     <td>Weight:</td>

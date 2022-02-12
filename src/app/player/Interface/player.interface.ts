@@ -38,6 +38,12 @@ export interface Player {
     };
     qffects?: any;
     weight: number,
+    MobKills?: number,
+    Trains?: number,
+    MobDeaths?: number,
+    QuestPoints?: number,
+    Practices?: number,
+    PlayerKills?: number,
     config?: any;
     joinedDate?: Date;
     LastLoginTime?: Date;

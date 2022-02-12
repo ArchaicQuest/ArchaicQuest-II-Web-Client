@@ -88,6 +88,11 @@ padding-bottom: 5px;
     .player-info-table {
       td {
         max-width: 15px;
+        min-width: 20px;
+      }
+
+      td:nth-child(even) {
+        text-align: center;
       }
     }
 

@@ -35,45 +35,45 @@ import { ClientService } from './client/client.service';
 import { ContextModalComponent } from './context-modal/context-modal.component';
 import { ContentModalComponent } from './client/content-modal/content-modal.component';
 @NgModule({
-    declarations: [
-        AppComponent,
-        CreatePlayerComponent,
-        WelcomeComponent,
-        PlayerAppearanceComponent,
-        CreateAccountComponent,
-        ManageCharactersComponent,
-        ContextModalComponent,
-        ContentModalComponent,
-    ],
-    entryComponents: [
-        CreateAccountComponent,
-        ContextModalComponent,
-        ContentModalComponent
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        MatStepperModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatStepperModule,
-        MatRadioModule,
-        MatSliderModule,
-        MatExpansionModule,
-        MatOptionModule,
-        MatSelectModule,
-        MatDialogModule,
-        MatProgressSpinnerModule,
-        ToastrModule.forRoot({
-            positionClass: 'toast-bottom-center'
-        }),
-        BrowserAnimationsModule,
-    ],
-    providers: [CreateService, ManageCharactersService, HttpService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    CreatePlayerComponent,
+    WelcomeComponent,
+    PlayerAppearanceComponent,
+    CreateAccountComponent,
+    ManageCharactersComponent,
+    ContextModalComponent,
+    ContentModalComponent,
+  ],
+  entryComponents: [
+    CreateAccountComponent,
+    ContextModalComponent,
+    ContentModalComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatStepperModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center'
+    }),
+    BrowserAnimationsModule,
+  ],
+  providers: [CreateService, ManageCharactersService, HttpService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
