@@ -6,6 +6,7 @@
                 <mat-tab-group mat-align-tabs="start">
                     <mat-tab label="Score">
                         <div class="client-grid-content-data">
+
                             <div class="player-info">
 
 
@@ -45,8 +46,10 @@
                                     <td>Armour:</td>
                                     <td>{{playerScore?.armorRating['Armour']}}
                                     </td>
-                                    <td>Damage:</td>
-                                    <td>xxx</td>
+                                    <td>Avg Dam</td>
+                                    <td>{{(playerScore?.equipped?.Wielded?.Damage?.Minimum +
+                                        playerScore?.equipped?.Wielded?.Damage?.Maximum / 2) +
+                                        playerScore?.attributes?.Attribute?.DamageRoll}}</td>
 
                                 </tr>
                                 <tr>
@@ -58,8 +61,8 @@
                                 <tr>
                                     <td>Spell Res:</td>
                                     <td>{{playerScore?.armorRating['Magic']}}</td>
-                                    <td>Spell dam:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                 </tr>
                             </table>
 
@@ -68,22 +71,22 @@
                             <table style="width:100%" class="player-info-table">
                                 <tr>
                                     <td>Qpoints:</td>
-                                    <td>000</td>
+                                    <td>{{playerScore?.QuestPoints || 0}}</td>
                                     <td>Mob Kills:</td>
-                                    <td>100,000</td>
+                                    <td>{{playerScore?.MobKills}}</td>
 
                                 </tr>
                                 <tr>
                                     <td>trains:</td>
-                                    <td>99</td>
+                                    <td>{{playerScore?.Trains}}</td>
                                     <td>Mob Deaths:</td>
-                                    <td>9999</td>
+                                    <td>{{playerScore?.MobDeaths}}</td>
                                 </tr>
                                 <tr>
                                     <td>Prac:</td>
-                                    <td>999</td>
+                                    <td>{{playerScore?.Practices}}</td>
                                     <td>Player Kills:</td>
-                                    <td>1000</td>
+                                    <td>{{playerScore?.PlayerKills}}</td>
                                 </tr>
                                 <tr>
                                     <td>Weight:</td>
@@ -100,7 +103,12 @@
                         </div>
 
                     </mat-tab>
-                    <mat-tab label="Description">Description</mat-tab>
+                    <mat-tab label="Description">
+
+                        <p>{{playerScore?.description}}</p>
+
+                        <button mat-raised-button color="secondary" (click)="editDescription()">Edit</button>
+                    </mat-tab>
 
                 </mat-tab-group>
             </div>
@@ -183,26 +191,70 @@
                     <mat-tab label="Quests">
                         <div class="client-grid-content-data">
 
+                            <h3>Active Quests</h3>
 
-                            <div *ngFor="let q of quest">
-                                <h3>{{q?.Title}}</h3>
-                                <p>Area: {{q?.Area}}</p>
-                                <p>Kill:</p>
+                            <mat-accordion *ngFor="let q of quest">
+                                <mat-expansion-panel hideToggle *ngIf="!q.Completed">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{q?.Title}}
+                                        </mat-panel-title>
 
-                                <ol>
-                                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}</li>
-                                </ol>
+                                    </mat-expansion-panel-header>
+                                    <p>Area: {{q?.Area}}</p>
+                                    <p>Kill:</p>
+
+                                    <ol>
+                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                                        </li>
+                                    </ol>
 
 
-                                <p>{{q?.Description}}</p>
+                                    <p>{{q?.Description}}</p>
 
-                                Reward:
-                                <ul>
-                                    <li>{{q?.ExpGain}} Experience points</li>
-                                    <li>{{q?.GoldGain}} Gold</li>
-                                    <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
-                                </ul>
-                            </div>
+                                    Reward:
+                                    <ul>
+                                        <li>{{q?.ExpGain}} Experience points</li>
+                                        <li>{{q?.GoldGain}} Gold</li>
+                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                                    </ul>
+                                </mat-expansion-panel>
+
+                            </mat-accordion>
+
+                            <h3>Completed Quests</h3>
+
+                            <mat-accordion *ngFor="let q of quest">
+                                <mat-expansion-panel hideToggle *ngIf="q.Completed">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{q?.Title}}
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+                                    <p>Area: {{q?.Area}}</p>
+                                    <p>Kill:</p>
+
+                                    <ol>
+                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                                        </li>
+                                    </ol>
+
+
+                                    <p>{{q?.Description}}</p>
+
+                                    Reward:
+                                    <ul>
+                                        <li>{{q?.ExpGain}} Experience points</li>
+                                        <li>{{q?.GoldGain}} Gold</li>
+                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                                    </ul>
+                                </mat-expansion-panel>
+
+                            </mat-accordion>
+
+
+
 
                         </div>
                     </mat-tab>
@@ -274,6 +326,8 @@
         </app-stat-bar>
     </div>
     <div class="client-input">
-        <app-input></app-input>
+        <app-input>
+            {{time}}
+        </app-input>
     </div>
 </div>

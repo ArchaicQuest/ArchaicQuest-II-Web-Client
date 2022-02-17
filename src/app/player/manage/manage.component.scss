@@ -22,7 +22,7 @@ header {
   background: linear-gradient(rgba(29, 29, 29, 0.4), rgba(29, 29, 29, 0.7)),
     url(/assets/images/creation-bg1.jpg) no-repeat top center;
   background-size: cover;
-  height:calc(100vh - 37px);
+  height:calc(100vh - 202px);
   padding-top: 90px;
 
   .loader {
@@ -57,6 +57,12 @@ header {
     line-height: 1.5;
     padding: 15px;
     box-shadow: 0px 0px 20px 3px #000;
+  }
+
+  .character-list {
+    overflow-y: scroll;
+    height: 66vh;
+    overflow-x: hidden;
   }
 
   .manage-character-stats {

@@ -7,13 +7,13 @@ import { ClientComponent } from './client/client.component';
 
 
 const routes: Routes = [
-    { path: '', component: WelcomeComponent },
-    { path: 'account/create-character', component: CreatePlayerComponent },
-    { path: 'account/manage-characters', component: ManageCharactersComponent },
-    { path: 'play', loadChildren: './client/client.module#ClientModule' }
+  { path: '', component: WelcomeComponent },
+  { path: 'account/create-character', component: CreatePlayerComponent },
+  { path: 'account/manage-characters', component: ManageCharactersComponent },
+  { path: 'play', loadChildren: () => import('./client/client.module').then(x => x.ClientModule) }
 ];
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

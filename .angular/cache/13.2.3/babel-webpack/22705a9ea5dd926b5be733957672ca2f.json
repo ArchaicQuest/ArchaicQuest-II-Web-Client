@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  hostAPI: 'https://api.archaicquest.com'\n};","map":null,"metadata":{},"sourceType":"module"}

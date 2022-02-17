@@ -5,8 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { ContextModalComponent } from '../context-modal/context-modal.component';
-import { MatDialog } from '@angular/material';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ContentModalComponent } from './content-modal/content-modal.component';
+import escapeHtml from 'escape-html'
 @Injectable({
     providedIn: 'root'
 })
@@ -25,6 +26,12 @@ export class ClientService implements OnDestroy {
 
     public eq: string = "";
     public $eq: BehaviorSubject<string> = new BehaviorSubject<string>(this.eq);
+
+    public time: string = "";
+    public $time: BehaviorSubject<string> = new BehaviorSubject<string>(this.time);
+
+    public contentPopup: string = "";
+    public $contentPopup: BehaviorSubject<string> = new BehaviorSubject<string>(this.contentPopup);
 
     public quest: string = "";
     public $quest: BehaviorSubject<any> = new BehaviorSubject<string>(this.quest);
@@ -207,8 +214,26 @@ export class ClientService implements OnDestroy {
             this.closeConnection();
 
         });
+
+        this.connection.on('UpdateTime', (time) => {
+
+            this.time = time;
+            this.$time.next(this.time);
+            console.log("time t " + time)
+        });
+
+
+        this.connection.on('UpdateContentPopUp', (content) => {
+
+            this.contentPopup = content;
+            this.$contentPopup.next(this.contentPopup);
+            console.log(content)
+        });
     }
 
+    public returnContentPopUp(): { title: string, description: string, pageNumber: number } {
+        return (this.contentPopup as unknown as { title: string, description: string, pageNumber: number });
+    }
 
     public returnConnection() {
         return this.connection;
@@ -242,13 +267,80 @@ export class ClientService implements OnDestroy {
     }
 
     public updateWindow(sender: string = '', message: string = '') {
-        this.data.push(sender + ' ' + message);
+        this.data.push(this.ParseHtmlColorCodes(sender + ' ' + message));
         this.eventChange();
     }
 
     public sendToServer(message: string) {
         this.updateWindow('', `<p class="echo">${message}</p>`);
+
+        // if (this.showContentModal(message)) {
+        //     return;
+        // }
+
         this.connection.send('SendToServer', message, this.connectionId).catch(err => { });
+    }
+
+    // content modal content
+    // book pages, char desc etc
+    public saveContent(message: string) {
+
+        this.connection.send('CharContent', message, this.connectionId).catch(err => { });
+    }
+
+    // openContentDialog(title: string, desc: string) {
+    //     this.dialog.open(ContentModalComponent, {
+    //         data: {
+    //             name: title,
+    //             desc: desc,
+    //         },
+    //         width: '750px'
+    //     });
+    // }
+
+
+
+    // private showContentModal(message: string) {
+
+    //     if (message.toLowerCase().startsWith("write")) {
+    //         this.openContentDialog("Write Book", "Page");
+    //         return true
+    //     }
+
+    //     return false;
+    // }
+
+
+
+    /**
+ * Convert color tags into HTML tags.
+ * @param {string} text
+ * @param {boolean} escape - when `false`, will not escape HTML before parsing. Defaults to `true`.
+ * @return {string}
+ */
+    ParseHtmlColorCodes(text, escape = true) {
+
+        /**
+     * The full list of colors.
+     */
+        const COLORS = 'white|silver|gray|red|maroon|yellow|olive|lime|green|blue|navy|cyan|teal|purple|magenta|gold|orange|darkorange|orangered|brown|dimgray|hint|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15'
+
+        /**
+         * The template for the resulting replacement.
+         * All class names in outputted HTML will be prefixed.
+         * You can change the prefix here. If you do, remember to
+         * also adjust the CSS file as well.
+         */
+        const HTML_REPLACEMENT_TEMPLATE = '<span class="wm$2">$3</span>'
+
+        /**
+          * The main Regular Expression for performing replacements.
+          */
+        const COLOR_RX = new RegExp('({((?:' + COLORS + '))}((?:(?!{(' + COLORS + '|\/)}).)*)({\/})*)', 'gims')
+
+        let escapedText = text
+
+        return escapedText.replace(COLOR_RX, HTML_REPLACEMENT_TEMPLATE)
     }
 
 

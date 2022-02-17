@@ -50,3 +50,20 @@ form {
   }
 }
 }
+
+.bottom-bar {
+
+display: grid;
+grid-template-columns: 1fr auto;
+
+.input {
+  position: relative;
+}
+
+.extra-content {
+  margin: 0 20px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+}

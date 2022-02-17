@@ -1,0 +1,15 @@
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+p {padding-bottom: 10px;}
+
+::ng-deep .mat-dialog-container {
+   // max-width: 500px;
+}

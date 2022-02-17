@@ -21,6 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TabDirective } from '../_shared/directives/tab-directive';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
     declarations: [
         ClientComponent,
@@ -46,7 +47,8 @@ import { TabDirective } from '../_shared/directives/tab-directive';
         MatTabsModule,
         MatSnackBarModule,
         ScrollingModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatExpansionModule
 
     ],
     providers: [HttpService],

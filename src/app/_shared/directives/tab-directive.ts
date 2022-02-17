@@ -1,29 +1,29 @@
 import { Directive, AfterViewInit, OnDestroy, Optional, HostListener } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 
 @Directive({ selector: '[tab-directive]' })
 export class TabDirective {
-    observable: any;
-    constructor(@Optional() private autoTrigger: MatAutocompleteTrigger, @Optional() private control: NgControl) { }
+  observable: any;
+  constructor(@Optional() private autoTrigger: MatAutocompleteTrigger, @Optional() private control: NgControl) { }
 
-    @HostListener('keydown.tab') onBlur() {
-        if (this.autoTrigger.activeOption) {
-            this.autoTrigger.writeValue(this.autoTrigger.activeOption.value)
-            //this.autoTrigger._handleFocus();
-        }
+  @HostListener('keydown.tab') onBlur() {
+    if (this.autoTrigger.activeOption) {
+      this.autoTrigger.writeValue(this.autoTrigger.activeOption.value)
+      //this.autoTrigger._handleFocus();
     }
+  }
 
-    ngAfterViewInit() {
-        this.observable = this.autoTrigger.panelClosingActions.subscribe(x => {
-            if (this.autoTrigger.activeOption) {
-                const value = this.autoTrigger.activeOption.value;
-                if (this.control)
-                    this.control.control.setValue(value, { emit: false });
-                this.autoTrigger.writeValue(value);
-            }
-        })
-    }
+  ngAfterViewInit() {
+    this.observable = this.autoTrigger.panelClosingActions.subscribe(x => {
+      if (this.autoTrigger.activeOption) {
+        const value = this.autoTrigger.activeOption.value;
+        if (this.control)
+          this.control.control.setValue(value, { emit: false });
+        this.autoTrigger.writeValue(value);
+      }
+    })
+  }
 
 }

@@ -1,0 +1,20 @@
+<h3 [innerHTML]="title"></h3>
+
+
+<mat-form-field appearance="outline" class="form-control">
+    <mat-label>Page {{data.pageNumber + 1}}</mat-label>
+    <textarea matInput placeholder="Description" [(ngModel)]="dataText" cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10"
+        (selectionChange)="triggerDescriptionResize()" maxlength="500"></textarea>
+    <mat-hint align="end">{{dataText?.length || 0}} / 500</mat-hint>
+
+</mat-form-field>
+
+<div class="button-row">
+
+
+
+
+    <button mat-raised-button color="primary" (click)="sendToServer()">Save</button>
+
+</div>
