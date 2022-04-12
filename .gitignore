@@ -42,7 +42,7 @@ testem.log
 /typings
 .angular/*
 .angular
-
+/angular
 # System Files
 .DS_Store
 Thumbs.db

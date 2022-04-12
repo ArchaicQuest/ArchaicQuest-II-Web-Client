@@ -1,99 +1,78 @@
 <header>
-    <img class="logo" src="/assets/images/archaic-quest.png" alt="ArchaicQuest logo Text based game" />
-    <h1>Character Selection</h1>
+  <img class="logo" src="/assets/images/archaic-quest.png" alt="ArchaicQuest logo Text based game" />
+  <h1>Character Selection</h1>
 </header>
 <div class="manage-character-wrapper">
 
-    <div class="loader" *ngIf="isLoading">
-        <mat-spinner></mat-spinner>
+  <div class="loader" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="manage-character-container">
+
+    <div class="manage-character-list">
+
+
+      <h2>Pick a character to play</h2>
+      <div class="character-list">
+        <div class="manage-character-list__player" *ngFor="let char of characters; trackBy: trackBy"
+          (click)="PlayCharacter(char.id)">
+          <h3>{{char.name}}</h3>
+          <p>A level {{char.level}}, {{char.gender}} {{char.race}} {{char.className}}.</p>
+          <p>Last played: {{char.LastLoginTime | date: 'mediumDate'}}</p>
+        </div>
+      </div>
+      <div class="manage-character-list__player--no-characters" *ngIf="characters.length === 0 && !isLoading">
+        <p>You don't have <b><i>ANY</i></b> characters yet?!!<br />
+          Grab a drink, grab snacks and click the button below to start your adventure in ArchaicQuest.</p>
+        <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
+          character</button>
+      </div>
     </div>
 
-    <div class="manage-character-container">
+    <div>
+      <div class="manage-character-new">
+        <h2>New Character</h2>
+        <p>There is no limit to the amount of fun and characters you can have.</p>
+        <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
+          character</button>
+      </div>
 
-        <div class="manage-character-list">
+      <div class="manage-character-stats">
+        <h2>Account Stats</h2>
+        <p>The cumulative stats of all your characters.</p>
+        <table>
+          <tr>
+            <td>
+              Hours:
+            </td>
+            <td>
+              {{totalPlayingHours}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Kills:
+            </td>
+            <td>
+              {{totalKills}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Deaths:
+            </td>
+            <td>
+              {{totalDeaths}}
+            </td>
+          </tr>
 
+        </table>
 
-            <h2>Pick a character to play</h2>
-            <div class="character-list">
-                <div class="manage-character-list__player" *ngFor="let char of characters; trackBy: trackBy"
-                    (click)="PlayCharacter(char.id)">
-                    <h3>{{char.name}}</h3>
-                    <p>A level {{char.level}}, {{char.gender}} {{char.race}} {{char.className}}.</p>
-                    <p>Last played: {{char.LastLoginTime | date: 'mediumDate'}}</p>
-                </div>
-            </div>
-            <div class="manage-character-list__player--no-characters" *ngIf="characters.length === 0 && !isLoading">
-                <p>You don't have <b><i>ANY</i></b> characters yet?!!<br />
-                    Grab a drink, grab snacks and click the button below to start your adventure in ArchaicQuest.</p>
-                <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
-                    character</button>
-            </div>
-        </div>
+        <p> Addictedness Rating: <br /> {{additednessRating}}</p>
 
-        <div>
-            <div class="manage-character-new">
-                <h2>New Character</h2>
-                <p>There is no limit to the amount of fun and characters you can have.</p>
-                <button mat-raised-button color="primary" routerLink="/account/create-character">Create a new
-                    character</button>
-            </div>
-
-            <div class="manage-character-stats">
-                <h2>Account Stats</h2>
-                <p>Coming soon.</p>
-                <!-- <table>
-                    <tr>
-                        <td>
-                            Cumulative Hours:
-                        </td>
-                        <td>
-                            1461
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            kills:
-                        </td>
-                        <td>
-                            150,000,000,000
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Deaths:
-                        </td>
-                        <td>
-                            150,000,000,000
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Gold:
-                        </td>
-                        <td>
-                            150,000,000,000
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Experience:
-                        </td>
-                        <td>
-                            150,000,000,000
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Favourite Char:
-                        </td>
-                        <td>
-                            xx
-                        </td>
-                    </tr>
-                </table> -->
-
-            </div>
-        </div>
-
+      </div>
     </div>
+
+  </div>
 </div>
