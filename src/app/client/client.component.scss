@@ -28,29 +28,38 @@ border-radius: 0px;
   .client-grid-content-data {
     padding-right: 15px;
   }
- 
+
 
   .client-grid {
     display: grid;
-     
-    @media (min-width : 1920px){
+
+    @media (min-width : 1680px){
       display: grid;
-      grid-template-columns: 1fr 50% 1fr;
+      grid-template-columns: 1fr 50% 1fr!important;
       grid-gap: 30px;
+      margin-left: 0;
   }
+
+
+    @media (min-width : 968px){
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-gap: 30px;
+    overflow-x: hidden;
+}
 
     &::ng-deep {
       .mat-tab-label {
-        min-width: 90px; 
+        min-width: 90px;
       }
-     
+
     }
 
     .client-player-stats {
-      
+
       display: none;
 
-      @media (min-width : 1920px){
+      @media (min-width : 1680px){
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-gap: 30px;
@@ -59,8 +68,8 @@ border-radius: 0px;
 
       .client-grid-content {
         border:2px solid #333;
-   
-      
+
+
 
         &::ng-deep {
           .mat-tab-body {
@@ -72,7 +81,7 @@ border-radius: 0px;
           }
         }
 
- 
+
       }
     }
 
@@ -97,21 +106,29 @@ padding-bottom: 5px;
     }
 
     .client-game-info {
-     
+
       display: none;
 
-      @media (min-width : 1920px){
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 30px;
-    }
+  //     @media (min-width : 1920px){
+  //       display: grid;
+  //       grid-template-rows: 1fr 1fr;
+  //       grid-gap: 30px;
+  //  }
+
+
+   @media (min-width : 968px){
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 30px;
+   }
+
 
 
       .client-grid-content {
         border:2px solid #333;
-   
-    
-        
+
+
+
         &::ng-deep {
           .mat-tab-body {
            padding: 15px;
@@ -122,7 +139,7 @@ padding-bottom: 5px;
         }
       }
     }
-  
+
   }
 
   .ui-buttons {
@@ -183,7 +200,7 @@ left: 96px;
       background: rgba(255, 255, 255, 0.9);
     }
 
-    
+
   }
 
   .client-input {

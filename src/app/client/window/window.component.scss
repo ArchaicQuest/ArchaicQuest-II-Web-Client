@@ -19,6 +19,16 @@ table {
 }
 }
 
+.clientWindow {
+  overflow-x: hidden;
+  padding: 0 10px;
+}
+
+.client-window {
+  padding: 0 10px;
+  overflow-x: hidden;
+}
+
 
 
 pre {
@@ -61,7 +71,7 @@ pre {
   .room-exits {
     color: #666!important;
 
-  }        
+  }
 }
 
 .mob, .improve {
@@ -192,7 +202,7 @@ pre {
   table {
       color: #fff;
       max-width: 720px;
-  
+
       td {
           padding: 3px 10px;
       width: inherit;
@@ -205,8 +215,8 @@ pre {
       }
       border-top: 2px aqua dashed;
       border-bottom: 2px aqua dashed;
-  
-       
+
+
   }
 
   .simple {
@@ -215,7 +225,7 @@ pre {
       background-color: #242528;
     }
     td {
-     
+
       &:first-of-type {
           border-right: 0 none;
           width: auto;
@@ -229,13 +239,13 @@ pre {
 
   .simple.heading {
     td {
-   
+
       &:first-of-type {
- 
-          color:#fff; 
+
+          color:#fff;
       }
 
-    
+
   }
 
   tr:nth-child(odd) {
@@ -246,15 +256,15 @@ pre {
     }
   }
   }
-  
-  
+
+
   pre {
       color: #fff;
       font-size: 15px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       white-space: break-spaces;
   }
-  
+
   border-bottom:  2px aqua dashed;
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -263,7 +273,7 @@ pre {
   .help-list {
 
   td {
- 
+
     &:first-of-type {
 color:aqua;
         width: 118px;
@@ -278,7 +288,7 @@ table.simple {
     background-color: #242528;
   }
   td {
-   
+
     &:first-of-type {
         border-right: 0 none;
         width: auto;
@@ -294,7 +304,7 @@ border-bottom: 0 none;
 
 
 .verbose-exit-wrapper {
- 
+
   .verbose-exit {
     color: #fff;
     white-space: nowrap;
@@ -303,7 +313,7 @@ width: 1%;
   }
 }
 
-.room-dark { 
+.room-dark {
 
   .verbose-exit {
     color:#666!important;
@@ -334,7 +344,7 @@ width: 1%;
     to   { opacity: 0; }
 }
 
- 
+
 /* http://www.w3schools.com/html/html_colornames.asp */
 
 span.wm1,  span.wmmaroon  { color: #800000; }
@@ -360,7 +370,7 @@ span.wmorangered  { color: #FF4500; }
 span.wmbrown      { color: #A52A2A; }
 span.wmdimgray    { color: #696969; }
 
- 
+
 
 
 // .popover-ui {
@@ -368,7 +378,7 @@ span.wmdimgray    { color: #696969; }
 
 //   &:hover {
 //    > .popover-ui-content {
-//      position:absolute; 
+//      position:absolute;
 //      top:15px;
 //      left:0;
 // animation: fadein 2s;
@@ -390,8 +400,8 @@ span.wmdimgray    { color: #696969; }
 //    opacity:1;
 //     display: block;
 //  }
-  
- 
+
+
 //     h3 {
 //       margin-top:0;
 //     }
@@ -400,7 +410,7 @@ span.wmdimgray    { color: #696969; }
 //       display: grid;
 //       grid-template-columns: 1fr 1fr 1fr;
 //       grid-gap: 15px;
-     
+
 
 //       button {
 //         color: #111;
