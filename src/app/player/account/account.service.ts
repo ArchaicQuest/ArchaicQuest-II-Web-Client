@@ -51,7 +51,12 @@ export class AccountService {
       },
       err => {
         console.log(err.error)
-        this._toast.error("hello " + err.error);
+        if (err.error != null) {
+          this._toast.error(err.error);
+        }
+        else {
+          this._toast.error(`Whoops a server ${err.status} error has occurred.`);
+        }
         this.toggleSignUpButton(button);
       }
     );
@@ -76,7 +81,13 @@ export class AccountService {
         this._router.navigate(['/account/manage-characters']);
       },
       err => {
-        this._toast.error(err);
+        console.log(err)
+        if (err.error != null) {
+          this._toast.error(err.error);
+        }
+        else {
+          this._toast.error(`Whoops a server ${err.status} error has occurred.`);
+        }
         this.toggleSignUpButton(button);
       }
     );
