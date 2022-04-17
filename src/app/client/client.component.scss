@@ -29,6 +29,14 @@ border-radius: 0px;
     padding-right: 15px;
   }
 
+  .xp-bar {
+    display: none;
+    @media (min-width : 768px){
+      display: block;
+
+  }
+  }
+
 
   .client-grid {
     display: grid;
@@ -211,13 +219,14 @@ left: 96px;
 
   .client-stats {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0;
     margin-top: 0;
 
     @media (min-width : 768px){
       grid-gap: 15px;
       margin-top: 30px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   }
 }

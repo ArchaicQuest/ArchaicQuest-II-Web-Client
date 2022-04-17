@@ -1,268 +1,268 @@
 <div class="client">
-    <div class="client-grid">
-        <div class="client-player-stats show-info-mobile">
+  <div class="client-grid">
+    <div class="client-player-stats show-info-mobile">
 
-            <div class="client-grid-content">
-                <mat-tab-group mat-align-tabs="start">
-                    <mat-tab label="Score">
-                        <div class="client-grid-content-data">
+      <div class="client-grid-content">
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="Score">
+            <div class="client-grid-content-data">
 
-                            <div class="player-info">
+              <div class="player-info">
 
 
 
-                                <h2>{{playerScore?.name}}</h2>
+                <h2>{{playerScore?.name}}</h2>
 
-                                <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
-                                    {{playerScore?.className}}</p>
-                                <p>True Neutral</p>
-                            </div>
-                            <hr />
-                            <table style="width:100%" class="player-info-table">
-                                <tr>
-                                    <td>STR:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Strength}}</td>
-                                    <td>DEX:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Dexterity}}</td>
-                                </tr>
-                                <tr>
-                                    <td>CON:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
-                                    <td>INT:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
-                                </tr>
-                                <tr>
-                                    <td>WIS:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Wisdom}}</td>
-                                    <td>CHA:</td>
-                                    <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
-                                </tr>
-                            </table>
+                <p>Level {{playerScore?.level}}, {{playerScore?.gender}}, {{playerScore?.race}},
+                  {{playerScore?.className}}</p>
+                <p>True Neutral</p>
+              </div>
+              <hr />
+              <table style="width:100%" class="player-info-table">
+                <tr>
+                  <td>STR:</td>
+                  <td>{{playerScore?.attributes.Attribute.Strength}}</td>
+                  <td>DEX:</td>
+                  <td>{{playerScore?.attributes.Attribute.Dexterity}}</td>
+                </tr>
+                <tr>
+                  <td>CON:</td>
+                  <td>{{playerScore?.attributes.Attribute.Constitution}}</td>
+                  <td>INT:</td>
+                  <td>{{playerScore?.attributes.Attribute.Intelligence}}</td>
+                </tr>
+                <tr>
+                  <td>WIS:</td>
+                  <td>{{playerScore?.attributes.Attribute.Wisdom}}</td>
+                  <td>CHA:</td>
+                  <td>{{playerScore?.attributes.Attribute.Charisma}}</td>
+                </tr>
+              </table>
 
-                            <hr />
+              <hr />
 
-                            <table style="width:100%" class="player-info-table">
-                                <tr>
-                                    <td>Armour:</td>
-                                    <td>{{playerScore?.armorRating['Armour']}}
-                                    </td>
-                                    <td>Avg Dam</td>
-                                    <td>{{(playerScore?.equipped?.Wielded?.Damage?.Minimum +
-                                        playerScore?.equipped?.Wielded?.Damage?.Maximum / 2) +
-                                        playerScore?.attributes?.Attribute?.DamageRoll}}</td>
+              <table style="width:100%" class="player-info-table">
+                <tr>
+                  <td>Armour:</td>
+                  <td>{{playerScore?.armorRating['Armour']}}
+                  </td>
+                  <td>Avg Dam</td>
+                  <td>{{(playerScore?.equipped?.Wielded?.Damage?.Minimum +
+                    playerScore?.equipped?.Wielded?.Damage?.Maximum / 2) +
+                    playerScore?.attributes?.Attribute?.DamageRoll}}</td>
 
-                                </tr>
-                                <tr>
-                                    <td>Hit roll:</td>
-                                    <td>{{playerScore?.attributes.Attribute.HitRoll}}</td>
-                                    <td>Dam Roll:</td>
-                                    <td>{{playerScore?.attributes.Attribute.DamageRoll}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Spell Res:</td>
-                                    <td>{{playerScore?.armorRating['Magic']}}</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                            </table>
+                </tr>
+                <tr>
+                  <td>Hit roll:</td>
+                  <td>{{playerScore?.attributes.Attribute.HitRoll}}</td>
+                  <td>Dam Roll:</td>
+                  <td>{{playerScore?.attributes.Attribute.DamageRoll}}</td>
+                </tr>
+                <tr>
+                  <td>Spell Res:</td>
+                  <td>{{playerScore?.armorRating['Magic']}}</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
 
-                            <hr />
+              <hr />
 
-                            <table style="width:100%" class="player-info-table">
-                                <tr>
-                                    <td>Qpoints:</td>
-                                    <td>{{playerScore?.QuestPoints || 0}}</td>
-                                    <td>Mob Kills:</td>
-                                    <td>{{playerScore?.MobKills}}</td>
+              <table style="width:100%" class="player-info-table">
+                <tr>
+                  <td>Qpoints:</td>
+                  <td>{{playerScore?.QuestPoints || 0}}</td>
+                  <td>Mob Kills:</td>
+                  <td>{{playerScore?.MobKills}}</td>
 
-                                </tr>
-                                <tr>
-                                    <td>trains:</td>
-                                    <td>{{playerScore?.Trains}}</td>
-                                    <td>Mob Deaths:</td>
-                                    <td>{{playerScore?.MobDeaths}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Prac:</td>
-                                    <td>{{playerScore?.Practices}}</td>
-                                    <td>Player Kills:</td>
-                                    <td>{{playerScore?.PlayerKills}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Weight:</td>
-                                    <td>{{playerScore?.weight}} lb. /
-                                        {{playerScore?.attributes.Attribute.Strength *
-                                        3}} lb.
-                                    </td>
-                                    <td>Gold:</td>
-                                    <td>{{playerScore['Money']['Gold'] == null ? 0 : playerScore['Money']['Gold']}}
-                                    </td>
-                                </tr>
-                            </table>
+                </tr>
+                <tr>
+                  <td>trains:</td>
+                  <td>{{playerScore?.Trains}}</td>
+                  <td>Mob Deaths:</td>
+                  <td>{{playerScore?.MobDeaths}}</td>
+                </tr>
+                <tr>
+                  <td>Prac:</td>
+                  <td>{{playerScore?.Practices}}</td>
+                  <td>Player Kills:</td>
+                  <td>{{playerScore?.PlayerKills}}</td>
+                </tr>
+                <tr>
+                  <td>Weight:</td>
+                  <td>{{playerScore?.weight}} lb. /
+                    {{playerScore?.attributes.Attribute.Strength *
+                    3}} lb.
+                  </td>
+                  <td>Gold:</td>
+                  <td>{{playerScore['Money']['Gold'] == null ? 0 : playerScore['Money']['Gold']}}
+                  </td>
+                </tr>
+              </table>
 
-                        </div>
-
-                    </mat-tab>
-                    <mat-tab label="Description">
-
-                        <p>{{playerScore?.description}}</p>
-
-                        <button mat-raised-button color="secondary" (click)="editDescription()">Edit</button>
-                    </mat-tab>
-
-                </mat-tab-group>
             </div>
-            <div class="client-grid-content">
-                <mat-tab-group mat-align-tabs="start">
-                    <mat-tab label="Inventory">
-                        <div class="client-grid-content-data" [innerHTML]="inv | safeHtml"></div>
-                    </mat-tab>
-                    <mat-tab label="Equipment">
-                        <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
-                    </mat-tab>
-                    <mat-tab label="Affects">
 
-                        <p>You are affected by the following effects:</p>
-                        <div>
+          </mat-tab>
+          <mat-tab label="Description">
 
-                            <table class="simple" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <td>
-                                            Skill
-                                        </td>
-                                        <td>
-                                            Affect
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tr *ngFor="let aff of affects?.custom">
-                                    <td>
-                                        {{aff.name}}
-                                        <div [innerHTML]="aff.benefits | safeHtml"></div>
-                                    </td>
-                                    <td>
-                                        <p *ngIf="aff.modifier.armour">modifies armour by {{aff.modifier.armour}}<br />
-                                            for
-                                            {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.damRoll">modifies damage roll by
-                                            {{aff.modifier.damRoll}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.hitRoll">modifies hit roll by
-                                            {{aff.modifier.hitRoll}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.saves">modifies saves by {{aff.modifier.saves}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.hp">modifies hit points by {{aff.modifier.hp}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.mana">modifies mana by {{aff.modifier.mana}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.moves">modifies moves by {{aff.modifier.moves}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.spellDam">modifies spell damage by
-                                            {{aff.modifier.spellDam}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.strength">modifies strength by
-                                            {{aff.modifier.strength}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.dexterity">modifies dexterity by
-                                            {{aff.modifier.dexterity}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.constitution">modifies constitution by
-                                            {{aff.modifier.constitution}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.intelligence">modifies intelligence by
-                                            {{aff.modifier.intelligence}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.wisdom">modifies wisdom by {{aff.modifier.wisdom}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
-                                        <p *ngIf="aff.modifier.charisma">modifies charisma by
-                                            {{aff.modifier.charisma}}<br />
-                                            for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+            <p>{{playerScore?.description}}</p>
 
-                                    </td>
-                                </tr>
-                            </table>
+            <button mat-raised-button color="secondary" (click)="editDescription()">Edit</button>
+          </mat-tab>
 
+        </mat-tab-group>
+      </div>
+      <div class="client-grid-content">
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="Inventory">
+            <div class="client-grid-content-data" [innerHTML]="inv | safeHtml"></div>
+          </mat-tab>
+          <mat-tab label="Equipment">
+            <div class="client-grid-content-data" [innerHTML]="eq | safeHtml"></div>
+          </mat-tab>
+          <mat-tab label="Affects">
 
+            <p>You are affected by the following effects:</p>
+            <div>
 
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Quests">
-                        <div class="client-grid-content-data">
+              <table class="simple" style="width:100%">
+                <thead>
+                  <tr>
+                    <td>
+                      Skill
+                    </td>
+                    <td>
+                      Affect
+                    </td>
+                  </tr>
+                </thead>
+                <tr *ngFor="let aff of affects?.custom">
+                  <td>
+                    {{aff.name}}
+                    <div [innerHTML]="aff.benefits | safeHtml"></div>
+                  </td>
+                  <td>
+                    <p *ngIf="aff.modifier.armour">modifies armour by {{aff.modifier.armour}}<br />
+                      for
+                      {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.damRoll">modifies damage roll by
+                      {{aff.modifier.damRoll}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.hitRoll">modifies hit roll by
+                      {{aff.modifier.hitRoll}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.saves">modifies saves by {{aff.modifier.saves}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.hp">modifies hit points by {{aff.modifier.hp}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.mana">modifies mana by {{aff.modifier.mana}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.moves">modifies moves by {{aff.modifier.moves}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.spellDam">modifies spell damage by
+                      {{aff.modifier.spellDam}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.strength">modifies strength by
+                      {{aff.modifier.strength}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.dexterity">modifies dexterity by
+                      {{aff.modifier.dexterity}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.constitution">modifies constitution by
+                      {{aff.modifier.constitution}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.intelligence">modifies intelligence by
+                      {{aff.modifier.intelligence}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.wisdom">modifies wisdom by {{aff.modifier.wisdom}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
+                    <p *ngIf="aff.modifier.charisma">modifies charisma by
+                      {{aff.modifier.charisma}}<br />
+                      for {{aff.duration}} cycles, ({{aff.duration / 2}} hours)</p>
 
-                            <h3>Active Quests</h3>
-
-                            <mat-accordion *ngFor="let q of quest">
-                                <mat-expansion-panel hideToggle *ngIf="!q.Completed">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            {{q?.Title}}
-                                        </mat-panel-title>
-
-                                    </mat-expansion-panel-header>
-                                    <p>Area: {{q?.Area}}</p>
-                                    <p>Kill:</p>
-
-                                    <ol>
-                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
-                                        </li>
-                                    </ol>
-
-
-                                    <p>{{q?.Description}}</p>
-
-                                    Reward:
-                                    <ul>
-                                        <li>{{q?.ExpGain}} Experience points</li>
-                                        <li>{{q?.GoldGain}} Gold</li>
-                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
-                                    </ul>
-                                </mat-expansion-panel>
-
-                            </mat-accordion>
-
-                            <h3>Completed Quests</h3>
-
-                            <mat-accordion *ngFor="let q of quest">
-                                <mat-expansion-panel hideToggle *ngIf="q.Completed">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            {{q?.Title}}
-                                        </mat-panel-title>
-
-                                    </mat-expansion-panel-header>
-                                    <p>Area: {{q?.Area}}</p>
-                                    <p>Kill:</p>
-
-                                    <ol>
-                                        <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
-                                        </li>
-                                    </ol>
-
-
-                                    <p>{{q?.Description}}</p>
-
-                                    Reward:
-                                    <ul>
-                                        <li>{{q?.ExpGain}} Experience points</li>
-                                        <li>{{q?.GoldGain}} Gold</li>
-                                        <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
-                                    </ul>
-                                </mat-expansion-panel>
-
-                            </mat-accordion>
+                  </td>
+                </tr>
+              </table>
 
 
 
-
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
             </div>
-        </div>
-        <div class="client-window">
-            <!-- <button class="ui-buttons" (click)=showInfo()>
+          </mat-tab>
+          <mat-tab label="Quests">
+            <div class="client-grid-content-data">
+
+              <h3>Active Quests</h3>
+
+              <mat-accordion *ngFor="let q of quest">
+                <mat-expansion-panel hideToggle *ngIf="!q.Completed">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{q?.Title}}
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <p>Area: {{q?.Area}}</p>
+                  <p>Kill:</p>
+
+                  <ol>
+                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                    </li>
+                  </ol>
+
+
+                  <p>{{q?.Description}}</p>
+
+                  Reward:
+                  <ul>
+                    <li>{{q?.ExpGain}} Experience points</li>
+                    <li>{{q?.GoldGain}} Gold</li>
+                    <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                  </ul>
+                </mat-expansion-panel>
+
+              </mat-accordion>
+
+              <h3>Completed Quests</h3>
+
+              <mat-accordion *ngFor="let q of quest">
+                <mat-expansion-panel hideToggle *ngIf="q.Completed">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{q?.Title}}
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <p>Area: {{q?.Area}}</p>
+                  <p>Kill:</p>
+
+                  <ol>
+                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                    </li>
+                  </ol>
+
+
+                  <p>{{q?.Description}}</p>
+
+                  Reward:
+                  <ul>
+                    <li>{{q?.ExpGain}} Experience points</li>
+                    <li>{{q?.GoldGain}} Gold</li>
+                    <li *ngFor="let i of q.ItemGain">{{i.name}}</li>
+                  </ul>
+                </mat-expansion-panel>
+
+              </mat-accordion>
+
+
+
+
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div class="client-window">
+      <!-- <button class="ui-buttons" (click)=showInfo()>
                 INFO
             </button>
             <button class="ui-button--map ui-buttons">
@@ -273,61 +273,61 @@
                 CONFIG
             </button> -->
 
-            <app-window></app-window>
+      <app-window></app-window>
 
-        </div>
-        <div class="client-game-info">
+    </div>
+    <div class="client-game-info">
 
-            <div class="client-grid-content">
+      <div class="client-grid-content">
 
-                <div id="container" #mapContainer></div>
+        <div id="container" #mapContainer></div>
+      </div>
+      <div class="client-grid-content">
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="All">
+            <div class="client-grid-content-data">
+              <div *ngFor="let msg of channels?.all" [innerHTML]="msg | safeHtml">
+              </div>
             </div>
-            <div class="client-grid-content">
-                <mat-tab-group mat-align-tabs="start">
-                    <mat-tab label="All">
-                        <div class="client-grid-content-data">
-                            <div *ngFor="let msg of channels?.all" [innerHTML]="msg | safeHtml">
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Newbie">
-                        <div class="client-grid-content-data">
-                            <div *ngFor="let msg of channels?.newbie" [innerHTML]="msg | safeHtml">
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Gossip">
-                        <div class="client-grid-content-data">
-                            <div *ngFor="let msg of channels?.gossip" [innerHTML]="msg | safeHtml">
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Room">
-                        <div class="client-grid-content-data">
-                            <div *ngFor="let msg of channels?.room" [innerHTML]="msg | safeHtml">
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="OOC">
-                        <div class="client-grid-content-data">
-                            <div *ngFor="let msg of channels?.ooc" [innerHTML]="msg | safeHtml">
-                            </div>
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
+          </mat-tab>
+          <mat-tab label="Newbie">
+            <div class="client-grid-content-data">
+              <div *ngFor="let msg of channels?.newbie" [innerHTML]="msg | safeHtml">
+              </div>
             </div>
-        </div>
+          </mat-tab>
+          <mat-tab label="Gossip">
+            <div class="client-grid-content-data">
+              <div *ngFor="let msg of channels?.gossip" [innerHTML]="msg | safeHtml">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Room">
+            <div class="client-grid-content-data">
+              <div *ngFor="let msg of channels?.room" [innerHTML]="msg | safeHtml">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="OOC">
+            <div class="client-grid-content-data">
+              <div *ngFor="let msg of channels?.ooc" [innerHTML]="msg | safeHtml">
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </div>
-    <div class="client-stats">
-        <app-stat-bar [stats]="playerStats.hp" label="Hit points"></app-stat-bar>
-        <app-stat-bar type="mana" [stats]="playerStats.mana" label="Mana"></app-stat-bar>
-        <app-stat-bar type="moves" [stats]="playerStats.moves" label="Moves"></app-stat-bar>
-        <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false" label="XP til next level">
-        </app-stat-bar>
-    </div>
-    <div class="client-input">
-        <app-input>
-            {{time}}
-        </app-input>
-    </div>
+  </div>
+  <div class="client-stats">
+    <app-stat-bar [stats]="playerStats.hp" label="Health"></app-stat-bar>
+    <app-stat-bar type="mana" [stats]="playerStats.mana" label="Mana"></app-stat-bar>
+    <app-stat-bar type="moves" [stats]="playerStats.moves" label="Moves"></app-stat-bar>
+    <app-stat-bar type="exp" [stats]="playerStats.exp" [showCurrent]="false" label="XP TNL" class="xp-bar">
+    </app-stat-bar>
+  </div>
+  <div class="client-input">
+    <app-input>
+      {{time}}
+    </app-input>
+  </div>
 </div>
