@@ -27,12 +27,13 @@
                         *ngIf="form.get('password').hasError('required') && (form.get('password').dirty || form.get('password').touched)">
                         Enter your password</mat-error>
                 </mat-form-field>
-            </form>
+           
 
             <button mat-raised-button color="primary" [class.spinner]="loading" (click)="signIn($event)"
                 [disabled]="!form.valid">Sign in</button>
+            </form>
 
-            <p class="forgot-password"><a href="">Forgot password</a></p>
+            <p class="forgot-password"><a href="javascript:void(0)" (click)="openForgotPasswordDialog()">Forgot password</a></p>
 
             <div class="or">
                 <hr class="bar" />

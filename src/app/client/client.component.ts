@@ -9,6 +9,7 @@ import { animation } from '@angular/animations';
 import { Quest } from '../_shared/interface/quest.interface';
 import { ContentModalComponent } from './content-modal/content-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 
 
 @Component({
@@ -284,9 +285,16 @@ export class ClientComponent implements OnInit, OnDestroy {
     this.dialog.open(ContentModalComponent, {
       data: {
         name: "Description",
-        desc: this.playerScore.description,
+        desc: this.playerScore?.description,
         type: "description"
       },
+      width: '750px'
+    });
+  }
+
+  openSettings() {
+    this.dialog.open(SettingsModalComponent, {
+      data: {},
       width: '750px'
     });
   }

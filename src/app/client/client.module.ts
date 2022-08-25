@@ -22,6 +22,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TabDirective } from '../_shared/directives/tab-directive';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 @NgModule({
     declarations: [
         ClientComponent,
@@ -42,6 +43,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
         MatInputModule,
         MatDialogModule,
         MatProgressSpinnerModule,
+        MatCheckboxModule,
         RouterModule.forChild(clientRoutes),
         CommonModule,
         MatTabsModule,

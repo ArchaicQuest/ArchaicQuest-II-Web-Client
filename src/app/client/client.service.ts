@@ -1,13 +1,15 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HubConnectionBuilder, HubConnection, LogLevel } from '@microsoft/signalr';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import { Stats, PlayerStats } from './stat-bar/stats.interface';
 import { Player } from '../player/Interface/player.interface';
 import { ContextModalComponent } from '../context-modal/context-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ContentModalComponent } from './content-modal/content-modal.component';
 import escapeHtml from 'escape-html'
+import { HttpClient } from '@angular/common/http';
+import { Settings } from './settings-modal/settings-modal.component';
 @Injectable({
     providedIn: 'root'
 })
@@ -16,6 +18,9 @@ export class ClientService implements OnDestroy {
     private connectionId: string;
     private characterId: string;
     public connected = false;
+    public fontSize = '--font-size: 16px!important;'
+public fontFamily = '--font-family: arial, sans-serif!important;';
+
 
     /*
         Data
@@ -54,6 +59,8 @@ export class ClientService implements OnDestroy {
     public playerScore: Player = null;
     public $playerScore: BehaviorSubject<Player> = new BehaviorSubject<Player>(this.playerScore);
 
+    public $fontSize: BehaviorSubject<string> = new BehaviorSubject<string>('--font-size:24px');
+
     /*
         Player stats
         The HP, Mana, Moves, and Exp sent from the server to the player
@@ -78,7 +85,7 @@ export class ClientService implements OnDestroy {
     }
     public $stats: BehaviorSubject<PlayerStats> = new BehaviorSubject<PlayerStats>(this.stats);
 
-    constructor(public dialog: MatDialog) {
+    constructor(public dialog: MatDialog, private http: HttpClient) {
 
     }
 
@@ -288,27 +295,16 @@ export class ClientService implements OnDestroy {
         this.connection.send('CharContent', message, this.connectionId).catch(err => { });
     }
 
-    // openContentDialog(title: string, desc: string) {
-    //     this.dialog.open(ContentModalComponent, {
-    //         data: {
-    //             name: title,
-    //             desc: desc,
-    //         },
-    //         width: '750px'
-    //     });
-    // }
+ 
+    public getPlayerId() {
 
+       return this.characterId;
+    }
 
+    public getConnectionId() {
+        return this.connectionId;
+    }
 
-    // private showContentModal(message: string) {
-
-    //     if (message.toLowerCase().startsWith("write")) {
-    //         this.openContentDialog("Write Book", "Page");
-    //         return true
-    //     }
-
-    //     return false;
-    // }
 
 
 
@@ -354,6 +350,39 @@ export class ClientService implements OnDestroy {
     }
 
 
+    setSettings() {
+ 
+        var id = this.getPlayerId();
+      
+        this.http.get(`${environment.hostAPI}/api/player/config/${id}`).pipe(take(1)).subscribe((x: Settings) => {
+
+          this.displayFontTypeChange(x.gameFont)
+          this.displayFontChange(x.gameFontSize)
+ 
+      })
+      }
+    
+      displayFontChange(fontsize: any) {
+    
+        this.fontSize =  `--font-size: ${fontsize}px!important;`
+        this.updateCss();
+      }
+    
+      displayFontTypeChange(font: any) {
+        this.fontFamily =  `--font-family: ${font}, sans-serif!important;`
+        this.updateCss();
+      }
+    
+      updateCss() {
+        let css = ['html {'];
+          css.push(this.fontSize);
+          css.push(this.fontFamily);
+        css.push('}');
+    
+        document.getElementById('customCSSVars').innerHTML = css.join('');
+    
+      }
+      
 
     ngOnDestroy(): void {
         this.connection = null;

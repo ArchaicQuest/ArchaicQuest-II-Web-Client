@@ -41,6 +41,8 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngOnInit() {
 
+    this.clientService.setSettings();
+
   }
 
   trackByFn(index, item) {

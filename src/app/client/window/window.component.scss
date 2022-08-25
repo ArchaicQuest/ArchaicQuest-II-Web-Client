@@ -1,3 +1,9 @@
+html {
+  --font-size: 16px;
+  --font-family: Roboto,sans-serif;
+}
+
+
 ::app {
   background: #111;
   white-space: pre;
@@ -30,7 +36,10 @@ table {
   overflow-x: hidden;
 }
 
-
+.window {
+  font-size:var(--font-size);
+  font-family: var(--font-family);
+}
 
 pre {
   display: none;
@@ -144,6 +153,14 @@ span.wmhint {
 
 .ooc {
   color: chartreuse;
+
+  span {
+    color: #fff;
+  }
+}
+
+.gsay {
+  color: orange;
 
   span {
     color: #fff;

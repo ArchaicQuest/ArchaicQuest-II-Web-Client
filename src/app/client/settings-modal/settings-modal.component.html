@@ -1,0 +1,52 @@
+<h2>Settings</h2>
+
+<form novalidate [formGroup]="settingsForm" (submit)="save()">
+        <mat-form-field appearance="outline" class="form-control">
+            <mat-label>Font Size</mat-label>
+            <select matNativeControl required (change)="displayFontChange($event)" formControlName="fontSize">
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+              </select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+            <mat-label>Font</mat-label>
+            <select matNativeControl required (change)="displayFontTypeChange($event)" formControlName="fontName">
+                <option value="'Courier Prime'">Courier Prime</option>
+                <option value="'Cutive Mono'">Cutive Mono</option>
+                <option value="'Ibarra Real Nova'">Ibarra Real Nova</option> 
+                <option value="Inconsolata">Inconsolata</option>
+                <option value="Lora">Lora</option>
+                <option value="Open Sans">Open Sans</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Source code Pro">Source code Pro</option>
+                <option value="VT323">VT323</option>
+              </select>
+        </mat-form-field>
+
+
+        <section> 
+            <mat-checkbox formControlName="autoLoot" [checked]="settingsForm.get('autoLoot').value">Auto Loot</mat-checkbox>
+            <mat-checkbox formControlName="autoAssist" [checked]="settingsForm.get('autoAssist').value">Auto Assist</mat-checkbox>
+            <mat-checkbox formControlName="autoSacrifice" [checked]="settingsForm.get('autoSacrifice').value">Auto Sacrifice</mat-checkbox>
+            <mat-checkbox formControlName="verboseExits" [checked]="settingsForm.get('verboseExits').value">Verbose exits</mat-checkbox>
+            <mat-checkbox formControlName="canFollow" [checked]="settingsForm.get('canFollow').value">Can Follow</mat-checkbox>
+            <mat-checkbox formControlName="newbieChannel" [checked]="settingsForm.get('newbieChannel').value">Toggle Newbie Channel</mat-checkbox>
+            <mat-checkbox formControlName="oocChannel" [checked]="settingsForm.get('oocChannel').value">Toggle OOC Channel</mat-checkbox>
+            <mat-checkbox formControlName="gossipChannel" [checked]="settingsForm.get('gossipChannel').value">Toggle Gossip Channel</mat-checkbox>
+            <mat-checkbox formControlName="tells" [checked]="settingsForm.get('tells').value">Toggle Tells</mat-checkbox>
+            <mat-checkbox formControlName="brief" [checked]="settingsForm.get('brief').value">Toggle Brief</mat-checkbox>
+            <mat-checkbox formControlName="hints" [checked]="settingsForm.get('hints').value">Toggle Hints</mat-checkbox>
+          </section>
+
+        <div class="button-row">
+            <button mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+</form>

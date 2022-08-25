@@ -2,7 +2,7 @@ html,
 body {
   background-color: #222;
   color: #fff;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--font-family);
   line-height: 1.5;
   font-size: 14px;
 }
@@ -52,6 +52,25 @@ select:-webkit-autofill:focus {
   border: 2px solid #ffffff;
   border-top-color: #000000;
   animation: spinner 0.8s linear infinite;
+}
+.mat-form-field-subscript-wrapper {
+position: relative!important;
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+  color: orange;
+}
+
+.mat-error {
+  color: orange;
+  font-size: 14px;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: orange;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  color: orange;
 }
 
 // .mat-spinner {

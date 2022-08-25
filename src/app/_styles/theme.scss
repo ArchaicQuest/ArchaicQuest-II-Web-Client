@@ -158,3 +158,25 @@ button {
 .mat-radio-label {
     margin-left: 10px;
 }
+
+
+.mat-checkbox {
+    label {
+        color: #fff;
+    }
+    .mat-checkbox-frame {
+        border-color: #ccc;
+    }
+    .mat-checkbox-checkmark-path {
+        stroke: #111 !important;
+    }
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #f6d437 !important;
+}
+
+
+// .mat-input-element {
+//     caret-color: #f6d437 !important;
+// }
