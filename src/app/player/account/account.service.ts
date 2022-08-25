@@ -54,13 +54,15 @@ export class AccountService {
     );
   }
 
-  resetPassword(data, button) {
+  resetPassword(data, button, dialog) {
     this._http.post(`${environment.hostAPI}/api/Account/reset-password`, data).subscribe(
       (response) => {
         const serverResponse: { toast: string, id: string } = JSON.parse(response);
         this._toast.success(serverResponse.toast);
 
         history.replaceState({}, '', '/');
+
+        dialog.close();
         
       },
       err => {
@@ -71,6 +73,7 @@ export class AccountService {
         else {
           this._toast.error(`Whoops a server ${err.status} error has occurred.`);
         }
+        dialog.close();
         this.toggleSignUpButton(button);
       }
     );
