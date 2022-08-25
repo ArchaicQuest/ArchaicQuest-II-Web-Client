@@ -27,6 +27,7 @@ border-radius: 0px;
 
   .client-grid-content-data {
     padding-right: 15px;
+    font-size: var(--font-size);
   }
 
   .xp-bar {
@@ -238,3 +239,8 @@ left: 96px;
   overflow: hidden;
 }
 
+.settings_trigger {
+  font-size: 14px;
+width: 40px;
+height: 40px;
+}

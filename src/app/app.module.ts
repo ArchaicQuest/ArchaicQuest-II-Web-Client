@@ -34,6 +34,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ClientService } from './client/client.service';
 import { ContextModalComponent } from './context-modal/context-modal.component';
 import { ContentModalComponent } from './client/content-modal/content-modal.component';
+import { SettingsModalComponent } from './client/settings-modal/settings-modal.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ForgotPasswordComponent } from './player/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './player/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,11 +48,17 @@ import { ContentModalComponent } from './client/content-modal/content-modal.comp
     ManageCharactersComponent,
     ContextModalComponent,
     ContentModalComponent,
+    SettingsModalComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   entryComponents: [
     CreateAccountComponent,
+    ForgotPasswordComponent,
     ContextModalComponent,
-    ContentModalComponent
+    ContentModalComponent,
+    SettingsModalComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +69,7 @@ import { ContentModalComponent } from './client/content-modal/content-modal.comp
     MatStepperModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     MatStepperModule,
     MatRadioModule,
