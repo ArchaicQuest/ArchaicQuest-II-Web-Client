@@ -54,7 +54,7 @@ export class ResetPasswordComponent implements OnInit {
       id: this.data.id
     };
 
-    this._service.resetPassword(data, event.target);
+    this._service.resetPassword(data, event.target, this.dialogRef);
   }
 
 
