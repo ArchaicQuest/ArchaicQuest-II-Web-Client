@@ -262,17 +262,16 @@
       </div>
     </div>
     <div class="client-window">
-      <!-- <button class="ui-buttons" (click)=showInfo()>
-                INFO
-            </button>
-            <button class="ui-button--map ui-buttons">
+      <div class="ui-mobile-buttons">
+        <span>{{time}}</span>
+            <button class="ui-button--map ui-buttons" (click)="openMap()">
                 MAP
             </button>
 
-            <button class="ui-button--settings ui-buttons">
+            <button class="ui-button--settings ui-buttons" (click)="openSettings()">
                 CONFIG
-            </button> -->
-
+            </button> 
+          </div>
       <app-window></app-window>
 
     </div>

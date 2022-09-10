@@ -10,6 +10,7 @@ import { Quest } from '../_shared/interface/quest.interface';
 import { ContentModalComponent } from './content-modal/content-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SettingsModalComponent } from './settings-modal/settings-modal.component';
+import { MapModalComponent } from './map-modal/map-modal.component';
 
 
 @Component({
@@ -322,6 +323,15 @@ export class ClientComponent implements OnInit, OnDestroy {
   openSettings() {
     this.dialog.open(SettingsModalComponent, {
       data: {},
+      width: '750px'
+    });
+  }
+
+  openMap() {
+    this.dialog.open(MapModalComponent, {
+      data: {
+        map: this.map
+      },
       width: '750px'
     });
   }

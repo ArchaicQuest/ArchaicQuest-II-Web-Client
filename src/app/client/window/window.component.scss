@@ -41,14 +41,14 @@ table {
   font-family: var(--font-family);
 }
 
-pre {
-  display: none;
+// pre {
+//   display: none;
 
-  @media (min-width: 600px) {
-    display: block;
-  }
+//   @media (min-width: 600px) {
+//     display: block;
+//   }
 
-}
+// }
 
 .echo {
   color: #666;
@@ -324,7 +324,7 @@ pre {
 }
 
 table.simple {
-  width: 730px;
+  max-width: 730px;
   border-collapse: collapse;
 
   tr:nth-child(even) {

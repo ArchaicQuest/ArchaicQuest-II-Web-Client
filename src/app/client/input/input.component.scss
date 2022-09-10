@@ -1,4 +1,4 @@
-input[type="text"] {
+input[type="search"] {
   font-size: 16px;
   background-color: #111;
   border-top: 1px solid #656565;
@@ -7,6 +7,7 @@ input[type="text"] {
   width: 100%;
   box-sizing: border-box;
   border:0 none;
+  padding-right: 90px;
 }
 
 form {

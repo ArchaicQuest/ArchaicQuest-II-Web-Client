@@ -38,6 +38,7 @@ import { SettingsModalComponent } from './client/settings-modal/settings-modal.c
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPasswordComponent } from './player/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './player/reset-password/reset-password.component';
+import { MapModalComponent } from './client/map-modal/map-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { ResetPasswordComponent } from './player/reset-password/reset-password.c
     ContextModalComponent,
     ContentModalComponent,
     SettingsModalComponent,
+    MapModalComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent
   ],
@@ -58,6 +60,7 @@ import { ResetPasswordComponent } from './player/reset-password/reset-password.c
     ContextModalComponent,
     ContentModalComponent,
     SettingsModalComponent,
+    MapModalComponent,
     ResetPasswordComponent
   ],
   imports: [
