@@ -1,8 +1,8 @@
-<form [formGroup]="form" autocomplete="off">
+<form [formGroup]="form">
     <div class="bottom-bar">
         <div class="input">
-            <input #inputTxt type="text" placeholder="Type help for list of commands." formControlName="input"
-                maxlength="751" autocomplete="off" />
+            <input #inputTxt type="search" placeholder="Type help for list of commands." formControlName="input"
+                maxlength="751" />
             <button type="submit" #btn (click)="sendToServer(); inputTxt.select()"
                 [disabled]="form.invalid">Send</button>
         </div>
