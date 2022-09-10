@@ -101,6 +101,8 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
         }
         this.windowData = x;
 
+        this.window.scrollTop = this.window.scrollHeight;
+
 
       }
     });
