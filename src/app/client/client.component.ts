@@ -332,7 +332,7 @@ export class ClientComponent implements OnInit, OnDestroy {
       data: {
         map: this.map
       },
-      width: '750px'
+      width: '100%'
     });
   }
 }
