@@ -56,11 +56,13 @@ export class ClientComponent implements OnInit, OnDestroy {
   public comms: { text: string, type: string };
   public $map: Subscription;
   public $affects: Subscription;
+  public $sounds: Subscription;
   public $time: Subscription;
   public $contentPopup: Subscription;
   public time: string;
   public contentPopup: string;
   public affects: any;
+  public sounds: any;
   public showInfoMobile: boolean;
   //public map: string;
   public channels: {
@@ -143,6 +145,31 @@ export class ClientComponent implements OnInit, OnDestroy {
       console.log("affects", x)
       this.affects = x;
     });
+
+    this.$sounds = this.clientService.$sounds.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
+      console.log("sounds", x)
+      this.sounds = x;
+
+      const footsteps = ['footstep-dirt-0.wav', 'footstep-dirt-1.wav', 'footstep-dirt-2.wav', 'footstep-dirt-3.wav']
+      let soundString = ''
+      if(x == 'hit') {
+       soundString = 'assets/sounds/swordHit.wav'
+      }
+      else if(x == 'miss') {
+        soundString = 'assets/sounds/slashMiss.wav'
+       }
+       else if(x == 'parry') {
+        soundString = 'assets/sounds/parry.wav'
+       }
+      else {
+       soundString = `assets/sounds/${footsteps[Math.floor(Math.random() * footsteps.length)]}`
+      }
+
+        var audio = new Audio(soundString); 
+        audio.play();
+
+    });
+
 
     this.$comms = this.clientService.$comms.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 

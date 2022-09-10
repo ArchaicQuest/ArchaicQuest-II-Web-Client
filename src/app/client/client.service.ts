@@ -47,6 +47,10 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
     public affects: any = "";
     public $affects: BehaviorSubject<any> = new BehaviorSubject<string>(this.affects);
 
+    public sounds: any = "";
+    public $sounds: BehaviorSubject<any> = new BehaviorSubject<string>(this.sounds);
+
+
     public comms: { text: string, type: string } = { text: '', type: '' };
     public $comms: BehaviorSubject<{ text: string, type: string }> = new BehaviorSubject<{ text: string, type: string }>(this.comms);
 
@@ -183,6 +187,13 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
             console.log('UpdatePlayerAffects', x);
             this.affects = x;
             this.$affects.next(this.affects);
+        });
+
+
+        this.connection.on('PlaySound', (x) => {
+            console.log('Sounds', x);
+            this.sounds = x;
+            this.$sounds.next(this.sounds);
         });
 
         this.connection.on('ScoreUpdate', (player) => {
