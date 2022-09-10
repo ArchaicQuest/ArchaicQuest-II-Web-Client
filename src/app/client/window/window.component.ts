@@ -35,7 +35,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
   public items: string[];
   private unsubscribe$ = new Subject<void>();
   userScrolled = false;
-  @ViewChild('window', { static: true }) window: HTMLElement;
+  @ViewChild('window', { static: true }) window: ElementRef;
 
   constructor(private clientService: ClientService, private _snackBar: MatSnackBar, private elRef: ElementRef, public dialog: MatDialog) { }
 
@@ -101,14 +101,23 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
         }
         this.windowData = x;
 
-        this.window.scrollTop = this.window.scrollHeight;
-
+        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
       }
     });
 
 
   }
+
+  ngAfterViewChecked() {        
+    this.scrollToBottom();        
+} 
+
+scrollToBottom(): void {
+    try {
+        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    } catch(err) { console.log(err)}                 
+}
 
 
   /**
