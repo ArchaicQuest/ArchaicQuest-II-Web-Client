@@ -101,7 +101,7 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
         }
         this.windowData = x;
 
-        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+       // this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
       }
     });
@@ -110,12 +110,12 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   ngAfterViewChecked() {        
-    this.scrollToBottom();        
+   // this.scrollToBottom();        
 } 
 
 scrollToBottom(): void {
     try {
-        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        //this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     } catch(err) { console.log(err)}                 
 }
 
