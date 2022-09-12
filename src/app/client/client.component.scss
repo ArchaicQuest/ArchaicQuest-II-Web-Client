@@ -268,3 +268,14 @@ left: 96px;
 width: 40px;
 height: 40px;
 }
+
+.input-bar {
+  position: fixed; 
+  bottom:0; 
+  left:0; 
+  width:100%;
+
+  @media (min-width : 768px){
+ position: relative;
+}
+}
