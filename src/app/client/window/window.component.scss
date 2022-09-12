@@ -1,8 +1,7 @@
 html {
   --font-size: 16px;
-  --font-family: Roboto,sans-serif;
+  --font-family: Roboto, sans-serif;
 }
-
 
 ::app {
   background: #111;
@@ -22,7 +21,6 @@ table {
     td {
       padding-left: 5px;
     }
-
   }
 }
 
@@ -37,8 +35,9 @@ table {
 }
 
 .window {
-  font-size:var(--font-size);
+  font-size: var(--font-size);
   font-family: var(--font-family);
+
 }
 
 // pre {
@@ -83,7 +82,6 @@ span.wmhint {
 
   .room-exits {
     color: #666 !important;
-
   }
 }
 
@@ -108,7 +106,7 @@ span.wmhint {
 }
 
 .mob-emote {
-  color: #A6A6A6;
+  color: #a6a6a6;
   margin-bottom: 10px;
 }
 
@@ -122,9 +120,7 @@ span.wmhint {
 
   @media (min-width: 768px) {
     font-size: 14px;
-
   }
-
 }
 
 .group-hp {
@@ -144,7 +140,7 @@ span.wmhint {
 }
 
 .combat {
-  margin: 0
+  margin: 0;
 }
 
 .combat-start {
@@ -170,7 +166,6 @@ span.wmhint {
     color: #fff;
   }
 }
-
 
 .time-of-day {
   color: #f4d635;
@@ -219,7 +214,6 @@ span.wmhint {
 p {
   margin-top: 0;
   max-width: 720px;
-
 }
 
 .motd {
@@ -230,11 +224,8 @@ pre {
   font-size: 10px;
 }
 
-
 .help-section {
   max-width: 720px;
-
-
 
   table {
     color: #fff;
@@ -254,8 +245,6 @@ pre {
 
     border-top: 2px aqua dashed;
     border-bottom: 2px aqua dashed;
-
-
   }
 
   .simple {
@@ -266,7 +255,6 @@ pre {
     }
 
     td {
-
       &:first-of-type {
         border-right: 0 none;
         width: auto;
@@ -281,13 +269,9 @@ pre {
 
   .simple.heading {
     td {
-
       &:first-of-type {
-
         color: #fff;
       }
-
-
     }
 
     tr:nth-child(odd) {
@@ -298,7 +282,6 @@ pre {
       }
     }
   }
-
 
   pre {
     color: #fff;
@@ -313,9 +296,7 @@ pre {
 }
 
 .help-list {
-
   td {
-
     &:first-of-type {
       color: aqua;
       width: 118px;
@@ -332,7 +313,6 @@ table.simple {
   }
 
   td {
-
     &:first-of-type {
       border-right: 0 none;
       width: auto;
@@ -346,20 +326,15 @@ table.simple {
   border-bottom: 0 none;
 }
 
-
-
 .verbose-exit-wrapper {
-
   .verbose-exit {
     color: #fff;
     white-space: nowrap;
     width: 1%;
-
   }
 }
 
 .room-dark {
-
   .verbose-exit {
     color: #666 !important;
   }
@@ -404,7 +379,6 @@ table.simple {
   }
 }
 
-
 /* http://www.w3schools.com/html/html_colornames.asp */
 
 span.wm1,
@@ -444,70 +418,67 @@ span.wmgray {
 
 span.wm8,
 span.wmsilver {
-  color: #C0C0C0;
+  color: #c0c0c0;
 }
 
 span.wm9,
 span.wmred {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 span.wm10,
 span.wmlime {
-  color: #00FF00;
+  color: #00ff00;
 }
 
 span.wm11,
 span.wmyellow {
-  color: #FFFF00;
+  color: #ffff00;
 }
 
 span.wm12,
 span.wmblue {
-  color: #0000FF;
+  color: #0000ff;
 }
 
 span.wm13,
 span.wmmagenta {
-  color: #FF00FF;
+  color: #ff00ff;
 }
 
 span.wm14,
 span.wmcyan {
-  color: #00FFFF;
+  color: #00ffff;
 }
 
 span.wm15,
 span.wmwhite {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 span.wmgold {
-  color: #FFD700;
+  color: #ffd700;
 }
 
 span.wmorange {
-  color: #FFA500;
+  color: #ffa500;
 }
 
 span.wmdarkorange {
-  color: #FF8C00;
+  color: #ff8c00;
 }
 
 span.wmorangered {
-  color: #FF4500;
+  color: #ff4500;
 }
 
 span.wmbrown {
-  color: #A52A2A;
+  color: #a52a2a;
 }
 
 span.wmdimgray {
   color: #696969;
 }
-
-
-
 
 // .popover-ui {
 //   position:relative;
@@ -521,7 +492,6 @@ span.wmdimgray {
 //   display: block;
 //     }
 //   }
-
 
 //   .popover-ui-content {
 //     background:#111;
@@ -537,7 +507,6 @@ span.wmdimgray {
 //     display: block;
 //  }
 
-
 //     h3 {
 //       margin-top:0;
 //     }
@@ -546,7 +515,6 @@ span.wmdimgray {
 //       display: grid;
 //       grid-template-columns: 1fr 1fr 1fr;
 //       grid-gap: 15px;
-
 
 //       button {
 //         color: #111;

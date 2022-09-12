@@ -8,12 +8,12 @@
 
   mat-expansion-panel-header {
     background: rgb(34, 34, 34) none repeat scroll 0% 0%;
-border-bottom: 1px solid rgb(0, 0, 0);
-border-radius: 0px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-radius: 0px;
 
-&:hover {
-  background-color: #000;
-}
+    &:hover {
+      background-color: #000;
+    }
   }
 
   .mat-expansion-panel:not(.mat-expanded) :hover {
@@ -21,8 +21,8 @@ border-radius: 0px;
   }
 
   ::ng-deep .mat-expansion-panel-body {
-    padding-top: 20px!important;
-    background: rgb(34, 34, 34) none repeat scroll 0% 0%!important;
+    padding-top: 20px !important;
+    background: rgb(34, 34, 34) none repeat scroll 0% 0% !important;
   }
 
   .client-grid-content-data {
@@ -31,66 +31,55 @@ border-radius: 0px;
   }
 
   .xp-bar {
-
-    @media (min-width : 768px){
+    @media (min-width: 768px) {
       display: block;
-
+    }
   }
-  }
-
 
   .client-grid {
     display: grid;
 
-    @media (min-width : 1680px){
+    @media (min-width: 1680px) {
       display: grid;
-      grid-template-columns: 1fr 50% 1fr!important;
+      grid-template-columns: 1fr 50% 1fr !important;
       grid-gap: 30px;
       margin-left: 0;
-  }
+    }
 
-
-    @media (min-width : 968px){
-    display: grid;
-    grid-template-columns: 1fr 0.5fr;
-    grid-gap: 30px;
-    overflow-x: hidden;
-}
+    @media (min-width: 968px) {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+      grid-gap: 30px;
+      overflow-x: hidden;
+    }
 
     &::ng-deep {
       .mat-tab-label {
         min-width: 90px;
       }
-
     }
 
     .client-player-stats {
-
       display: none;
 
-      @media (min-width : 1680px){
+      @media (min-width: 1680px) {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-gap: 30px;
-    }
-
+      }
 
       .client-grid-content {
-        border:2px solid #333;
-
-
+        border: 2px solid #333;
 
         &::ng-deep {
           .mat-tab-body {
-           padding: 15px;
+            padding: 15px;
           }
 
-          .mat-tab-body-content  {
+          .mat-tab-body-content {
             max-height: calc(39vh - 45px);
           }
         }
-
-
       }
     }
 
@@ -99,7 +88,7 @@ border-radius: 0px;
       h2 {
         margin-top: 0;
         border-bottom: 1px solid #888;
-padding-bottom: 5px;
+        padding-bottom: 5px;
       }
     }
 
@@ -115,32 +104,26 @@ padding-bottom: 5px;
     }
 
     .client-game-info {
-
       display: none;
 
-  //     @media (min-width : 1920px){
-  //       display: grid;
-  //       grid-template-rows: 1fr 1fr;
-  //       grid-gap: 30px;
-  //  }
+      //     @media (min-width : 1920px){
+      //       display: grid;
+      //       grid-template-rows: 1fr 1fr;
+      //       grid-gap: 30px;
+      //  }
 
-
-   @media (min-width : 968px){
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 30px;
-   }
-
-
+      @media (min-width: 968px) {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 30px;
+      }
 
       .client-grid-content {
-        border:2px solid #333;
-
-
+        border: 2px solid #333;
 
         &::ng-deep {
           .mat-tab-body {
-           padding: 15px;
+            padding: 15px;
           }
           .mat-tab-body-content {
             max-height: calc(39vh - 45px);
@@ -148,68 +131,64 @@ padding-bottom: 5px;
         }
       }
     }
-
   }
 
   .ui-mobile-buttons {
-    background: rgba(000,000,000,0.8);
+    background: rgba(000, 000, 000, 0.8);
     position: absolute;
     top: 0;
     left: 0;
     height: 50px;
     width: 100%;
     text-align: right;
-    @media (min-width: 728px){
-      display:none;
-      }
-
-      span {
-        margin-top: 14px;
-        display: inline-block;
-        margin-left: 0;
-        margin-right: 30px;
-       font-weight: bold;
-          }
-  }  
-
-
-  .ui-buttons {
-  float: left;
-width: 70px;
-height: 33px;
-background: black;
-margin-top: 8px;
-margin-left: 15px;
-border-radius: 3px;
-font-weight: bold;
-color: #fff;
-border: 1px solid #000;
-
-display: block;
-    @media (min-width: 728px){
-    display:none;
+    @media (min-width: 728px) {
+      display: none;
     }
 
+    span {
+      margin-top: 14px;
+      display: inline-block;
+      margin-left: 0;
+      margin-right: 30px;
+      font-weight: bold;
+    }
+  }
 
+  .ui-buttons {
+    float: left;
+    width: 70px;
+    height: 33px;
+    background: black;
+    margin-top: 8px;
+    margin-left: 15px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #000;
+
+    display: block;
+    @media (min-width: 728px) {
+      display: none;
+    }
   }
 
   .ui-button--map {
-left: 96px;
+    left: 96px;
   }
 
   .ui-button--settings {
     left: 181px;
-      }
+  }
   .client-window {
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
-    height: calc(100vh - 77px);
+    height: calc(100vh - 154px);
 
-    @media (min-width : 768px){
+    @media (min-width: 768px) {
       height: calc(100vh - 106px);
-  }
-   // max-width:80ch;
+    }
+    // max-width:80ch;
 
     scrollbar-color: #555 #222;
     scrollbar-width: thin;
@@ -232,8 +211,6 @@ left: 96px;
     &::-webkit-scrollbar-thumb:active {
       background: rgba(255, 255, 255, 0.9);
     }
-
-
   }
 
   .client-input {
@@ -248,11 +225,11 @@ left: 96px;
     grid-gap: 0;
     margin-top: 0;
 
-    @media (min-width : 768px){
+    @media (min-width: 768px) {
       grid-gap: 15px;
       margin-top: 30px;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+    }
   }
 }
 
@@ -265,17 +242,17 @@ left: 96px;
 
 .settings_trigger {
   font-size: 14px;
-width: 40px;
-height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .input-bar {
-  position: fixed; 
-  bottom:0; 
-  left:0; 
-  width:100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
-  @media (min-width : 768px){
- position: relative;
-}
+  @media (min-width: 768px) {
+    position: relative;
+  }
 }
