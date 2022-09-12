@@ -101,7 +101,10 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
         }
         this.windowData = x;
 
-       // this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        if(screen.width < 765) {
+
+        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        }
 
       }
     });
