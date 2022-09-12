@@ -204,7 +204,7 @@ left: 96px;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
-    height: calc(100vh - 76px);
+    height: calc(100vh - 77px);
 
     @media (min-width : 768px){
       height: calc(100vh - 106px);
