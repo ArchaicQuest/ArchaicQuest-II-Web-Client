@@ -120,6 +120,8 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
                         this.connectionId = connectionId;
                         this.connection.send('welcome', this.connectionId);
                         this.connection.send('AddCharacter', this.connectionId, this.characterId);
+                        this.setSettings();
+
                     });
 
 
@@ -363,7 +365,7 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
 
     setSettings() {
  
-        var id = this.getPlayerId();
+        var id = this.getConnectionId();
       
         this.http.get(`${environment.hostAPI}/api/player/config/${id}`).pipe(take(1)).subscribe((x: Settings) => {
 

@@ -219,6 +219,7 @@ export class ClientComponent implements OnInit, OnDestroy {
     });
 
 
+
   }
 
   ngAfterViewInit() {
@@ -235,6 +236,8 @@ export class ClientComponent implements OnInit, OnDestroy {
 
 
     });
+
+   
 
   }
 
