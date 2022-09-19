@@ -103,7 +103,11 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
         if(screen.width < 765) {
 
-        this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+          if(this.window.nativeElement.scrollTop === ( this.window.nativeElement.scrollHeight - this.window.nativeElement.offsetHeight) - 2) {
+            this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+          }
+
+        
         }
 
       }
@@ -112,11 +116,13 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
 
   }
 
-  ngAfterViewChecked() {  
-    if(screen.width < 765) {      
-    this.scrollToBottom();     
-    }   
-} 
+//   ngAfterViewChecked() {  
+//     if(screen.width < 765) {      
+//       if(this.window.nativeElement.scrollTop === ( this.window.nativeElement.scrollHeight - this.window.nativeElement.offsetHeight)) {
+//     this.scrollToBottom();     
+//       }
+//     }   
+// } 
 
 scrollToBottom(): void {
     try {
