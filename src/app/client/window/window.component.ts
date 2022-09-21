@@ -98,10 +98,12 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
           this.openContentDialog("Write Book", "Page");
         }
         this.windowData = x;
+// console.log(document.getElementsByClassName('client-window')[0].scrollTop)
+// console.log(document.getElementsByClassName('client-window')[0].scrollTop)
 
-        if(screen.width < 765 && (document.getElementsByClassName('client-window')[0].scrollTop <= 0 && document.getElementsByClassName('client-window')[0].scrollTop >= -200)) {
-            this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-          }
+//         if(screen.width < 765 && (document.getElementsByClassName('client-window')[0].scrollTop <= 0 && document.getElementsByClassName('client-window')[0].scrollTop >= -200)) {
+//             this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+//           }
       }
     });
 

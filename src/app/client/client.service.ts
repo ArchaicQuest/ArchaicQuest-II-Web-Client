@@ -120,7 +120,10 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
                         this.connectionId = connectionId;
                         this.connection.send('welcome', this.connectionId);
                         this.connection.send('AddCharacter', this.connectionId, this.characterId);
-                        this.setSettings();
+                        setTimeout(() => {
+                            this.setSettings();
+                        }, 0)
+                        
 
                     });
 
@@ -368,7 +371,7 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
         var id = this.getConnectionId();
       
         this.http.get(`${environment.hostAPI}/api/player/config/${id}`).pipe(take(1)).subscribe((x: Settings) => {
-
+console.log(x);
           this.displayFontTypeChange(x.gameFont)
           this.displayFontChange(x.gameFontSize)
  

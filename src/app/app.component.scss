@@ -1,10 +1,14 @@
 html,
 body {
-  background-color: #222;
+  background-color: #18191b;
   color: #fff;
   font-family: var(--font-family);
   line-height: 1.5;
   font-size: 14px;
+
+  @media (min-width: 768px) {
+    background-color: #222;
+  }
 }
 
 h1,
