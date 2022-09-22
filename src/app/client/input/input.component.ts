@@ -84,6 +84,7 @@ export class InputComponent implements OnInit {
     if(window.screen.width <= 730) {
       (document.getElementsByClassName('client-window')[0] as HTMLElement).focus();
     }
+ 
 
   }
 
