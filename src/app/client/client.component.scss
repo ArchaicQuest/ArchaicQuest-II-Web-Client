@@ -179,7 +179,10 @@
   .ui-button--settings {
     left: 181px;
   }
+
+
   .client-window {
+    margin-top: 32px;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
@@ -187,6 +190,7 @@
 
     @media (min-width: 768px) {
       height: calc(100vh - 106px);
+      margin-top: 0;
     }
     // max-width:80ch;
 
@@ -211,6 +215,10 @@
     &::-webkit-scrollbar-thumb:active {
       background: rgba(255, 255, 255, 0.9);
     }
+  }
+
+  .client-window.inputFocus {
+    margin-top: 0;
   }
 
   .client-input {

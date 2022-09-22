@@ -81,9 +81,25 @@ export class InputComponent implements OnInit {
     this.passedCommands.push(this.cleanInput());
     this._clientService.sendToServer(this.cleanInput());
 
+    if(window.screen.width <= 730) {
+      (document.getElementsByClassName('client-window')[0] as HTMLElement).focus();
+    }
 
   }
 
+  inputHasFocus() {
+    if(window.screen.width <= 730) {
+      document.getElementsByClassName('client-window')[0].classList.add("inputFocus");
+    }
+  }
+
+  inputHasBlur() {
+    if(window.screen.width <= 730) {
+      setTimeout(function() {
+      document.getElementsByClassName('client-window')[0].classList.remove("inputFocus");
+      });
+    }
+  }
   /*
       Removes html tags
       Trims white space

@@ -122,7 +122,7 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
                         this.connection.send('AddCharacter', this.connectionId, this.characterId);
                         setTimeout(() => {
                             this.setSettings();
-                        }, 0)
+                        }, 500)
                         
 
                     });

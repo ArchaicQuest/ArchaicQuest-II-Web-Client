@@ -42,6 +42,10 @@ select:-webkit-autofill:focus {
   }
 }
 
+.cdk-overlay-pane {
+  max-width: 100vw!important;
+}
+
 .spinner:before {
   content: "";
   box-sizing: border-box;
