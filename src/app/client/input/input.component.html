@@ -3,7 +3,7 @@
         <div class="input">
             <input #inputTxt type="search" placeholder="Type help for list of commands." formControlName="input"
                 maxlength="751" (focus)="inputHasFocus(); inputTxt.select()" (focusout)="inputHasBlur()" />
-            <button type="submit" #btn (click)="sendToServer(); inputTxt.select()"
+            <button type="submit" #btn (click)="sendToServer();"
                 [disabled]="form.invalid">Send</button>
         </div>
         <div class="extra-content">

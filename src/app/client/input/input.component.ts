@@ -9,7 +9,7 @@ import { Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-  @ViewChild("inputTxt", { static: true }) inputTxt: ElementRef;
+  @ViewChild("inputTxt", { static: true }) inputTxt: ElementRef<HTMLInputElement>;
 
   public form = this._formBuilder.group({
     input: ['', [Validators.required, Validators.maxLength(750)]],
@@ -83,6 +83,8 @@ export class InputComponent implements OnInit {
 
     if(window.screen.width <= 730) {
       (document.getElementsByClassName('client-window')[0] as HTMLElement).focus();
+    } else {
+      this.inputTxt.nativeElement.select();
     }
  
 
