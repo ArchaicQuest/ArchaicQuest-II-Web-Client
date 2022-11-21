@@ -91,7 +91,9 @@ export class ClientComponent implements OnInit, OnDestroy {
   totalRow: number;
   rooms: { x: number, y: number }[] = [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: 0, y: -1 }, { x: -1, y: 0 }];
   sigma: any = null;
-
+  audio: HTMLAudioElement = new Audio(); 
+soundArray: HTMLAudioElement[] = [];
+soundArrayIndex = 0;
   @ViewChild('mapContainer', { static: false }) mapContainer;
   constructor(private clientService: ClientService, public dialog: MatDialog) { }
 
@@ -151,13 +153,17 @@ export class ClientComponent implements OnInit, OnDestroy {
       console.log("sounds", x)
       this.sounds = x;
 
+      
+ 
       const footsteps = ['footstep-dirt-0.wav', 'footstep-dirt-1.wav', 'footstep-dirt-2.wav', 'footstep-dirt-3.wav']
+      const foraging = ['foraging.mp3', 'foraging2.mp3']
       let soundString = ''
       if(x == 'hit') {
        soundString = 'assets/sounds/swordHit.wav'
       }
       else if(x == 'miss') {
         soundString = 'assets/sounds/slashMiss.wav'
+        
        }
        else if(x == 'parry') {
         soundString = 'assets/sounds/parry.wav'
@@ -166,8 +172,31 @@ export class ClientComponent implements OnInit, OnDestroy {
        soundString = `assets/sounds/${footsteps[Math.floor(Math.random() * footsteps.length)]}`
       }
 
-        var audio = new Audio(soundString); 
-        audio.play();
+      if(x == 'foraging') {
+        soundString = `assets/sounds/${foraging[Math.floor(Math.random() * foraging.length)]}`
+      }
+
+      this.soundArray.push(new Audio(soundString));
+      //var audio: HTMLAudioElement = new Audio(soundString);
+  console.log(this.soundArray)
+
+  const onended = (evt) => {
+    this.sounds.shift().play(); // play the next sound
+  }
+  
+
+this.soundArray.forEach(sound => {
+  sound.onended = onended; 
+});
+
+console.log(this.soundArray.length)
+if(this.soundArray.length == 1) {
+  this.soundArray.shift().play();
+
+}
+
+
+
 
     });
 
