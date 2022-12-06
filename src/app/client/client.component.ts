@@ -176,6 +176,19 @@ soundArrayIndex = 0;
         soundString = `assets/sounds/${foraging[Math.floor(Math.random() * foraging.length)]}`
       }
 
+      if(x == 'get') {
+        soundString = `assets/sounds/grab.wav`
+      }
+
+      if(x == 'drop') {
+        soundString = `assets/sounds/drop.wav`
+      }
+
+
+      if(x == 'quaff') {
+        soundString = `assets/sounds/quaff.wav`
+      }
+
       this.soundArray.push(new Audio(soundString));
       //var audio: HTMLAudioElement = new Audio(soundString);
   console.log(this.soundArray)
