@@ -202,12 +202,26 @@
 
                   </mat-expansion-panel-header>
                   <p>Area: {{q?.Area}}</p>
+                  
+
+                  <ng-container *ngIf="q?.Type == 0">
                   <p>Kill:</p>
 
                   <ol>
                     <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
                     </li>
                   </ol>
+               </ng-container>
+
+               <ng-container *ngIf="q?.Type == 1">
+                <p>fetch:</p>
+
+                <ol>
+                  <li *ngFor="let mob of q.ItemsToGet">{{mob.Name}} x{{mob.Count}}
+                  </li>
+                </ol>
+             </ng-container>
+
 
 
                   <p>{{q?.Description}}</p>
@@ -231,14 +245,29 @@
                       {{q?.Title}}
                     </mat-panel-title>
 
+  
+
                   </mat-expansion-panel-header>
                   <p>Area: {{q?.Area}}</p>
-                  <p>Kill:</p>
 
+                  <ng-container *ngIf="q?.Type == 0">
+                    <p>Kill:</p>
+  
+                    <ol>
+                      <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                      </li>
+                    </ol>
+                 </ng-container>
+  
+                 <ng-container *ngIf="q?.Type == 1">
+                  <p>fetch:</p>
+  
                   <ol>
-                    <li *ngFor="let mob of q.MobsToKill">{{mob.Name}} {{mob.Current}}/{{mob.Count}}
+                    <li *ngFor="let mob of q.ItemsToGet">{{mob.Name}} x{{mob.Count}}
                     </li>
                   </ol>
+               </ng-container>
+  
 
 
                   <p>{{q?.Description}}</p>
