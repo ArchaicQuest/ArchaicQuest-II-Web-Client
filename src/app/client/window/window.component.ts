@@ -87,36 +87,19 @@ export class WindowComponent implements OnInit, AfterContentInit, OnDestroy {
     this.$data = this.clientService.$data.pipe(takeUntil(this.unsubscribe$)).subscribe(x => {
 
       if (x.length) {
-        // if user has scrolled above, show notification of new messages
-        // let snackBarRef = this._snackBar.open('new message', 'View', {
-        //     duration: 4000
-        // });
 
         console.log(x[x.length - 1])
 
-        if (x[x.length - 1].startsWith("You begin to writing in your book.")) {
+        if (x[x.length - 1].startsWith("<p>You begin writing in ")) {
           this.openContentDialog("Write Book", "Page");
         }
         this.windowData = x;
-// console.log(document.getElementsByClassName('client-window')[0].scrollTop)
-// console.log(document.getElementsByClassName('client-window')[0].scrollTop)
 
-//         if(screen.width < 765 && (document.getElementsByClassName('client-window')[0].scrollTop <= 0 && document.getElementsByClassName('client-window')[0].scrollTop >= -200)) {
-//             this.window.nativeElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-//           }
       }
     });
 
 
   }
-
-//   ngAfterViewChecked() {  
-//     if(screen.width < 765) {      
-//       if(this.window.nativeElement.scrollTop === ( this.window.nativeElement.scrollHeight - this.window.nativeElement.offsetHeight)) {
-//     this.scrollToBottom();     
-//       }
-//     }   
-// } 
 
 scrollToBottom(): void {
     try {

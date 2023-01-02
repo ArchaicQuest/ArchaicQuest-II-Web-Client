@@ -250,7 +250,6 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
 
             this.contentPopup = content;
             this.$contentPopup.next(this.contentPopup);
-            console.log(content)
         });
     }
 
