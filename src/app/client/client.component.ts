@@ -184,6 +184,10 @@ soundArrayIndex = 0;
         soundString = `assets/sounds/drop.wav`
       }
 
+      if(x == 'cooking') {
+        soundString = `assets/sounds/cooking.mp3`
+      }
+
 
       if(x == 'quaff') {
         soundString = `assets/sounds/quaff.wav`
