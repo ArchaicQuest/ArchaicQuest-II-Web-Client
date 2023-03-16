@@ -61,7 +61,7 @@ header {
 
   .character-list {
     overflow-y: scroll;
-    height: 66vh;
+    max-height: 66vh;
     overflow-x: hidden;
   }
 
