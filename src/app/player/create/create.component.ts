@@ -113,6 +113,11 @@ export class CreatePlayerComponent implements OnInit {
 
 
         });
+        this.appearanceForm.get('char.gender').valueChanges.subscribe(value => {
+            this.gender = value;
+
+
+        });
         this.appearanceForm.get('bodyType.body').valueChanges.subscribe(value => {
             this.build = value;
         });
@@ -186,7 +191,7 @@ export class CreatePlayerComponent implements OnInit {
             className: this.classHeader,
             description: `You see nothing special about ${this.name.toLowerCase().charAt(0).toUpperCase() + this.name.toLowerCase().slice(1)}.`,
             equipped: {},
-            gender: 'Male',
+            gender: this.gender,
             inventory: [],
             level: '1',
             maxAttributes: {
