@@ -1,5 +1,16 @@
+
+<div style="position: relative;
+top: -5px;">
 <div class="stat-bar"
+[ngStyle]="{'width.%': (type !== 'exp' ? (100 * stats?.current) / stats?.max : (100 * stats?.max) / stats?.current) }"
   [ngClass]="{'stat-bar--mana': type === 'mana', 'stat-bar--moves':type === 'moves', 'stat-bar--exp':type === 'exp' }">
+ 
+</div>
+<div class="stat-bar stat-bar--max"
+  [ngClass]="{'stat-bar--max--mana': type === 'mana', 'stat-bar--max--moves':type === 'moves', 'stat-bar--max--exp':type === 'exp' }">
+</div>
+<div class="stat-line">
   <span>{{stats?.current || 0}}</span><span class="stat-bar__max" *ngIf="showCurrent">/{{stats?.max || 0}}</span>
-  {{label}}
+ <span class="stat-label">&nbsp;{{label}}</span>
+</div>
 </div>

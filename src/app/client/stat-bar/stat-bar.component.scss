@@ -5,8 +5,11 @@
 .stat-bar {
     background: linear-gradient(270deg, #ff0000, #b70000);
     background-size: 400% 400%;
+    height: 17px;
+ 
+    z-index: 200;
+  position: relative;
 
-  
 
     @media (min-width : 728px){
         -webkit-animation: statBarSwirlAnimation 5s ease infinite;
@@ -33,7 +36,64 @@
         background: linear-gradient(270deg, #e773f3, #93019b);
         background-size: 400% 400%;    
     }
+
+    
 }
+
+.stat-bar--max {
+    background-size: 400% 400%;
+    background: #f8b5b5;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 0;
+z-index: 100;
+    position: absolute;
+top: 0;
+width: 100%;
+
+    &--mana {
+        background: #a2cfee;
+        background-size: 400% 400%;    
+    }
+
+    &--moves {
+        background: #beeab9;
+        background-size: 400% 400%;    
+    }
+
+    &--exp {
+        background: #f1bbf7;
+        background-size: 400% 400%;    
+    }
+
+    
+}
+
+.stat-line {
+    position: absolute;
+top: 0;
+z-index: 300;
+text-align: center;
+display: flex;
+text-align: center;
+width: 100%;
+justify-content: center;
+height: 27px;
+align-items: center;
+font-weight: bold;
+text-shadow: 1px 1px 5px black;
+
+.stat-bar__max, .stat-label {
+    display: none;
+
+    @media (min-width : 768px){
+        display: inline;
+    }
+}
+}
+
 
 @-webkit-keyframes statBarSwirlAnimation {
     0%{background-position:0% 50%}
