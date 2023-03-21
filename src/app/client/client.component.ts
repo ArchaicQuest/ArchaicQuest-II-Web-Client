@@ -157,6 +157,7 @@ soundArrayIndex = 0;
  
       const footsteps = ['footstep-dirt-0.wav', 'footstep-dirt-1.wav', 'footstep-dirt-2.wav', 'footstep-dirt-3.wav']
       const foraging = ['foraging.mp3', 'foraging2.mp3']
+      
       let soundString = ''
       if(x == 'hit') {
        soundString = 'assets/sounds/swordHit.wav'
@@ -191,6 +192,14 @@ soundArrayIndex = 0;
 
       if(x == 'quaff') {
         soundString = `assets/sounds/quaff.wav`
+      }
+
+      if(x == 'mining') {
+        soundString = `assets/sounds/mining.mp3`
+      }
+
+      if(x == 'chopping') {
+        soundString = `assets/sounds/chopping.mp3`
       }
 
       this.soundArray.push(new Audio(soundString));
