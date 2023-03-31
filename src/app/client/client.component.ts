@@ -202,6 +202,26 @@ soundArrayIndex = 0;
         soundString = `assets/sounds/chopping.mp3`
       }
 
+      if(x == 'block') {
+        soundString = `assets/sounds/block.ogg`
+      }
+
+      if(x == 'parry') {
+        soundString = `assets/sounds/parry.ogg`
+      }
+
+      if(x == 'flee') {
+        soundString = `assets/sounds/run.ogg`
+      }
+
+      if(x == 'door') {
+        soundString = `assets/sounds/door.ogg`
+      }
+
+      if(x == 'unlock') {
+        soundString = `assets/sounds/unlock.ogg`
+      }
+
       this.soundArray.push(new Audio(soundString));
       //var audio: HTMLAudioElement = new Audio(soundString);
   console.log(this.soundArray)

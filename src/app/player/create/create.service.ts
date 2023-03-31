@@ -64,25 +64,43 @@ export class CreateService {
 
 
   validateName(c: FormControl) {
-    return this.nameAvailable(c.value);
+
+    try {
+      return this.nameAvailable(c.value);
+    }
+    catch(ex) {
+      console.log(ex)
+    }
+    return false;
   }
   nameAvailable(name: string) {
     clearTimeout(this.validationTimeout);
     return new Promise((resolve) => {
       this.validationTimeout = setTimeout(() => {
         let req = this._appearanceService.checkName(name);
-        req.subscribe(result => {
-          if (result) {
-            return resolve(null)
+
+        req.subscribe({
+          next: (result) => {
+            console.log("results", result)
+            if (result) {
+              return resolve(null)
+            }
+            else {
+              return resolve({ name: result })
+            }
+          },
+          error: (e) => {
+            console.log("results", e)
+            resolve(null)
+          
+          },
+          complete: () => {
+           
           }
-          else {
-            return resolve({ name: result })
-          }
-        },
-          error => { })
-      }, 600);
+      })
+      
     });
-  }
+  })}
 
 
   appearanceFormGroup(): FormGroup {
