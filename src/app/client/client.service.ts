@@ -209,6 +209,8 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
 
         this.connection.on('CommUpdate', (txt, type) => {
 
+            console.log(txt, type)
+
             this.comms = {
                 text: txt,
                 type: type

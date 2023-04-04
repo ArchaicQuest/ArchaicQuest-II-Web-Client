@@ -260,6 +260,8 @@ if(this.soundArray.length == 1) {
           this.channels.all.push(x.text);
           this.channels.newbie.push(x.text);
 
+          console.log(  this.channels.newbie)
+
           break;
         case "gossip":
           this.channels.all.push(x.text);
