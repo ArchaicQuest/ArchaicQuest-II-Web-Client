@@ -209,7 +209,6 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
 
         this.connection.on('CommUpdate', (txt, type) => {
 
-            console.log(txt, type)
 
             this.comms = {
                 text: txt,
@@ -362,7 +361,6 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
         this.connection.off('SendMessage');
         this.connection.off('SendAction');
         this.connection.stop().then(() => {
-            console.log("connection closed");
         }).catch(err => console.log(err));
     }
 
@@ -372,7 +370,6 @@ public fontFamily = '--font-family: arial, sans-serif!important;';
         var id = this.getConnectionId();
       
         this.http.get(`${environment.hostAPI}/api/player/config/${id}`).pipe(take(1)).subscribe((x: Settings) => {
-console.log(x);
           this.displayFontTypeChange(x.gameFont)
           this.displayFontChange(x.gameFontSize)
  
